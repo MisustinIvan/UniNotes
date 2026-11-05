@@ -181,9 +181,9 @@
       #text(style: "italic", fill: luma(70))[
         Důkaz#if title != none [ (#title)]:
       ]
-      #v(2pt, weak: true)
+      #v(2pt)
       #body
-      #align(right)[#v(-0.5em, weak: true)$square.big$]
+      #align(right)[#v(-0.5em)$square.big$]
     ],
   )
 }

@@ -5,12 +5,11 @@
 #show: boilerplate
 
 #title[Mechanika a molekulová fyzika - přednáška - František Chmelík]
-= Přednáška 1
-== Úvod do mechaniky
+= Úvod do mechaniky
 - Zabývá se mechanickým pohybem, změnami velikosti a tvaru těles.
 - Axiomatická - např. kinematické veličiny mají vektorovou povahu, Newtonovy zákony...
 
-=== Rozdělení
+== Rozdělení
 - Kinematika
 - popis pohybu bez popisu jeho příčiny
 - Dynamika
@@ -35,8 +34,8 @@
 
 
 #pb()
-== Klasická mechanika
-=== Absolutní prostor a souřadnicové systémy
+= Klasická mechanika
+== Absolutní prostor a souřadnicové systémy
 - homogení, izotropní, nezávislý na tělesech v něm. Máme v něm Euklidovskou metriku na měření vzdáleností.
 
 Zavádíme souřadnicovou soustavu vzhledem k nějakému vztažnému tělesu - klasicky zavádíme pravotočivý kartézský systém.
@@ -60,15 +59,15 @@ mohu také samozřejmě používat jiné SS
   převody mezi nimi a jejich detailnější popis byly probrány na cvičení...
 ]
 
-=== Čas
+== Čas
 Klasická mechanika vidí jen jako absolutní veličinu, která udává průběh událostí, dobu trvání etc...
 
-=== Látka vs Pole
-=== Oblast zájmu klasické mechaniky
+== Látka vs Pole
+== Oblast zájmu klasické mechaniky
 Normální délky, normální rychlosti, normální hmotnosti a gravitační působení...
 
 #pb()
-=== Kinematika hmotného bodu
+== Kinematika hmotného bodu
 - popis pohybu
 
 #image("./photo_2026-09-30_10-03-12.jpg", width: 20em)
@@ -140,17 +139,16 @@ $
 $
 
 #pb()
-= Přednáška 2
-== Klasifikace pohybů
+= Klasifikace pohybů
 (přímočarý, křivočarý) $times$ (rovnoměrný, zrychlený)
 
-=== Rovnoměrný přímočarý pohyb
+== Rovnoměrný přímočarý pohyb
 $
   x & = x(t) \
   x & = v t + x_0 \
 $
 
-=== Přímočarý rovnoměrně zrychlený
+== Přímočarý rovnoměrně zrychlený
 $
   a & = "konst" \
   x & = 1/2 a t^2 + v_0 t + s_0 \
@@ -158,7 +156,7 @@ $
   a & = a \
 $
 
-=== Lineární harmonický pohyb - po přímce
+== Lineární harmonický pohyb - po přímce
 časová závislost polohy je dána goniometrickou funkcí $sin$ nebo $cos$
 
 klasický harmonický oscilátor
@@ -173,7 +171,7 @@ $
   a(t) & = -omega^2 (x(t)-x_0)
 $]
 
-=== Rovnoměrný pohyb po kružnici
+== Rovnoměrný pohyb po kružnici
 $
     x(t) & = R cos(omega t + phi) + x_0 \
     y(t) & = R sin(omega t + phi) + y_0 \
@@ -187,14 +185,14 @@ $
        a & = omega^2 R \
 $
 
-=== Rovnoměrný pohyb po šroubovici
+== Rovnoměrný pohyb po šroubovici
 $
   x(t) & = R cos(omega t + phi) + x_0 \
   y(t) & = R sin(omega t + phi) + y_0 \
   z(t) & = k t + z_0 \
 $
 
-=== Nerovnoměrný pohyb po kružnici
+== Nerovnoměrný pohyb po kružnici
 $
   phi(t) & : RR -> RR \
        x & = R cos phi(t) \
@@ -217,7 +215,7 @@ $
   ar(a) = d/(d t) (ar(omega) times ar(r)) = (d ar(omega))/(d t) times ar(r) + ar(omega) times (d ar(r))/(d t) = ar(epsilon) times ar(r) + ar(omega) times ar(v) = ar(a_t) + ar(a_n)\
 $
 
-=== Otáčivý souřadnicový systém
+== Otáčivý souřadnicový systém
 mám 2 souřadnicové systémy $S$ a $S'$ které se překrývají, jeden se otáčí kolem osy $z$ druhého s konstantní úhlovou rychlostí. V otáčivém systému mám vektor $r$\
 
 $
@@ -234,7 +232,7 @@ $
   (d ar(B))/(d t) - (d' ar(B))/(d t) & = ar(omega) times ar(B) \
 $
 
-== Dynamika hmotného bodu
+= Dynamika hmotného bodu
 Sílu si zavádíme jako příčinu pohybu. Síla má statický(deformační) nebo dynamický(měnící pohybový stav těles/hmotných bodů) účinek.
 #image("./photo_2026-10-01_14-12-00.jpg")
 
@@ -242,7 +240,7 @@ Sílu si zavádíme jako příčinu pohybu. Síla má statický(deformační) ne
 - Síla působící na hmotný bod je vektor vázaný na bod.
 
 #pb()
-=== Tření
+== Tření
 Statické vs dynamické(kinetické)
 
 Koeficient statického tření je výrazně vyšší než koeficient kinetického tření.
@@ -252,7 +250,7 @@ $
   F_t = mu F_n\
 $
 
-=== Moment síly
+== Moment síly
 $
     abs(M) & = F r sin alpha \
   => ar(M) & = ar(r) times ar(F) \
@@ -260,16 +258,16 @@ $
 
 Vektor $ar(M)$ je z definice kolmý na rovinu definovanou vektory $ar(r)$ a $ar(F)$, je tedy *totožný s osou rotace*.
 
-== Newtonovy zákony
+= Newtonovy zákony
 Klasická(Newtonovská) mechanika je založena na třech zákonech.
-=== Zákon setrvačnosti
+== Zákon setrvačnosti
 Každé těleso setrvává ve stavu klidu nebo rovnoměrného přímočarého pohybu, není-li vnějšími silami nuceno tento stav změnit.
 
 yap yap yap yap
 
 Bude existovat soustava souřadná, kde se těleso jeví jako v klidu a další soustavy kde se těleso jeví v rovnoměrném přímočarém pohybu. Takové soustavy nazýváme inerciálními vztažnými soustavami.
 
-=== Zákon síly
+== Zákon síly
 Klasikaaa
 
 $
@@ -291,7 +289,7 @@ $
   m_1/m_2 & = a_2/a_1 \
 $
 
-=== Zákon akce a reakce
+== Zákon akce a reakce
 Pokud těleso 1 působí na těleso 2 silou, působí také těleso 2 na těleso 1 stejně velkou silou opačného směru.
 $
   F_(1,2) & = - F_(2,1\)
@@ -299,7 +297,7 @@ $
 
 Tyto síly nemůžeme sčítat, jelikož působí na rozdílná tělesa. Tyto síly také spolu vznikají a zanikají.
 
-=== Tíha tělesa
+== Tíha tělesa
 Tíha tělesa je síla kterou tělesa podléhají v gravitačním poli Země.
 $
   ar(G) & = m ar(g) \
@@ -312,8 +310,7 @@ $
 $
 
 #pb()
-= Přednáška 3
-== Zákon síly znovu
+= Zákon síly znovu
 
 Pohybová rovnice:
 $
@@ -328,7 +325,7 @@ Jsou to očividně *diferenciální rovnice druhého řádu*, dobrý no
 Pro obecné řešení potřebuji stanovit *počáteční podmínky*, v tomto případě počáteční polohu a počáteční rychlost.
 
 
-== Silové působení při relativním pohybu
+= Silové působení při relativním pohybu
 - Mějme soustavu $S$ a $S'$ která se vůči $S$ pohybuje přímočaře
 - tedy $ar(r) = ar(r') + ar(R)$
 
@@ -351,7 +348,7 @@ $
 a kde $ar(a)$ je tzv. *absolutní zrychlení* a $ar(a')$ je *relativní zrychlení*
 
 #pb()
-=== Pro interciální $S'$
+== Pro interciální $S'$
 $S'$ je inerciální pokud $ar(u) = "konst"$
 
 Transformace souřadnic je tedy Galileova Transformace:
@@ -373,7 +370,7 @@ $
 
 Z toho plyne že Newtonovy zákony jsou vůči galileově transformaci *invariantní*.
 
-=== Pro neinerciální $S'$
+== Pro neinerciální $S'$
 $S'$ je neinerciální pokud $ar(v_u) != "konst"$ a tedy $ar(a_u) != 0$
 
 $
@@ -387,7 +384,7 @@ kde $ar(F^*) = -m ar(a_u)$ je síla *zdánlivá* nebo také síla *setrvačná*
 
 Vidíme že Newtonovy zákony *neplatí* v neinerciální vztažné soustavě.
 
-==== Příklad 1.
+=== Příklad 1.
 Mějme vozík na kterém je závaží na pružině
 
 Vozík zrychluje se zrychlením $ar(a)$ a tím pádem na pružinu působí síla $m ar(a)$ v inerciální soustavě(pohled zvenčí), což dává smysl...
@@ -395,7 +392,7 @@ Vozík zrychluje se zrychlením $ar(a)$ a tím pádem na pružinu působí síla
 V soustavě spojené s vozíkem pozorujeme zdánlivou sílu $-m ar(a)$ - pružina se natáhne nebo smrští
 
 #pb()
-==== Příklad 2. - v otáčivé soustavě
+=== Příklad 2. - v otáčivé soustavě
 Mějme soustavu(neinerciální) otáčející se kolem počátku jiné soustavy(inerciální):
 
 Popíšeme zdánlivou sílu/zrychlení(odstředivé):
@@ -439,11 +436,11 @@ $
 toto je *Coriolisova síla* kde $ar(F_c) = 0$ pokud $ar(omega) parallel ar(v')$
 
 #pb()
-== Odvozené mechanické veličiny
+= Odvozené mechanické veličiny
 Práce, energie, hybnost, impulz, moment hybnosti
 - zkoumám účinek síly dle dráhy a dle času
 
-=== Dráhový účinek síly
+== Dráhový účinek síly
 $
                                  m ar(a) & = m (d ar(v))/(d t) = ar(F) \/ dot.op d ar(r) \
         m (d ar(r))/(d t) dot.op d ar(v) & = ar(F) d ar(r) \
@@ -477,8 +474,7 @@ $
 Z čehož plyne fakt že práci koná jen *tečná* složka síly.
 
 #pb()
-= Přednáška 4.
-=== Silová(vektorová) pole
+== Silová(vektorová) pole
 - např. tíhové pole - uvažujeme $ar(G) = m ar(g) = "konst"$
 
 #figure(
@@ -686,7 +682,7 @@ $]
 - opakem konzervativních silových polí jsou pole dissipativní, kde tento zákon neplatí
 - např. vlivem třecích sil
 
-=== Výkon
+== Výkon
 - Výkonem označujeme časovou derivaci práce
 
 $
@@ -700,7 +696,7 @@ $
 $
 
 #pb()
-=== Stokesova věta vektorové analýzy
+== Stokesova věta vektorové analýzy
 - Silové pole nazýváme konzervativní, jestliže pro něj platí:
 $
   integral.cont ar(F) d ar(r) = 0
@@ -728,7 +724,7 @@ $
   )\
 $
 
-=== Intenzita a potenciál silového pole
+== Intenzita a potenciál silového pole
 
 $
     E_p & = E_p(x,y,z) "    hledáme diferenciál " d E_p \
@@ -742,7 +738,7 @@ $
 $
 
 #pb()
-==== Základní charakteristiky silového pole
+=== Základní charakteristiky silového pole
 - pro porovnání polí zavádíme tzv. *intentzitu*
 - síla působící na jednotkovou hmotnost
 $
@@ -762,7 +758,7 @@ kde
 $]
 
 #pb()
-=== Časový účinek síly
+== Časový účinek síly
 $
   (d ar(p))/(d t) & = ar(F) \/ dot.op d t \
           d ar(p) & = ar(F) d t \
@@ -776,7 +772,7 @@ $]
   ar(cal(I)) = ar(F) (t_2 - t_1)
 $]
 
-=== Moment hybnosti
+== Moment hybnosti
 $
                         m ar(a) & = m (d ar(v))/(d t) = ar(F) \/ times ar(r) \
   m (d ar(v))/(d t) times ar(r) & = ar(F) times ar(r) = ar(M) \
@@ -790,7 +786,7 @@ $
 $]
 
 #pb()
-== Gravitační pole
+= Gravitační pole
 $
   F = kappa.alt (m_1 m_2)/r^2
 $
@@ -983,7 +979,6 @@ Tím pádem stanovím nulovou hladinu gravitační potenciální energie $E_p$ d
 
 
 #pb()
-= Přednáška 5.
 
 Práce v gravitačním poli a potenciální energie
 
@@ -1011,7 +1006,7 @@ $
 $
 
 #pb()
-== Příklad(moc ne no)
+= Příklad(moc ne no)
 #theorem(title: [Gaussova-Ostrogradského věta])[
   $
     "objem " V " v prostoru ohraničen plochou "S\
@@ -1028,7 +1023,7 @@ $
 $
 
 #pb()
-== Příklad(asi nějakej co můžeme i vyřešit)
+= Příklad(asi nějakej co můžeme i vyřešit)
 Intenzita gravitačního pole na kulové ploše.
 
 mějme $m; space r;$
@@ -1048,22 +1043,22 @@ $
 $
 
 #pb()
-== Příklad(tentokrát prosím ať je to něco normálního)
+= Příklad(tentokrát prosím ať je to něco normálního)
 Mějme homogenní kouli o poloměru $R$, bla bla bla není co počítat - nahradíme hmotným bodem
 
 #pb()
-== Příklad(nějaký počítání třeba pls pls?)
+= Příklad(nějaký počítání třeba pls pls?)
 Intenzita ve vzdálenosti $r$ od středu homogenní koule kde $r < R$
 $
   4 pi r^2 I(r) & = -4 pi kappa.alt (4/3 pi r^3)/(4/3 pi R^3) M \
            I(r) & = - kappa.alt M r/R^3 \
 $
 
-== Příklad(Agartha)
+= Příklad(Agartha)
 Uvnitř intenzita 0
 
 #pb()
-== Pohyb v zemském tíhovém poli
+= Pohyb v zemském tíhovém poli
 $
   - kappa.alt M_z ar(r)/r^3 -> - (kappa.alt M_z ar(r_0))/(R_z)^2
 $
@@ -1074,9 +1069,9 @@ $
   g = (kappa.alt M_z)/(R_z)^2 dot.op\
 $
 
-=== Pohybové rovnice
+== Pohybové rovnice
 
-==== Zrychlení
+=== Zrychlení
 
 $
   cancel(m) (dif^2 x)/(dif t^2) & = 0 \
@@ -1084,7 +1079,7 @@ $
   cancel(m) (dif^2 z)/(dif t^2) & = 0 \
 $
 
-==== Rychlost
+=== Rychlost
 
 $
   (dif x)/(dif t) & = v_0_x \
@@ -1093,7 +1088,7 @@ $
 $
 
 #pb()
-==== Poloha
+=== Poloha
 
 $
   x & = v_0_x t + x_0 \
@@ -1154,7 +1149,7 @@ $
 })
 
 #pb()
-== Keplerovy zákony
+= Keplerovy zákony
 #definition(title: [Centrální silové pole])[
   $
     ar(F)(ar(r)) = f(r) dot.op ar(r)/r
@@ -1274,9 +1269,9 @@ $
 $
 
 #pb()
-== Kmitavý pohyb
+= Kmitavý pohyb
 - Nejednodušší lineární harmonický oscilátor
-=== Netlumený harmonický kmit
+== Netlumený harmonický kmit
 
 $
   F = - k x\
@@ -1319,6 +1314,7 @@ $
          y_H(t) & = A sin (sqrt(k/m) t + alpha) \
 $
 
+#pb()
 kde
 
 $
@@ -1333,7 +1329,8 @@ $
   x(t) & = A sin (sqrt(k/m) t + phi) \
 $
 
-==== Energie harmonických kmitů
+#pb()
+=== Energie harmonických kmitů
 $
               x_0 & = 0 \
              x(t) & = A sin(omega t + phi) \
@@ -1404,7 +1401,7 @@ $]
 
 
 #pb()
-=== Tlumené harmonické kmity
+== Tlumené harmonické kmity
 
 $
   F_v & = - k_v dot.op v \
@@ -1426,7 +1423,7 @@ $
 
 máme 3 skupiny řešení...
 
-==== "Velké" tlumení $delta^2 > omega_0^2$
+=== "Velké" tlumení $delta^2 > omega_0^2$
 
 $
              D & = sqrt(delta^2 -omega^2) \
@@ -1443,7 +1440,8 @@ $
 
 exponenciála je nezáporná na $D_f$...
 
-==== Mezní tlumení $delta^2 = omega_0^2$
+#pb()
+=== Mezní tlumení $delta^2 = omega_0^2$
 
 $
                              lambda_(1,2) & = -delta \
@@ -1452,7 +1450,6 @@ $
                                   c_1/c_2 & = -t \
 $
 
-#pb()
 tedy podmínka:
 
 $
@@ -1494,7 +1491,7 @@ $
 
 #pb()
 
-===== Balistická metoda
+==== Balistická metoda
 zkoumáme balistický oscilátor - střílíme do hmoty na závěsu
 
 $
@@ -1532,13 +1529,13 @@ po rázu je $(m_s + m) v_0$
 vypočítáme $v_0$ a $x_m$
 
 $
-                           v_0 & = (m_s v_s)/(m_s + m) \
-                           x_m & = (m_s v_s)/((m_s + m) e delta) \
-  (x_m ((m_s + m) e delta)/m_s & = v_s \
+  v_0 & = (m_s v_s)/(m_s + m) \
+  x_m & = (m_s v_s)/((m_s + m) e delta) \
+  v_s & = (x_m e delta(m_s + m))/m_s \
 $
 
 #pb()
-==== "Malé tlumení" $delta^2 - omega_0^2 < 0$
+=== "Malé tlumení" $delta^2 - omega_0^2 < 0$
 $
   lambda_(1,2) & = - delta plus.minus i sqrt(delta^2 - omega_0^2) \
          omega & = sqrt(delta^2 - omega_0^2) \
@@ -1600,7 +1597,7 @@ $
 $
 
 #pb()
-=== Nucené harmonické kmity
+== Nucené harmonické kmity
 
 $
             m (dif^2 x)/(dif t^2) + k_v (dif x)/(dif t) + k x & = F_0 sin(Omega t) \
@@ -1780,7 +1777,7 @@ $
 })
 
 #pb()
-=== Princip superpozice
+== Princip superpozice
 Mějme dvě rovnice...
 $
   m (dif^2 x_1)/(dif t^2) + k_v (dif x_1)/(dif t) + k x_1 & = F_1(t) \
@@ -1794,7 +1791,7 @@ $
 $
 
 
-=== Skládání stejnosměrných kmitů se stejnou frekvencí $omega$
+== Skládání stejnosměrných kmitů se stejnou frekvencí $omega$
 
 $
   x_1(t) & = A_1 sin(omega t + phi_1) \
@@ -1873,25 +1870,25 @@ $
   A^2 & = A_1^2 + A_2^2 - 2 A_1 A_2 cos(pi (alpha_2 - alpha_1)) \
 $
 
-==== Kmity ve fázi
+=== Kmity ve fázi
 
 $
   alpha_2 - alpha_1 & = 0 => A = A_1 + A_2 \
 $
 
-==== Kmity v protifázi
+=== Kmity v protifázi
 
 $
   alpha_2 - alpha_1 & = pi => A = A_1 - A_2 \
 $
 
-==== Fáze výsledných kmitů
+=== Fáze výsledných kmitů
 
 $
   tg alpha &= ("průmět " accent(A, hat) "na osu y")/("průmět " accent(A, hat) "na osu x") = (A_1 sin alpha_1 + A_2 sin alpha_2)/(A_1 cos alpha_1 + A_2 cos alpha_2)
 $
 
-==== Stejnosměrné kmity
+=== Stejnosměrné kmity
 $
   x_1 (t) & = A sin(omega_1 t + alpha) \
   x_2 (t) & = A sin(omega_2 t + alpha) \
@@ -1949,7 +1946,7 @@ vznikají rázy ig
   content((rel: (0.15, 0.15), to: (t-max, y3)), [$t$], anchor: "south-west")
 })
 
-===== Rázy
+==== Rázy
 $
   (omega_1 - omega_2)/2 << (omega_1 + omega_2)/2
 $
@@ -1968,8 +1965,7 @@ $
 amplituda se mění s velkou frekvencí
 
 #pb()
-= Přednáška 6.
-=== Kmitání ve dvou souřadnicích
+== Kmitání ve dvou souřadnicích
 mějme
 $
   x(t) & = A_1 sin omega t \
@@ -2021,7 +2017,7 @@ $
 nalézt úhel $phi$ který určuje pootočení elipsy je ponecháno jako zábavný domácí úkol pro čtenáře
 
 
-==== $alpha = 0$\
+=== $alpha = 0$\
 $
   (y(t)/A_2)^2 - 2 (x(t) y(t) cos alpha)/(A_1 A_2) + (x(t)/A_1)^2 & = sin^2 alpha \
             (y(t)/A_2)^2 - 2 (x(t) y(t))/(A_1 A_2) + (x(t)/A_1)^2 & = 0 \
@@ -2033,7 +2029,7 @@ $
 
 Rovnice přímky procházející 1. a 3. kvadrantem
 
-==== $alpha = pi/2$
+=== $alpha = pi/2$
 $
   x(t) & = A_1 sin omega t \
   y(t) & = A_2 sin omega t + pi/2 \
@@ -2044,14 +2040,14 @@ $
 
 Pravotočivý pohyb po elipse
 
-==== $alpha = pi$
+=== $alpha = pi$
 $
   y(t) & = - x(t) A_2/A_1 \
 $
 
 Rovnice přímky procházející 2. a 4. kvadrantem
 
-==== $alpha = 3/2 pi$
+=== $alpha = 3/2 pi$
 $
   x(t) & = A_1 sin omega t \
   y(t) & = A_2 sin omega t + 3/2 pi \
@@ -2063,7 +2059,7 @@ $
 Levotočivý pohyb po elipse
 
 #pb()
-=== Pro rozdílné frekvence kolmých kmitů
+== Pro rozdílné frekvence kolmých kmitů
 Výsledné kmity jsou omezené obdélníkem daným amplitudami jednotlivých kmitů.
 
 Pokud $omega_1/omega_2 = m/n; sq m,n in ZZ$ dostáváme tzv. Lissajousovy obrazce.
@@ -2100,9 +2096,8 @@ Tvar těchto obrazců závisí hlavně na volbě poměru úhlových frekvencí $
 
 
 #pb()
-= Domácí studium - náhrada za přednášku 7.
-== Mechanika soustavy hmotných bodů a tuhého tělesa
-=== Popis soustavy hmotných bodů a tuhého tělesa
+= Mechanika soustavy hmotných bodů a tuhého tělesa
+== Popis soustavy hmotných bodů a tuhého tělesa
 Soustavou hmotných bodů rozumíme $N$ hmotných bodů které mohou mezi sebou interagovat.
 Každý bod má tzv. 3 *stupně volnosti* - tj 3 souřadnice, kterými popíšeme jeho polohu $ar(r_i)$.
 
@@ -2122,28 +2117,32 @@ Tuhé těleso má analogicky s tuhou soustavou hmotných bodů $6$ stupňů voln
 
 Dále definujeme tzv. *hmotný střed* tuhé soustavy hmotných bodů jako *vážený průměr*
 
-$
-  ar(r_s) = (sum_(i=1)^N m_i ar(r_i))/(sum_(i=1)^N m_i)
-$
+#definition(title: "Hmotný střed tuhé soustavy hmotných bodů")[
+  $
+    ar(r_s) = (sum_(i=1)^N m_i ar(r_i))/(sum_(i=1)^N m_i)
+  $
+]
 
 Analogicky zobecníme pro tuhé těleso
 
-$
-  ar(r_s) = (integral_V ar(r) rho(ar(r)) dif V)/(integral_V rho(ar(r)) dif V)
-$
+#definition(title: "Hmotný střed tuhého tělesa")[
+  $
+    ar(r_s) = (integral_V ar(r) rho(ar(r)) dif V)/(integral_V rho(ar(r)) dif V)
+  $
+]
 
 #pb()
-=== Kinematika tuhého tělesa
+== Kinematika tuhého tělesa
 Už víme, že tuhé těleso má $6$ stupňů volnosti, stanovíme tedy $6$ souřadnic. Zvolíme bod $A; sq ar(r_a) = vec(a_1, a_2, a_3)$, osu procházející tímto bodem $ar(o); sq ar(o) = vec(o_1, o_2, o_3); sq abs(ar(o)) = 1$, kde osu určíme pouze pomocí $2$ souřadnic díky podmínce na jednotkový vektor(přesná orientace osy nás nezajímá, řešíme jen přímku, kterou vymezuje). Posledním údajem je úhel $phi = phi(t)$ určující natočení kolem této osy.
 
-==== Rotace tuhého tělesa kolem pevné osy
+=== Rotace tuhého tělesa kolem pevné osy
 Vektor osy $ar(o)$ zůstává časově konstantní, stejně jako souřadnice bodů ležících na ose, tedy jediná časově proměnná souřadnice je úhel $phi = phi(t)$.
 $
     omega & = (dif phi)/(dif t) \
   epsilon & = (dif omega)/(dif t) = (dif^2 phi)/(dif t^2) = dtt(phi)
 $
 
-==== Rotace tuhého tělesa kolem pevného bodu
+=== Rotace tuhého tělesa kolem pevného bodu
 
 Obecnějším pohybem je *rotace tuhého tělesa kolem pevného bodu*, kde se mění i vektor osy $ar(o)$. Ten ale můžeme v každém okamžiku popsat jako rotaci kolem pevné osy. Podle *Eulerovy věty* i v tomto případě:
 
@@ -2151,15 +2150,15 @@ $
   ar(v) & = ar(omega) times ar(r) \
 $
 
-==== Translace tuhého tělesa
+=== Translace tuhého tělesa
 Pohyb, při kterém všechny body tuhého tělesa mají stejný vektor rychlosti $ar(v_T)$ nazýváme *posuvným*, nebo *translačním* pohybem. Podle *Chaslesovy věty* lze libovolný pohyb tuhého tělesa vyjádřit jako kombinaci translace a rotace kolem pevéosy. Rychlost libovolného bodu je tedy dána vztahem:
 
 $
   ar(v) = ar(v_T) + ar(omega) times ar(v)
 $
 
-=== Dynamika tuhého tělesa
-==== Princip akce a reakce asi
+== Dynamika tuhého tělesa
+=== Princip akce a reakce asi
 
 Součet vnitřních sil a momentů je nulový - nemají vliv na pohyb tuhého tělesa.
 
@@ -2167,7 +2166,7 @@ $
   sum_N ar(F)^I & = 0 \
   sum_N ar(M)^I & = 0 \
 $
-==== 1. Impulsová věta
+=== 1. Impulsová věta
 
 $
               (dif ar(p_i))/(dif t) & = ar(F_i) = ar(F^I_i) + ar(F^E_i) \
@@ -2197,7 +2196,7 @@ $
   ar(M)^E & = sum_(i=1)^n m_i ar(r_i) times ar(g) = M ar(r_s) times ar(g) = ar(r_s) times M ar(g) \
 $
 
-==== 2. Impulsová věta
+=== 2. Impulsová věta
 $
               (dif ar(b_i))/(dif t) & = ar(M_i) = ar(M_i)^E + ar(M_i)^I \
   sum_(i=1)^n (dif ar(b_i))/(dif t) & = sum_(i=1)^n ar(M_i) = sum_(i=1)^n ar(M_i)^E + sum_(i=1)^n ar(M_i)^I \
@@ -2206,7 +2205,7 @@ $
 $
 
 #pb()
-==== Energie soustavy hmotných bodů a tuhého tělesa
+=== Energie soustavy hmotných bodů a tuhého tělesa
 Kinetická energie:
 $
   E_k = sum_(i=1)^n (m_i v_i^2)/2 = 1/2 sum_(i=1)^n m_i v_i^2
@@ -2228,9 +2227,11 @@ $
 $
 
 A tedy *ZZME*:
-$
-  E_(k 1) + E_(p 1) = E_(k 2) + E_(p 2)
-$
+#corollary[
+  $
+    E_(k 1) + E_(p 1) = E_(k 2) + E_(p 2)
+  $
+]
 
 #theorem(title: [Königova věta])[
   $
@@ -2240,20 +2241,21 @@ $
 
 #proof[
   $
-    ar(v_i) &= ar(v_s) + ar(v)_(i s)\
-    E_k = 1/2 sum_(i=1)^n m_i (ar(v)_s + ar(v)_(i s)) (ar(v)_s + ar(v)_(i s)) = 1/2 sum_(i=1)^n (ar(v)_s^2 + 2 ar(v) dot.op ar(v)_(i s) + ar(v)_(i s)^2)\
-    E_k = 1/2 M ar(v)_s^2 + 1/2 sum_(i=1)^n m_i ar(v)_(i s)^2 + 0
-    E_k = 1/2 M ar(v)_s^2 + 1/2 sum_(i=1)^n m_i ar(v)_(i s)^2
+    ar(v_i) & = ar(v_s) + ar(v)_(i s) \
+        E_k & = 1/2 sum_(i=1)^n m_i (ar(v)_s + ar(v)_(i s)) dot.op (ar(v)_s + ar(v)_(i s)) \
+            & = 1/2 sum_(i=1)^n m_i (ar(v)_s^2 + 2 ar(v) dot.op ar(v)_(i s) + ar(v)_(i s)^2) \
+            & = 1/2 M ar(v)_s^2 + 0 + 1/2 sum_(i=1)^n m_i ar(v)_(i s)^2 \
+            & = 1/2 M ar(v)_s^2 + 1/2 sum_(i=1)^n m_i ar(v)_(i s)^2 \
   $
 ]
 
 pro translační pohyb:
 
-$
+#important[$
   E_k & = 1/2 sum_(i=1)^n m_i ar(v)_i^2 = 1/2 M ar(v)_s^2 \
-$
+$]
 
-
+#pb()
 pro rotaci kolem pevné osy:
 $
   E_k & = 1/2 sum_(i=1)^n m_i ar(v)_i^2 = 1/2 sum_(i=1) m_i ar(r)_i^2 omega^2 = 1/2 omega^2 sum_(i=1)^n m_i ar(r)_i^2 \
@@ -2274,7 +2276,7 @@ $
 
 kde $J_0$ moment setrvačnosti je vůči těžišťové ose
 
-===== Výpočet momentu setrvačnosti tuhého tělesa
+==== Výpočet momentu setrvačnosti tuhého tělesa
 $
   J_0 & = integral_m r^2 dif m \
 $
@@ -2300,14 +2302,36 @@ $
   J & = a^2 M + J_0 \
 $
 
-#important(caption: "Steinerova věta")[$
+#definition(title: "Steinerova věta")[$
   J & = a^2 M + J_0 \
 $]
 
 #pb()
-= Přednáška 12
-===== Moment setrvačnosti příklady
-====== 1.
+==== Moment setrvačnosti příklady
+===== 1.
+#cetz.canvas({
+  import cetz.draw: *
+
+  // the rod
+  rect((0, -0.2), (6, 0.2), fill: blue.lighten(80%), stroke: blue.darken(30%), name: "rod")
+
+  // rotation axis through the end of the rod, perpendicular to it
+  line((0, -1.3), (0, 1.5), stroke: (dash: "dashed"), name: "axis")
+  circle((0, 0), radius: 0.07, fill: black)
+
+  // sense of rotation
+  arc((1, 0), start: 20deg, stop: 160deg, radius: 1, mark: (end: ">"))
+
+  // length dimension
+  line((0, -0.9), (6, -0.9), mark: (start: ">", end: ">"), name: "dim")
+  line((6, -0.9), (6, -0.25), stroke: (dash: "dotted"))
+
+  content("dim.mid", [$l$], anchor: "south", padding: 0.1)
+  content((3, 0.25), [$m, rho$], anchor: "south", padding: 0.05)
+  content((0, 1.5), [osa $z$], anchor: "south", padding: 0.1)
+  content((1, 1), [$omega$], anchor: "south-west", padding: 0.05)
+})
+
 homogenní tyč délky $l$, hmotnosti $m$ a lineární hustotou $rho = m/l$
 
 osa v krajním bodě
@@ -2333,7 +2357,7 @@ $
 $
 
 #pb()
-====== 2.
+===== 2.
 Moment setrvačnosti tenkého homogenního kotouče vůči ose $z$
 
 $M; sq R; rho = M/(pi R^2)$
@@ -2357,7 +2381,7 @@ $
 
 stejný výsledek pro homogenní válec
 
-====== 3.
+===== 3.
 2D integrál
 
 $
@@ -2383,16 +2407,27 @@ $
 
 kde $cal(J)$ je tzv. *Jacobiho determinant*
 
-a tedy
+a tedy podle *Fubiniovy věty* pro dvojitý integrál
 $
   J & = integral_0^R integral_0^(2pi) r^2 M/(pi R^2) r dif r dif phi \
   J & = M/(pi R^2) integral_0^R r^3 dif r dot.op integral_0^(2 pi) dif phi \
   J & = M/(pi R^2) dot.op R^4/4 dot.op 2 pi = 1/2 M R^2 \
 $
-podle *Fubiniovy věty* pro dvojitý integrál
 
 #pb()
-====== 3.
+===== Fubiniova věta pro dvojitý integrál
+#theorem(title: "Fubiniova věta pro dvojitý integrál")[
+  Mějme funkci 2 proměnných $f(x,y); sq f: RR^2 -> RR$ pro kterou platí:
+
+  $f(x,y) >=0$ na intervalu $X times Y$ kde integrujeme, potom
+
+  $
+    integral_X integral_Y f(x,y) dif (x,y) = integral_X (integral_Y f(x,y) dif y) dif x = integral_Y (integral_X f(x,y) dif x) dif y\
+  $
+]
+
+#pb()
+===== 3.
 Homogenní koule
 
 $M; sq R; sq rho = M/(4/3 pi R^3) = (3M)/(4 pi R^3)$
@@ -2436,27 +2471,673 @@ $
 $
 
 #pb()
-=== Statika - hodnocení sil působících na tuhé těleso
+== Statika - hodnocení sil působících na tuhé těleso
+#cetz.canvas({
+  import cetz.draw: *
+
+  let body-pts = range(61).map(i => {
+    let ang = 2 * calc.pi * i / 60
+    let rad = 2.6 + 0.35 * calc.cos(2 * ang) - 0.25 * calc.sin(3 * ang) + 0.15 * calc.cos(5 * ang)
+    (1.3 * rad * calc.cos(ang), 0.9 * rad * calc.sin(ang))
+  })
+  line(..body-pts, close: true, fill: blue.lighten(85%), stroke: blue.darken(40%))
+  content((-2.0, -1.3), [těleso], anchor: "north")
+
+  let pt-t = (0, 0)
+  let pt-q = (0.72, 0.96)
+  let pt-p = (2.32, -0.24)
+  let pt-p-prime = (-0.88, 2.16)
+  let ray-start = (-2.48, 3.36)
+  let ray-end = (4.72, -2.04)
+
+  line(ray-start, ray-end, stroke: (dash: "dashed", paint: gray.darken(40%)), name: "ray")
+  content("ray.start", [paprsek síly], anchor: "south-west", padding: 0.15)
+
+  let s = 0.25
+  let r1 = (pt-q.at(0) - 0.6 * s, pt-q.at(1) - 0.8 * s)
+  let r2 = (r1.at(0) + 0.8 * s, r1.at(1) - 0.6 * s)
+  let r3 = (pt-q.at(0) + 0.8 * s, pt-q.at(1) - 0.6 * s)
+  line(r1, r2, r3, stroke: gray.darken(50%))
+
+  line(pt-t, pt-q, stroke: (dash: "dotted", paint: black), name: "arm")
+  content("arm.mid", [$d$], anchor: "south-east", padding: 0.08)
+
+  line(pt-t, pt-p, mark: (end: ">"), stroke: gray.darken(30%), name: "r-vec")
+  content("r-vec.mid", [$bold(r)$], anchor: "north", padding: 0.15)
+
+  let f-end = (rel: (1.6, -1.2), to: pt-p)
+  line(pt-p, f-end, mark: (end: ">"), stroke: 1.4pt + black, name: "F1")
+  content("F1.end", [$bold(F)$], anchor: "south-west", padding: 0.1)
+
+  let f-prime-end = (rel: (1.6, -1.2), to: pt-p-prime)
+  line(pt-p-prime, f-prime-end, mark: (end: ">"), stroke: (paint: blue.darken(30%), dash: "solid"), name: "F2")
+  content("F2.mid", [$bold(F)′$], anchor: "south-west", padding: 0.1)
+
+  circle(pt-t, radius: 0.08, fill: black, name: "T")
+  content("T.south-west", [$T$], anchor: "north-east", padding: 0.1)
+
+  circle(pt-p, radius: 0.07, fill: black, name: "P")
+  content("P.south-west", [$A$], anchor: "north-east", padding: 0.1)
+
+  circle(pt-p-prime, radius: 0.07, fill: blue.darken(30%), stroke: blue.darken(30%), name: "P2")
+  content("P2.south-west", [$A′$], anchor: "north-east", padding: 0.1)
+})
+
 Mějme šišku a sílu působící na šišku. K síle si zavedeme tzv. *paprsek síly*, směr, kterým síla působí. Působení síly se nemění když ji posouvám po paprsku(silové působení i moment)
 
-Pro různoběžné síly se paprsky protínají, přesuneme si síly do průsečíku, secčteme síly a výslednou sílu můžeme posouvat po jejím paprsku, účinek se nemění.
+#cetz.canvas({
+  import cetz.draw: *
+  let body-pts = range(61).map(i => {
+    let ang = 2 * calc.pi * i / 60
+    let rad = 2.5 + 0.3 * calc.cos(2 * ang) - 0.25 * calc.sin(3 * ang) + 0.12 * calc.cos(5 * ang)
+    (1.3 * rad * calc.cos(ang), 0.9 * rad * calc.sin(ang) - 0.8)
+  })
+  line(..body-pts, close: true, fill: blue.lighten(85%), stroke: blue.darken(40%))
+  content((-2.3, -2.5), [těleso], anchor: "north")
+  let pt-p = (0, 1.5)
+  let pt-a1 = (-1.6, -0.5)
+  let pt-a2 = (1.6, -0.5)
+  let v1 = (0.8, 1.0)
+  let v2 = (-0.8, 1.0)
+  let vr = (0, 2.0)
+  line((-2.4, -1.5), (1.6, 3.5), stroke: (dash: "dashed", paint: gray.darken(40%)), name: "ray1")
+  line((2.4, -1.5), (-1.6, 3.5), stroke: (dash: "dashed", paint: gray.darken(40%)), name: "ray2")
+  line((0, -3.2), (0, 4.2), stroke: (dash: "dashed", paint: green.darken(30%)), name: "ray-r")
+  content("ray-r.start", [paprsek výslednice], anchor: "north", padding: 0.15)
+  let f1-end = (rel: v1, to: pt-a1)
+  line(pt-a1, f1-end, mark: (end: ">"), stroke: 1.3pt + black, name: "F1")
+  content("F1.mid", [$bold(F)_1$], anchor: "south-east", padding: 0.1)
+  let f2-end = (rel: v2, to: pt-a2)
+  line(pt-a2, f2-end, mark: (end: ">"), stroke: 1.3pt + black, name: "F2")
+  content("F2.mid", [$bold(F)_2$], anchor: "south-west", padding: 0.1)
+  let f1p-end = (rel: v1, to: pt-p)
+  let f2p-end = (rel: v2, to: pt-p)
+  let fr-end = (rel: vr, to: pt-p)
+  line(f1p-end, fr-end, stroke: (dash: "dotted", paint: gray.darken(50%)))
+  line(f2p-end, fr-end, stroke: (dash: "dotted", paint: gray.darken(50%)))
+  line(pt-p, f1p-end, mark: (end: ">"), stroke: 1pt + blue.darken(30%), name: "F1p")
+  content("F1p.end", [$bold(F)'_1$], anchor: "west", padding: 0.12)
+  line(pt-p, f2p-end, mark: (end: ">"), stroke: 1pt + blue.darken(30%), name: "F2p")
+  content("F2p.end", [$bold(F)'_2$], anchor: "east", padding: 0.12)
+  line(pt-p, fr-end, mark: (end: ">"), stroke: 1.5pt + red.darken(20%), name: "FR")
+  content("FR.end", [$bold(F)_R$], anchor: "south-west", padding: 0.12)
+  let pt-a = (0, -1.6)
+  let fr-shifted-end = (rel: vr, to: pt-a)
+  line(pt-a, fr-shifted-end, mark: (end: ">"), stroke: 1.5pt + green.darken(30%), name: "FRs")
+  content("FRs.mid", [$bold(F)'_R$], anchor: "west", padding: 0.15)
+  circle(pt-a1, radius: 0.07, fill: black, name: "A1")
+  content("A1.north-west", [$A_1$], anchor: "south-east", padding: 0.1)
+  circle(pt-a2, radius: 0.07, fill: black, name: "A2")
+  content("A2.north-east", [$A_2$], anchor: "south-west", padding: 0.1)
+  circle(pt-p, radius: 0.08, fill: black, name: "P")
+  content("P.west", [$P$], anchor: "east", padding: 0.15)
+  circle(pt-a, radius: 0.07, fill: green.darken(30%), stroke: green.darken(30%), name: "A")
+  content("A.east", [$A$], anchor: "west", padding: 0.15)
+})
 
+Pro různoběžné síly se paprsky protínají, přesuneme si síly do průsečíku, sečteme síly a výslednou sílu můžeme posouvat po jejím paprsku, účinek se nemění.
+
+#cetz.canvas({
+  import cetz.draw: *
+
+  let body-pts = range(61).map(i => {
+    let ang = 2 * calc.pi * i / 60
+    let rad = 2.6 + 0.3 * calc.cos(2 * ang) - 0.2 * calc.sin(3 * ang) + 0.1 * calc.cos(5 * ang)
+    (1.4 * rad * calc.cos(ang), 0.75 * rad * calc.sin(ang) + 0.2)
+  })
+  line(..body-pts, close: true, fill: blue.lighten(85%), stroke: blue.darken(40%))
+  content((-2.8, 1.3), [těleso], anchor: "south")
+
+  let pt-a1 = (-2.0, 0.0)
+  let pt-a2 = (2.0, 0.0)
+  let pt-a = (-0.4, 0.0)
+  let pt-p = (-0.4, 2.4)
+
+  let v-f1 = (0, -1.8)
+  let v-f2 = (0, -1.2)
+  let v-fn1 = (-1.2, 0)
+  let v-fn2 = (1.2, 0)
+  let v-r1 = (-1.2, -1.8)
+  let v-r2 = (1.2, -1.2)
+  let v-fr = (0, -3.0)
+
+  line((-2.0, 2.6), (-2.0, -3.2), stroke: (dash: "dashed", paint: gray.lighten(20%)))
+  line((2.0, 2.6), (2.0, -3.2), stroke: (dash: "dashed", paint: gray.lighten(20%)))
+  line((-3.8, 0.0), (3.8, 0.0), stroke: (dash: "dashed", paint: gray.darken(20%)))
+
+  line((0.2, 3.3), (-3.4, -2.1), stroke: (dash: "dashed", paint: gray.darken(50%)), name: "ray1")
+  line((-1.2, 3.0), (3.4, -1.05), stroke: (dash: "dashed", paint: gray.darken(50%)), name: "ray2")
+
+  line((-0.4, 3.2), (-0.4, -3.6), stroke: (dash: "dashed", paint: green.darken(30%)), name: "ray-r")
+  content("ray-r.start", [paprsek výslednice], anchor: "south", padding: 0.12)
+
+  let f1-end = (rel: v-f1, to: pt-a1)
+  let fn1-end = (rel: v-fn1, to: pt-a1)
+  let r1-end = (rel: v-r1, to: pt-a1)
+
+  line(f1-end, r1-end, stroke: (dash: "dotted", paint: gray.darken(50%)))
+  line(fn1-end, r1-end, stroke: (dash: "dotted", paint: gray.darken(50%)))
+
+  line(pt-a1, f1-end, mark: (end: ">"), stroke: 1.3pt + black, name: "F1")
+  content("F1.mid", [$bold(F)_1$], anchor: "west", padding: 0.1)
+
+  line(pt-a1, fn1-end, mark: (end: ">"), stroke: 1.1pt + orange.darken(15%), name: "Fn1")
+  content("Fn1.mid", [$bold(F)_n$], anchor: "south", padding: 0.1)
+
+  line(pt-a1, r1-end, mark: (end: ">"), stroke: 1.3pt + blue.darken(30%), name: "R1")
+  content("R1.end", [$bold(F)'_1$], anchor: "north-east", padding: 0.1)
+
+  let f2-end = (rel: v-f2, to: pt-a2)
+  let fn2-end = (rel: v-fn2, to: pt-a2)
+  let r2-end = (rel: v-r2, to: pt-a2)
+
+  line(f2-end, r2-end, stroke: (dash: "dotted", paint: gray.darken(50%)))
+  line(fn2-end, r2-end, stroke: (dash: "dotted", paint: gray.darken(50%)))
+
+  line(pt-a2, f2-end, mark: (end: ">"), stroke: 1.3pt + black, name: "F2")
+  content("F2.mid", [$bold(F)_2$], anchor: "east", padding: 0.1)
+
+  line(pt-a2, fn2-end, mark: (end: ">"), stroke: 1.1pt + orange.darken(15%), name: "Fn2")
+  content("Fn2.mid", [$-bold(F)_n$], anchor: "south", padding: 0.1)
+
+  line(pt-a2, r2-end, mark: (end: ">"), stroke: 1.3pt + blue.darken(30%), name: "R2")
+  content("R2.end", [$bold(F)'_2$], anchor: "north-west", padding: 0.1)
+
+  let fr-end = (rel: v-fr, to: pt-a)
+  line(pt-a, fr-end, mark: (end: ">"), stroke: 1.6pt + red.darken(20%), name: "FR")
+  content("FR.end", [$bold(F)_R$], anchor: "west", padding: 0.12)
+
+  circle(pt-a1, radius: 0.07, fill: black, name: "A1")
+  content("A1.north-east", [$A_1$], anchor: "south-west", padding: 0.08)
+
+  circle(pt-a2, radius: 0.07, fill: black, name: "A2")
+  content("A2.north-west", [$A_2$], anchor: "south-east", padding: 0.08)
+
+  circle(pt-p, radius: 0.08, fill: black, name: "P")
+  content("P.east", [$P$], anchor: "west", padding: 0.15)
+
+  circle(pt-a, radius: 0.07, fill: red.darken(20%), stroke: red.darken(20%), name: "A")
+  content("A.north-west", [$A$], anchor: "south-east", padding: 0.08)
+})
 Pro rovnoběžné síly stejného směru si k oběma přičtu kolmé síly s opačnými směry, dostanu dvě různoběžné síly které pak zase sečteme.
 
-Pro rovnoběžné síly opačného směru zkoumáme výsledný moment k libovolně volenému vztažnému bodu - *dvojice sil*
+Pro libovolnou sílu $ar(F)$ působící v bodě $ar(r)$ vzhledem k bodu $O$ si můžeme tuto sílu nejprve po jejím paprsku přenést na kolmici k $O$ a dále doplnit dvojicí sil $ar(F)'; -ar(F)'$ se stejnou velikostí jako $ar(F)$, ale působící v bodě $O$. Tyto síly se odečtou, takže výsledný silový účinek je stále stejný, síla v bodě $O$ je ale $ar(F)'$ doplněná o moment dvojice sil $-ar(F)'$ a $ar(F)$. Tento moment je ale nezávislý na volbě vztažného bodu $O'$:
+
+#proof[
+  $
+    ar(M) & = (ar(r)_1 times -ar(F)') + (ar(r_2) times ar(F)) \
+          & = (ar(r)_1 times -ar(F)') + (ar(r_2) times ar(F)) \
+          & = (ar(r)_1 - ar(r)_2) times ar(F) \
+          & = ar(r) times ar(F) \
+  $
+]
+
+Tento moment je tedy volný vektor, který můžeme přenést do libovolného bodu tělesa.
+
+V dokonale tuhém tělese můžeme každou sílu přenést do bodu $O$, připojíme-li k ní *doplňkovou dvojici sil*, jejíž moment je roven momentu přenesené síly k bodu $O$.
+
+
+#important(caption: "Výsledná síla k bodu O je tedy:")[$
+  ar(R) & = sum_(i=1)^n ar(F)_i \
+$]
+
+
+#important(caption: "a doplňkový moment je:")[$
+  ar(M) & = sum_(i=1)^n ar(r)_i times ar(F)_i \
+$]
 
 #pb()
-==== Rovnováha tuhého tělesa
+=== Rovnováha tuhého tělesa
 
 #definition(title: "Rovnováha")[
   Říkáme, že těleso je v *rovnováze*, jestliže je výslednice vnějších sil působících na těleso rovna nule:
   $
-  sum_i^n ar(F)^E_i = ar(0) = ar(F)^E\
+    sum_i^n ar(F)^E_i = ar(0) = ar(F)^E\
   $
 
   a výsledný vnější moment je také roven nule:
 
   $
-  sum_i^n ar(M)^E_i = ar(0) = ar(M)^E\
+    sum_i^n ar(M)^E_i = ar(0) = ar(M)^E\
   $
 ]
+
+Rozlišujeme 3 typy rovnováhy:
+
+(1.) *stálá(stabilní)* rovnovážná poloha
+#cetz.canvas(length: 1cm, {
+  import cetz.draw: *
+
+  // Styles (CeTZ 0.5.2 compatible)
+  let s-surf = (stroke: (paint: black, thickness: 1.4pt))
+  let s-ghost = (stroke: (paint: gray.darken(20%), dash: "dashed", thickness: 0.8pt), fill: gray.lighten(85%))
+  let s-fg = (
+    stroke: (paint: blue.darken(20%), thickness: 1.2pt),
+    mark: (end: "stealth", scale: 0.9, fill: blue.darken(20%)),
+  )
+  let s-fn = (
+    stroke: (paint: green.darken(30%), thickness: 1.2pt),
+    mark: (end: "stealth", scale: 0.9, fill: green.darken(30%)),
+  )
+  let s-fv = (
+    stroke: (paint: red.darken(20%), thickness: 1.5pt),
+    mark: (end: "stealth", scale: 1.0, fill: red.darken(20%)),
+  )
+  let s-guide = (stroke: (paint: gray.darken(30%), dash: "dotted", thickness: 0.7pt))
+
+  // Surface parameters: y = a * x^2
+  let a = 0.28
+  let r = 0.48
+
+  // 1. Shaded ground & parabolic trough
+  let surf-pts = range(-30, 31).map(i => {
+    let x = i * 0.1
+    (x, a * x * x)
+  })
+
+  line(
+    ..surf-pts,
+    (3.0, -0.45),
+    (-3.0, -0.45),
+    close: true,
+    fill: gray.lighten(88%),
+    stroke: none,
+  )
+  line(..surf-pts, ..s-surf)
+
+  // 2. Equilibrium position (bottom of trough, x0 = 0)
+  let c0 = (0, r)
+  circle(c0, radius: r, ..s-ghost, name: "ball-eq")
+  circle(c0, radius: 0.04, fill: gray.darken(40%), stroke: none)
+
+  // 3. Displaced position (x1 = 1.65)
+  let x1 = 1.65
+  let y1 = a * x1 * x1
+  // Slope tan(alpha) = 2*a*x1; unit normal n = (-sin(alpha), cos(alpha))
+  let slope = 2 * a * x1
+  let alpha = calc.atan(slope)
+  let nx = -calc.sin(alpha)
+  let ny = calc.cos(alpha)
+
+  // Center of displaced sphere: C1 = Contact + R * n
+  let cx = x1 + r * nx
+  let cy = y1 + r * ny
+  let c1 = (cx, cy)
+
+  circle(
+    c1,
+    radius: r,
+    fill: blue.lighten(85%),
+    stroke: (paint: blue.darken(40%), thickness: 1.1pt),
+    name: "ball-disp",
+  )
+
+  // 4. Force vectors at displaced center of mass C1
+  let fg-mag = 1.85
+  let fn-mag = fg-mag * ny // F_N = F_G * cos(alpha)
+  let fv-mag = fg-mag * (-nx) // F_v = F_G * sin(alpha)
+
+  let pt-fg = (cx, cy - fg-mag)
+  let pt-fn = (cx + fn-mag * nx, cy + fn-mag * ny)
+  // Tangent unit vector pointing back toward equilibrium: t = (-cos(alpha), -sin(alpha))
+  let tx = -ny
+  let ty = nx
+  let pt-fv = (cx + fv-mag * tx, cy + fv-mag * ty)
+
+  // Parallelogram projection lines
+  line(pt-fg, pt-fv, ..s-guide)
+  line(pt-fn, pt-fv, ..s-guide)
+  // Normal axis line through contact point
+  line((x1, y1), pt-fn, ..s-guide)
+
+  // Draw vectors: F_G (gravity), F_N (normal reaction), F_v (restoring resultant)
+  line(c1, pt-fg, ..s-fg, name: "FG")
+  content("FG.end", text(fill: blue.darken(20%))[$bold(F)_G$], anchor: "north", padding: 0.1)
+
+  line(c1, pt-fn, ..s-fn, name: "FN")
+  content("FN.end", text(fill: green.darken(30%))[$bold(F)_N$], anchor: "south-east", padding: 0.08)
+
+  line(c1, pt-fv, ..s-fv, name: "Fv")
+  content("Fv.end", text(fill: red.darken(20%))[$bold(F)_v$], anchor: "south-east", padding: 0.1)
+
+  // Center of mass dot
+  circle(c1, radius: 0.05, fill: black, stroke: none)
+
+  // 5. Elevation increase Delta h and equilibrium axis
+  line((0, -0.45), (0, 2.3), stroke: (paint: gray.darken(40%), dash: "dash-dotted", thickness: 0.6pt))
+  content((0, 2.35), text(fill: gray.darken(50%), size: 0.85em)[$E_p = "min"$], anchor: "south")
+
+  line((0, r), (cx + 0.9, r), ..s-guide)
+  line((cx, cy), (cx + 0.9, cy), ..s-guide)
+  line(
+    (cx + 0.75, r),
+    (cx + 0.75, cy),
+    stroke: (paint: black, thickness: 0.6pt),
+    mark: (start: "stealth", end: "stealth", scale: 0.6, fill: black),
+    name: "dh",
+  )
+  content("dh.mid", [$Delta h > 0$], anchor: "west", padding: 0.1)
+})
+(2.) *vratká(labilní)* rovnovážná poloha
+#cetz.canvas(length: 1cm, {
+  import cetz.draw: *
+
+  // Styles (CeTZ 0.5.2 compatible)
+  let s-surf = (stroke: (paint: black, thickness: 1.4pt))
+  let s-ghost = (stroke: (paint: gray.darken(20%), dash: "dashed", thickness: 0.8pt), fill: gray.lighten(85%))
+  let s-fg = (
+    stroke: (paint: blue.darken(20%), thickness: 1.2pt),
+    mark: (end: "stealth", scale: 0.9, fill: blue.darken(20%)),
+  )
+  let s-fn = (
+    stroke: (paint: green.darken(30%), thickness: 1.2pt),
+    mark: (end: "stealth", scale: 0.9, fill: green.darken(30%)),
+  )
+  let s-fv = (
+    stroke: (paint: red.darken(20%), thickness: 1.5pt),
+    mark: (end: "stealth", scale: 1.0, fill: red.darken(20%)),
+  )
+  let s-guide = (stroke: (paint: gray.darken(30%), dash: "dotted", thickness: 0.7pt))
+
+  // Surface parameters: y = h0 - a * x^2
+  let h0 = 1.9
+  let a = 0.25
+  let r = 0.48
+
+  // 1. Shaded ground & parabolic crest
+  let surf-pts = range(-30, 31).map(i => {
+    let x = i * 0.1
+    (x, h0 - a * x * x)
+  })
+
+  line(
+    ..surf-pts,
+    (3.0, -0.55),
+    (-3.0, -0.55),
+    close: true,
+    fill: gray.lighten(88%),
+    stroke: none,
+  )
+  line(..surf-pts, ..s-surf)
+
+  // 2. Equilibrium position (top of crest, x0 = 0)
+  let c0 = (0, h0 + r)
+  circle(c0, radius: r, ..s-ghost, name: "ball-eq")
+  circle(c0, radius: 0.04, fill: gray.darken(40%), stroke: none)
+
+  // 3. Displaced position (x1 = 1.35)
+  let x1 = 1.35
+  let y1 = h0 - a * x1 * x1
+  // Slope dy/dx = -2*a*x1; downward angle beta = atan(2*a*x1) > 0
+  // Outward unit normal n = (sin(beta), cos(beta))
+  let beta = calc.atan(2 * a * x1)
+  let nx = calc.sin(beta)
+  let ny = calc.cos(beta)
+
+  // Center of displaced sphere: C1 = Contact + R * n
+  let cx = x1 + r * nx
+  let cy = y1 + r * ny
+  let c1 = (cx, cy)
+
+  circle(
+    c1,
+    radius: r,
+    fill: blue.lighten(85%),
+    stroke: (paint: blue.darken(40%), thickness: 1.1pt),
+    name: "ball-disp",
+  )
+
+  // 4. Force vectors at displaced center of mass C1
+  let fg-mag = 1.85
+  let fn-mag = fg-mag * ny // F_N = F_G * cos(beta)
+  let fv-mag = fg-mag * nx // F_v = F_G * sin(beta)
+
+  let pt-fg = (cx, cy - fg-mag)
+  let pt-fn = (cx + fn-mag * nx, cy + fn-mag * ny)
+  // Downward tangent unit vector pointing away from equilibrium: t = (cos(beta), -sin(beta))
+  let tx = ny
+  let ty = -nx
+  let pt-fv = (cx + fv-mag * tx, cy + fv-mag * ty)
+
+  // Parallelogram projection lines
+  line(pt-fg, pt-fv, ..s-guide)
+  line(pt-fn, pt-fv, ..s-guide)
+  // Normal axis line through contact point
+  line((x1, y1), pt-fn, ..s-guide)
+
+  // Draw vectors: F_G (gravity), F_N (normal reaction), F_v (destabilizing resultant)
+  line(c1, pt-fg, ..s-fg, name: "FG")
+  content("FG.end", text(fill: blue.darken(20%))[$bold(F)_G$], anchor: "north", padding: 0.1)
+
+  line(c1, pt-fn, ..s-fn, name: "FN")
+  content("FN.end", text(fill: green.darken(30%))[$bold(F)_N$], anchor: "south-west", padding: 0.08)
+
+  line(c1, pt-fv, ..s-fv, name: "Fv")
+  content("Fv.end", text(fill: red.darken(20%))[$bold(F)_v$], anchor: "north-west", padding: 0.08)
+
+  // Center of mass dot
+  circle(c1, radius: 0.05, fill: black, stroke: none)
+
+  // 5. Elevation drop Delta h < 0 and equilibrium axis
+  line((0, -0.55), (0, 3.15), stroke: (paint: gray.darken(40%), dash: "dash-dotted", thickness: 0.6pt))
+  content((0, 3.2), text(fill: gray.darken(50%), size: 0.85em)[$E_p = "max"$], anchor: "south")
+
+  let x-dim = cx + 1.15
+  line(c0, (x-dim + 0.15, h0 + r), ..s-guide)
+  line(c1, (x-dim + 0.15, cy), ..s-guide)
+  line(
+    (x-dim, h0 + r),
+    (x-dim, cy),
+    stroke: (paint: black, thickness: 0.6pt),
+    mark: (start: "stealth", end: "stealth", scale: 0.6, fill: black),
+    name: "dh",
+  )
+  content("dh.mid", [$Delta h < 0$], anchor: "west", padding: 0.1)
+})
+(3.) *volná(indiferentní)* rovnovážná poloha
+#cetz.canvas(length: 1cm, {
+  import cetz.draw: *
+
+  // Styles (CeTZ 0.5.2 compatible, matching the previous two diagrams)
+  let s-surf = (stroke: (paint: black, thickness: 1.4pt))
+  let s-ghost = (stroke: (paint: gray.darken(20%), dash: "dashed", thickness: 0.8pt), fill: gray.lighten(85%))
+  let s-fg = (
+    stroke: (paint: blue.darken(20%), thickness: 1.2pt),
+    mark: (end: "stealth", scale: 0.9, fill: blue.darken(20%)),
+  )
+  let s-fn = (
+    stroke: (paint: green.darken(30%), thickness: 1.2pt),
+    mark: (end: "stealth", scale: 0.9, fill: green.darken(30%)),
+  )
+  let s-guide = (stroke: (paint: gray.darken(30%), dash: "dotted", thickness: 0.7pt))
+
+  // Surface parameters: horizontal plane y = h0
+  let h0 = 0.8
+  let r = 0.48
+
+  // 1. Shaded ground & flat surface
+  line(
+    (-3.0, h0),
+    (3.0, h0),
+    (3.0, -0.45),
+    (-3.0, -0.45),
+    close: true,
+    fill: gray.lighten(88%),
+    stroke: none,
+  )
+  line((-3.0, h0), (3.0, h0), ..s-surf)
+
+  // 2. Initial equilibrium position (x0 = -0.8)
+  let x0 = -0.8
+  let c0 = (x0, h0 + r)
+  circle(c0, radius: r, ..s-ghost, name: "ball-eq")
+  circle(c0, radius: 0.04, fill: gray.darken(40%), stroke: none)
+
+  // 3. Displaced equilibrium position (x1 = 1.1)
+  let x1 = 1.1
+  let c1 = (x1, h0 + r)
+
+  circle(
+    c1,
+    radius: r,
+    fill: blue.lighten(85%),
+    stroke: (paint: blue.darken(40%), thickness: 1.1pt),
+    name: "ball-disp",
+  )
+
+  // 4. Collinear opposing forces at C1 (F_N = -F_G, F_v = 0)
+  let f-mag = 1.65
+  let pt-fg = (x1, h0 + r - f-mag)
+  let pt-fn = (x1, h0 + r + f-mag)
+
+  line(c1, pt-fg, ..s-fg, name: "FG")
+  content("FG.end", text(fill: blue.darken(20%))[$bold(F)_G$], anchor: "west", padding: 0.12)
+
+  line(c1, pt-fn, ..s-fn, name: "FN")
+  content("FN.end", text(fill: green.darken(30%))[$bold(F)_N$], anchor: "west", padding: 0.12)
+
+  // Center of mass dot
+  circle(c1, radius: 0.05, fill: black, stroke: none)
+
+  // 5. Constant elevation line, displacement arrow Delta x, and labels
+  line((-2.6, h0 + r), (2.7, h0 + r), ..s-guide)
+  content((2.15, h0 + r + 0.12), [$Delta h = 0$], anchor: "south")
+
+  // Displacement vector between centers
+  line(
+    (x0 + 0.12, h0 + r),
+    (x1 - 0.12, h0 + r),
+    stroke: (paint: gray.darken(50%), thickness: 0.8pt),
+    mark: (end: "stealth", scale: 0.7, fill: gray.darken(50%)),
+    name: "dx",
+  )
+  content("dx.mid", text(fill: gray.darken(60%), size: 0.9em)[$Delta x$], anchor: "south", padding: 0.08)
+
+  // Energy and zero-resultant annotations
+  content((-0.8, 2.55), text(fill: gray.darken(50%), size: 0.85em)[$E_p = "konst."$], anchor: "south")
+  content((2.15, h0 + r - 0.35), text(fill: red.darken(20%), size: 0.9em)[$bold(F)_v = bold(0)$], anchor: "north")
+})
+
+#pb()
+==== Příklad
+Homogenní tyč opřená o zeď
+
+#cetz.canvas(length: 1cm, {
+  import cetz.draw: *
+
+  // Styles (CeTZ 0.5.2 compatible)
+  let s-wall = (stroke: (paint: black, thickness: 1.4pt))
+  let s-fg = (
+    stroke: (paint: blue.darken(20%), thickness: 1.4pt),
+    mark: (end: "stealth", scale: 1.0, fill: blue.darken(20%)),
+  )
+  let s-fn = (
+    stroke: (paint: green.darken(30%), thickness: 1.4pt),
+    mark: (end: "stealth", scale: 1.0, fill: green.darken(30%)),
+  )
+  let s-ft = (
+    stroke: (paint: red.darken(20%), thickness: 1.4pt),
+    mark: (end: "stealth", scale: 1.0, fill: red.darken(20%)),
+  )
+  let s-guide = (stroke: (paint: gray.darken(30%), dash: "dotted", thickness: 0.7pt))
+
+  // Geometry parameters: rod length L = 5.2, angle alpha = 52 deg
+  let L = 5.2
+  let angle = 40deg
+  let xA = L * calc.cos(angle) // Floor contact A = (xA, 0)
+  let yB = L * calc.sin(angle) // Wall contact B = (0, yB)
+  let pt-a = (xA, 0.0)
+  let pt-b = (0.0, yB)
+  let pt-t = (xA / 2, yB / 2) // Center of mass T
+
+  // 1. Shaded wall and floor blocks
+  rect((-0.45, -0.45), (0.0, yB + 1.4), fill: gray.lighten(88%), stroke: none)
+  rect((-0.45, -0.45), (xA + 1.8, 0.0), fill: gray.lighten(88%), stroke: none)
+  line((0.0, yB + 1.4), (0.0, 0.0), (xA + 1.8, 0.0), ..s-wall)
+
+  // Right-angle symbol at the corner O (0,0)
+  line((0.0, 0.3), (0.3, 0.3), (0.3, 0.0), stroke: (paint: gray.darken(40%), thickness: 0.6pt))
+  circle((0.15, 0.15), radius: 0.025, fill: gray.darken(40%), stroke: none)
+  content((-0.15, -0.15), text(fill: gray.darken(50%), size: 0.85em)[$O$], anchor: "north-east")
+
+  // 2. Helper dashed lines for moment arms / geometry
+  line(pt-t, (xA / 2, 0.0), ..s-guide)
+  line(pt-b, (xA, yB), ..s-guide)
+  line(pt-a, (xA, yB), ..s-guide)
+
+  // Angle alpha arc at contact point A
+  arc(
+    pt-a,
+    start: 180deg,
+    stop: 180deg - angle,
+    radius: 0.85,
+    anchor: "origin",
+    stroke: (paint: black, thickness: 0.7pt),
+  )
+  content((xA - 0.58, 0.26), [$alpha$])
+
+  // 3. The rod (drawn as a thick rounded bar so contact points sit cleanly on its axis)
+  line(
+    pt-a,
+    pt-b,
+    stroke: (paint: eastern.darken(30%), thickness: 6pt, cap: "round"),
+  )
+  line(
+    pt-a,
+    pt-b,
+    stroke: (paint: eastern.lighten(60%), thickness: 3.6pt, cap: "round"),
+  )
+
+  // 4. Force vectors
+  // Gravity F_G at center of mass T
+  let fg-mag = 1.9
+  line(pt-t, (rel: (0, -fg-mag), to: pt-t), ..s-fg, name: "FG")
+  content("FG.end", text(fill: blue.darken(20%))[$bold(F)_G$], anchor: "west", padding: 0.12)
+
+  // Floor normal reaction F_N1 (upward at A) and friction F_t1 (leftward toward wall at A)
+  let fn1-mag = 1.65
+  let ft1-mag = 0.95
+  line(pt-a, (rel: (0, fn1-mag), to: pt-a), ..s-fn, name: "FN1")
+  content("FN1.end", text(fill: green.darken(30%))[$bold(F)_(R 1)$], anchor: "west", padding: 0.1)
+
+  line(pt-a, (rel: (-ft1-mag, 0), to: pt-a), ..s-ft, name: "Ft1")
+  content("Ft1.end", text(fill: red.darken(20%))[$bold(F)_(t 1)$], anchor: "south", padding: 0.12)
+
+  // Wall normal reaction F_N2 (rightward at B) and friction F_t2 (upward along wall at B)
+  let fn2-mag = 0.95
+  let ft2-mag = 0.85
+  line(pt-b, (rel: (fn2-mag, 0), to: pt-b), ..s-fn, name: "FN2")
+  content("FN2.end", text(fill: green.darken(30%))[$bold(F)_(R 2)$], anchor: "south", padding: 0.1)
+
+  line(pt-b, (rel: (0, ft2-mag), to: pt-b), ..s-ft, name: "Ft2")
+  content("Ft2.end", text(fill: red.darken(20%))[$bold(F)_(t 2)$], anchor: "east", padding: 0.12)
+
+  // 5. Points A, B, T
+  circle(pt-a, radius: 0.07, fill: black, stroke: none, name: "A")
+  content("A", [$A$], anchor: "north-west", padding: 0.14)
+
+  circle(pt-b, radius: 0.07, fill: black, stroke: none, name: "B")
+  content("B", [$B$], anchor: "south-east", padding: 0.14)
+
+  circle(pt-t, radius: 0.07, fill: black, stroke: none, name: "T")
+  content("T", [$T$], anchor: "south-west", padding: 0.12)
+})
+
+podmínky rovnováhy:
+
+$
+  ar(F)_g + ar(F)_(t 1) + ar(F)_(t 2) + ar(F)_(R 1) + ar(F)_(R 2) = ar(0)\
+$
+
+v jednotlivých souřadnicích
+
+$
+            ar(F)_(R 1) + ar(F)_(R 2) & = 0 \
+  ar(F)_(t 1) + ar(F)_(t 2) + ar(F)_g & = 0 \
+$
+
+a podmínka pro momenty, zvolíme např. bod působiště $ar(F)_(t 2); ar(F)_(R 2)$ - ty tedy mají nulový moment
+
+$
+  ar(F)_g times ar(r)_1 + ar(F)_(R 1) times ar(r)_2 + ar(F)_(t 2) times ar(r)_3 & = ar(0) \
+$
