@@ -1,0 +1,110 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{fancyhdr}
+\usepackage[margin=2.5cm]{geometry}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{Ivan Mišustin}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+\begin{center}
+    \LARGE\textbf{Lineární algebra -- domácí úkol č. 1}
+\end{center}
+\vspace{1em}
+
+Pro $n \in \mathbb{N}$ určete mocninu matice:
+\[
+  \begin{pmatrix}
+    1 & 1 & 0 \\
+    -1 & 1 & 0 \\
+    0 & 0 & 1
+  \end{pmatrix}^n
+\]
+
+Pro libovolnou mocninu $n \in \mathbb{N}$ v matici zůstane poslední řádek a sloupec stejný, jelikož jejich nulové prvky jsou vždy výsledkem skalárního součinu ve formě:
+\[
+  \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \cdot \begin{pmatrix} a \\ b \\ 0 \end{pmatrix} = 0
+\]
+nebo
+\[
+  \begin{pmatrix} a \\ b \\ 0 \end{pmatrix} \cdot \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = 0
+\]
+a jednotkový prvek v pravém spodním rohu tedy vždy vzniká skalárním součinem ve formě:
+\[
+  \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \cdot \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = 1
+\]
+
+Z toho mohu tento problém zredukovat na následující jednodušší problém:
+\[
+  A = \begin{pmatrix}
+    1 & 1 \\
+    -1 & 1
+  \end{pmatrix} \quad\text{a tedy hledám}\quad A^n = \begin{pmatrix}
+    1 & 1 \\
+    -1 & 1
+  \end{pmatrix}^n
+\]
+
+Prvních pár mocnin této matice:
+\begin{align*}
+  A^2 &= \begin{pmatrix}
+    0 & 2 \\
+    -2 & 0
+  \end{pmatrix}, \\
+  A^3 &= \begin{pmatrix}
+    -2 & 2 \\
+    -2 & -2
+  \end{pmatrix}, \\
+  A^4 &= \begin{pmatrix}
+    -4 & 0 \\
+    0 & -4
+  \end{pmatrix}.
+\end{align*}
+
+Vidím že $A^4$ je $(-4)$-násobkem identitní matice $\mathbb{E}_2$, a tedy každá mocnina která je násobkem $4$ se zapíše následovně:
+\begin{align*}
+  &\text{pro } n = 4q, \\
+  &A^n = (-4)^q \mathbb{E}_2.
+\end{align*}
+
+Z toho tedy plyne že pro libovolnou mocninu $n$ mi záleží hlavně na zbytku po dělení $n$ čtyřmi, kde výsledná matice $A^n$ bude vypadat následovně:
+\begin{align*}
+  n &= 4q + r, \quad\text{kde } r \in \{0,1,2,3\}, \\
+  A^n &= (-4)^q A^r.
+\end{align*}
+
+Nakonec pro původní matici:
+\begin{align*}
+  \begin{pmatrix}
+    1 & 1 & 0 \\
+    -1 & 1 & 0 \\
+    0 & 0 & 1
+  \end{pmatrix}^n
+  &\quad\text{kde } n = 4q + r; \quad r \in \{0,1,2,3\} \\
+  &= (-4)^q \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & (-4)^{-q}
+  \end{pmatrix} \quad\text{pro } r = 0, \\[1ex]
+  &= (-4)^q \begin{pmatrix}
+    1 & 1 & 0 \\
+    -1 & 1 & 0 \\
+    0 & 0 & (-4)^{-q}
+  \end{pmatrix} \quad\text{pro } r = 1, \\[1ex]
+  &= (-4)^q \begin{pmatrix}
+    0 & 2 & 0 \\
+    -2 & 0 & 0 \\
+    0 & 0 & (-4)^{-q}
+  \end{pmatrix} \quad\text{pro } r = 2, \\[1ex]
+  &= (-4)^q \begin{pmatrix}
+    -2 & 2 & 0 \\
+    -2 & -2 & 0 \\
+    0 & 0 & (-4)^{-q}
+  \end{pmatrix} \quad\text{pro } r = 3.
+\end{align*}
+
+\end{document}

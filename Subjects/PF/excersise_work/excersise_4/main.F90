@@ -1,0 +1,6 @@
+PROGRAM MAIN
+IMPLICIT NONE
+
+PRINT *, "hello, world!"
+
+END PROGRAM MAIN

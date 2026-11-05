@@ -1,0 +1,144 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{fancyhdr}
+\usepackage[margin=2.5cm]{geometry}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{Ivan Mišustin}
+\renewcommand{\headrulewidth}{0pt}
+
+% rozšířená matice soustavy (4 sloupce | pravá strana)
+\newcommand{\aug}[1]{\left(\begin{array}{rrrr|r} #1 \end{array}\right)}
+
+\begin{document}
+
+\begin{center}
+    \LARGE\textbf{Lineární algebra -- domácí úkol č. 2}
+\end{center}
+\vspace{1em}
+
+Najděte všechna řešení následující soustavy rovnic:
+\[
+  \begin{array}{rrrrcr}
+    3x_1 & {}+ 5x_2 & {}+ 2x_3 & {}+ 3x_4 & = & -3 \\
+    2x_1 & {}+ 3x_2 & {}+ 0x_3 & {}+ x_4  & = & -2 \\
+     x_1 & {}+ x_2  & {}+ 2x_3 & {}+ x_4  & = & 1 \\
+    4x_1 & {}+ 4x_2 & {}+ 3x_3 & {}+ x_4  & = & 2
+  \end{array}
+\]
+
+Převedu soustavu na rozšířenou matici soustavy:
+\[
+  \aug{
+    3 & 5 & 2 & 3 & -3 \\
+    2 & 3 & 0 & 1 & -2 \\
+    1 & 1 & 2 & 1 & 1 \\
+    4 & 4 & 3 & 1 & 2
+  }
+\]
+
+A dále pomocí Gaussovy-Jordanovy eliminace převedu tuto matici do redukovaného odstup\-ňova\-ného tvaru:
+\begin{align*}
+  & \aug{
+    3 & 5 & 2 & 3 & -3 \\
+    2 & 3 & 0 & 1 & -2 \\
+    1 & 1 & 2 & 1 & 1 \\
+    4 & 4 & 3 & 1 & 2
+  } \sim
+  \aug{
+    1 & 1 & 2 & 1 & 1 \\
+    2 & 3 & 0 & 1 & -2 \\
+    3 & 5 & 2 & 3 & -3 \\
+    4 & 4 & 3 & 1 & 2
+  } \sim
+  \aug{
+    1 & 1 & 2 & 1 & 1 \\
+    0 & 1 & -4 & -1 & -4 \\
+    0 & 2 & -4 & 0 & -6 \\
+    0 & 0 & -5 & -3 & -2
+  } \\[1ex]
+  \sim\; & \aug{
+    1 & 1 & 2 & 1 & 1 \\
+    0 & 1 & -4 & -1 & -4 \\
+    0 & 0 & 4 & 2 & 2 \\
+    0 & 0 & -5 & -3 & -2
+  } \sim
+  \aug{
+    1 & 1 & 2 & 1 & 1 \\
+    0 & 1 & -4 & -1 & -4 \\
+    0 & 0 & 2 & 1 & 1 \\
+    0 & 0 & -5 & -3 & -2
+  } \sim
+  \aug{
+    1 & 1 & 2 & 1 & 1 \\
+    0 & 1 & -4 & -1 & -4 \\
+    0 & 0 & 10 & 5 & 5 \\
+    0 & 0 & -10 & -6 & -4
+  } \\[1ex]
+  \sim\; & \aug{
+    1 & 1 & 2 & 1 & 1 \\
+    0 & 1 & -4 & -1 & -4 \\
+    0 & 0 & 10 & 5 & 5 \\
+    0 & 0 & 0 & -1 & 1
+  } \sim
+  \aug{
+    1 & 1 & 2 & 1 & 1 \\
+    0 & 1 & -4 & -1 & -4 \\
+    0 & 0 & 2 & 1 & 1 \\
+    0 & 0 & 0 & 1 & -1
+  } \sim
+  \aug{
+    1 & 1 & 2 & 1 & 1 \\
+    0 & 1 & -4 & -1 & -4 \\
+    0 & 0 & 2 & 0 & 2 \\
+    0 & 0 & 0 & 1 & -1
+  } \\[1ex]
+  \sim\; & \aug{
+    1 & 1 & 2 & 1 & 1 \\
+    0 & 1 & 0 & -1 & 0 \\
+    0 & 0 & 2 & 0 & 2 \\
+    0 & 0 & 0 & 1 & -1
+  } \sim
+  \aug{
+    1 & 1 & 2 & 1 & 1 \\
+    0 & 1 & 0 & -1 & 0 \\
+    0 & 0 & 1 & 0 & 1 \\
+    0 & 0 & 0 & 1 & -1
+  } \sim
+  \aug{
+    1 & 1 & 2 & 1 & 1 \\
+    0 & 1 & 0 & 0 & -1 \\
+    0 & 0 & 1 & 0 & 1 \\
+    0 & 0 & 0 & 1 & -1
+  } \\[1ex]
+  \sim\; & \aug{
+    1 & 1 & 2 & 0 & 2 \\
+    0 & 1 & 0 & 0 & -1 \\
+    0 & 0 & 1 & 0 & 1 \\
+    0 & 0 & 0 & 1 & -1
+  } \sim
+  \aug{
+    1 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 & -1 \\
+    0 & 0 & 1 & 0 & 1 \\
+    0 & 0 & 0 & 1 & -1
+  } \sim
+  \aug{
+    1 & 0 & 0 & 0 & 1 \\
+    0 & 1 & 0 & 0 & -1 \\
+    0 & 0 & 1 & 0 & 1 \\
+    0 & 0 & 0 & 1 & -1
+  }
+\end{align*}
+
+A tedy:
+\begin{align*}
+  x_1 &= 1 \\
+  x_2 &= -1 \\
+  x_3 &= 1 \\
+  x_4 &= -1
+\end{align*}
+
+\end{document}

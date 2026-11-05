@@ -1,0 +1,175 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+
+\begin{document}
+
+\section*{Zadání}
+
+Nechť $A, B, C$ jsou matice typu $2\times 2$:
+\[
+A=\begin{pmatrix} a_{11} & a_{12}\\ a_{21} & a_{22}\end{pmatrix},\quad
+B=\begin{pmatrix} b_{11} & b_{12}\\ b_{21} & b_{22}\end{pmatrix},\quad
+C=\begin{pmatrix} c_{11} & c_{12}\\ c_{21} & c_{22}\end{pmatrix}.
+\]
+Určete podmínky, které musí tyto matice splňovat, aby existovala nenulová matice
+$X=\begin{pmatrix} x_{11} & x_{12}\\ x_{21} & x_{22}\end{pmatrix}$ typu $2\times 2$, pro kterou platí
+\[
+X = B\left(X - CA^{T}\right) + \left(AC^{T}B^{T}\right)^{T}.
+\]
+
+\section*{Řešení}
+
+Rovnici začneme řešit za využití pravidel pro počítání s maticemi:
+\begin{enumerate}
+  \item $AB \neq BA$ (obecně),
+  \item $(AB)C = A(BC)$,
+  \item $(AB)^{T} = B^{T}A^{T}$,
+  \item $X\in\mathbb{R}^{n\times n},\ AX=E_n \ \wedge\ XA=E_n \ \Rightarrow\ X=A^{-1}$.
+\end{enumerate}
+
+\medskip
+Vyjdeme z rovnice
+\[
+X = B\left(X - CA^{T}\right) + \left(AC^{T}B^{T}\right)^{T}.
+\]
+Víme následující:
+\[
+B\left(X - CA^{T}\right) \iff BX - BCA^{T},
+\qquad
+C^{T}B^{T} \iff (BC)^{T}.
+\]
+Dosadíme tedy do rovnice:
+\[
+X = BX - BCA^{T} + \left[A(BC)^{T}\right]^{T}.
+\]
+Dále označíme
+\[
+(BC)^{T} = D
+\]
+a po dosazení získáme
+\[
+X = BX - BCA^{T} + (AD)^{T},
+\]
+neboli
+\[
+X = BX - BCA^{T} + D^{T}A^{T}.
+\]
+Po zpětném dosazení $(BC)^{T}=D$ získáme
+\[
+X = BX - BCA^{T} + \left[(BC)^{T}\right]^{T}A^{T},
+\]
+přičemž z definice transpozice
+\[
+A^{T} =
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}^{T}
+=
+\begin{pmatrix}
+a_{11} & \cdots & a_{m1}\\
+a_{12} & \cdots & a_{m2}\\
+\vdots & \ddots & \vdots\\
+a_{1n} & \cdots & a_{mn}
+\end{pmatrix}.
+\]
+Z toho plyne, že opětovnou transpozicí již jednou transponované matice získáme opět původní matici, neboli
+\[
+\left(M^{T}\right)^{T} = M,
+\]
+a tudíž (pro $M = BC$)
+\[
+X = BX - BCA^{T} + \left[(BC)^{T}\right]^{T}A^{T},
+\]
+\[
+X = BX - BCA^{T} + BCA^{T}.
+\]
+Z čehož plyne, že
+\[
+X = BX,
+\]
+a tudíž matice $C, A$ mohou být zcela libovolné.
+
+\section*{Podmínka pro matici $B$}
+
+Pro zachování rovnosti $X = BX \ \wedge\ X \neq 0$ musí nastat jeden z případů:
+\begin{enumerate}
+  \item[I.] $B = E$, protože platí $E\cdot X = X$, kde X může být libovolná nenulová 2x2
+  \item[II.] $B = \begin{pmatrix} 0 & 1\\ 1 & 0\end{pmatrix}$, pak
+  \[
+  BX =
+  \begin{pmatrix} 0 & 1\\ 1 & 0\end{pmatrix}
+  \begin{pmatrix} x_{11} & x_{12}\\ x_{21} & x_{22}\end{pmatrix}
+  =
+  \begin{pmatrix} x_{21} & x_{22}\\ x_{11} & x_{12}\end{pmatrix},
+  \]
+  a rovnost $X = BX$ tedy platí pro každou nenulovou matici $X$, jejíž prvky jsou všechny stejné,
+  tedy $x_{11} = x_{12} = x_{21} = x_{22}$, např. $X=\begin{pmatrix} 1 & 1\\ 1 & 1\end{pmatrix}$.
+  \item[III.] $B = X$, pak z rovnosti $BX = X$ dostaneme $X\cdot X = X$, tedy
+  \[
+  X^{2} = X,
+  \]
+  a matice $B = X$ musí být nenulová matice splňující $B^{2} = B$ ,
+  např. $B = X = \begin{pmatrix} 1 & 0\\ 0 & 0\end{pmatrix}$.
+
+  Najdeme všechny matice $X$, pro které platí $X^{2}=X$.
+  
+  \item Vynásobíme obecnou matici sama se sebou:
+  \[
+  \begin{pmatrix} x_{11} & x_{12}\\ x_{21} & x_{22}\end{pmatrix}
+  \begin{pmatrix} x_{11} & x_{12}\\ x_{21} & x_{22}\end{pmatrix}
+  =
+  \begin{pmatrix}
+  x_{11}^{2}+x_{12}x_{21} & x_{11}x_{12}+x_{12}x_{22}\\
+  x_{21}x_{11}+x_{22}x_{21} & x_{21}x_{12}+x_{22}^{2}
+  \end{pmatrix}.
+  \]
+  Tato matice se musí rovnat matici $X$, takže dostaneme soustavu
+  \begin{align*}
+  x_{11}^{2}+x_{12}x_{21} &= x_{11},\\
+  x_{11}x_{12}+x_{12}x_{22} &= x_{12},\\
+  x_{11}x_{21}+x_{21}x_{22} &= x_{21},\\
+  x_{12}x_{21}+x_{22}^{2} &= x_{22}.
+  \end{align*}
+
+  Z první rovnice plyne
+  \begin{equation}
+  x_{12}x_{21} = x_{11}-x_{11}^{2} = x_{11}(1-x_{11}).
+  \end{equation}
+  Ve druhé rovnici vytkneme $x_{12}$ a ve třetí $x_{21}$:
+  \begin{align}
+  x_{12}\,(x_{11}+x_{22}-1) &= 0,\\
+  x_{21}\,(x_{11}+x_{22}-1) &= 0.
+  \end{align}
+  Pokud je alespoň jedno z čísel $x_{12}, x_{21}$ nenulové, musí tedy platit
+  $x_{11}+x_{22}=1$, neboli
+  \begin{equation}
+  x_{22} = 1-x_{11},
+  \end{equation}
+  a z (1) dostaneme
+  \begin{equation}
+  x_{12}x_{21} = x_{11}(1-x_{11}).
+  \end{equation}
+  Čtvrtá rovnice je pak splněna automaticky, protože
+  $x_{12}x_{21}=x_{22}-x_{22}^{2}=(1-x_{11})\,x_{11}$.
+
+  Zbývá případ $x_{12}=x_{21}=0$. Soustava se zredukuje na $x_{11}^{2}=x_{11}$ a $x_{22}^{2}=x_{22}$,
+  tedy $x_{11},x_{22}\in\{0,1\}$. Nenulová řešení jsou
+  $\begin{pmatrix} 1 & 0\\ 0 & 0\end{pmatrix}$,
+  $\begin{pmatrix} 0 & 0\\ 0 & 1\end{pmatrix}$ a $E$.
+  První dvě už spadají do tvaru výše, třetí je $X=E$ (případ I.).
+
+  \textbf{Výsledek:} nenulová řešení rovnice $X^{2}=X$ jsou
+  \[
+  X=\begin{pmatrix} x_{11} & x_{12}\\ x_{21} & 1-x_{11}\end{pmatrix},
+  \qquad\text{kde } x_{12}x_{21}=x_{11}(1-x_{11}).
+  \]
+  
+\end{enumerate}
+
+
+\end{document}
