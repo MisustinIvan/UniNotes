@@ -183,7 +183,7 @@
       ]
       #v(2pt)
       #body
-      #align(right)[#v(-0.5em)$square.big$]
+      #align(right)[#v(-0.5em)QED $square.big$]
     ],
   )
 }

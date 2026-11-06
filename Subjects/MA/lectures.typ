@@ -14,7 +14,9 @@
 
 #pb()
 = Výroky
-*výrok*: tvrzení, u kterého můžeme určit pravidvostní hodnotu $in {0,1}$
+#definition(title: "Výrok")[
+  *výrok*: tvrzení, u kterého můžeme určit pravidvostní hodnotu $in {0,1}$
+]
 
 - jsou li $A$ a $B$ výroky, můžeme pomocí tzv. *logickýckých spojek* vytvořit nové výroky
 
@@ -158,9 +160,9 @@ $
 
 Chceme dokázat platnost $A(n)$ pro $n in NN$ nebo $n in NN and n >= n_0$
 
-princip indukce:
-
-$(A(n_0) and (forall n in NN: n >= n_0 => (A(n) => A(n+1)))) => (forall n in NN: n >= n_0 => A(n))$
+#definition(title: "Princip matematické indukce")[
+  $(A(n_0) and (forall n in NN: n >= n_0 => (A(n) => A(n+1)))) => (forall n in NN: n >= n_0 => A(n))$
+]
 
 === Příklad 1.
 $
@@ -259,17 +261,24 @@ $
 
   navíc $forall x,y,z in TT$ jsou splněny následující axiomy
 
-  $
-    & x + y <=> y + x \
-    & x dot.op y <=> y dot.op x \
-    & x + (y + z) <=> (y + x) + z \
-    & x dot.op (y dot.op z) <=> (y dot.op x) dot.op z \
-    & x(y + z) <=> x y + x z \
-    & x + 0 = x \
-    & x dot.op 1 = x \
-    & exists -x in TT: x + (-x) = 0 \
-    & exists inv(y) in TT without {0}: y dot.op inv(y) = 1 \
-  $
+  + komutativita sčítání
+    $ x + y = y + x $
+  + komutativita násobení
+    $ x dot.op y = y dot.op x $
+  + asociativita sčítání
+    $ x + (y + z) = (y + x) + z $
+  + asociativita násobení
+    $ x dot.op (y dot.op z) = (y dot.op x) dot.op z $
+  + distributivita násobení
+    $ x(y + z) = x y + x z $
+  + existence identitního prvku pro sčítání
+    $ x + 0 = x \ $
+  + existence identitního prvku pro násobení
+    $ x dot.op 1 = x $
+  + existence inverzního prvku pro sčítání
+    $ exists -x in TT: x + (-x) = 0 $
+  + existence inverzního prvku pro násobení
+    $ exists inv(y) in TT without {0}: y dot.op inv(y) = 1 $
 ]
 
 tuto definici splňuje např. množina $ZZ_2$ s prvky $0,1$ - sčítání a násobení $mod(2)$
@@ -301,6 +310,7 @@ $
   $
 ]
 
+#pb()
 ==== Formální definice uspořádaného tělesa
 #definition[
   Mějme těleso $(T, +, dot.op, 0, 1)$, pak $(T, +, dot.op, 0, 1, <)$ nazveme uspořádaným tělesem jestliže relace $<$ je uspořádání(úplné, lineární) splňuje na množině $T$ následující axiomy:
@@ -351,6 +361,7 @@ $CC$ není uspořádané těleso
 ]
 
 
+#pb()
 === Definice úplnosti(supremum, infimum)
 #definition[
   Nechť $(T, +, dot.op, 0, 1, <)$ je uspořádané těleso a $M subset.eq T$.
@@ -922,7 +933,7 @@ $
 #pb()
 === Formální definice spojitosti
 #definition[
-  Nechť $f$ je reálná funkce definována na nějakém prstencovém okolí bodu $a in RR$
+  Nechť $f$ je reálná funkce definována na nějakém okolí bodu $a in RR$
 
   Potom říkáme že:
   - $f$ je spojitá v bodě $a$, pokud platí:
@@ -980,6 +991,7 @@ $
 $
 
 
+#pb()
 ==== Jednoznačnost limity
 $
   (lim_(x->c) f(x) = A and lim_(x->c) f(x) = B) => (A = B)\
@@ -1034,7 +1046,6 @@ $
 
 zvolím búno $epsilon = abs(B-A)/2$
 
-#pb()
 Platí:
 
 $
@@ -1064,6 +1075,7 @@ $
 
 Tedy není možné aby se funkce měla v jednom bodě dvě různé limity
 
+#pb()
 ==== Jednoduchý argument
 $
   f(x) & = a x + b \
@@ -1285,6 +1297,7 @@ Nechť $f, g$ jsou reálné funkce, $a in RR$ a $f, g$ jsou spojité v $a$, poto
   + Racionální funkce jsou spojité na $D_f$
 ]
 
+#pb()
 ==== Věta o limitě složené funkce
 motivace: např. $lim_(x->3) sqrt(1+x^2) =^? lim_(x->10) sqrt(x)$
 
@@ -1326,8 +1339,6 @@ motivace: např. $lim_(x->3) sqrt(1+x^2) =^? lim_(x->10) sqrt(x)$
 
   -> nebo funkce $f$ nenabývá na $P(A, kappa)$ hodnoty $B$ - tedy můžu nahradit $U(B, delta)$ množinou $P(B, delta)$ - (P)
 ]
-
-#pb()
 
 ==== Spojitost složené funkce
 Mějme $f compose g$, pak je li $g(a) = b$ v bodě $a$ spojitá, pak jestliže je $f(b) = c$ v bodě $b$spojitá, pak $f compose g$ je spojitá v bodě $a$.
@@ -2175,17 +2186,17 @@ Má-li limita smysl
 
 Obecně pro $n in NN$ definujeme rekurentně derivaci řádu $n$ v bodě $a$ jako
 
-$
+#definition(title: "Derivace n-tého řádu")[$
   f^(n)(a) = lim_(x->a) (f^(n-1)(x) - f^(n-1)(a))/(x-a) = f^(n-1)'
-$
+$]
 
 A značíme $f = f^0$
 
 ==== Leibnitzův vzorec
 binomická věta strikes again!!!
-$
+#definition(title: "Leibnitzův vzorec")[$
   (f dot.op g)^(n) = sum_(k=0)^n binom(n, k) f^(k) g^(n-k)
-$
+$]
 
 ==== Předbíháme letní semestr - parciální derivace
 $
@@ -2194,9 +2205,9 @@ $
 
 Derivuji podle jedné proměnné
 
-$
+#definition(title: "Parciální derivace")[$
   (partial f)/(partial x)(x, y, z) = lim_(t->0) (f(x + t, y, z) - f(x, y, z))/t
-$
+$]
 
 např.
 

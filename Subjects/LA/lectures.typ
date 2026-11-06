@@ -5,28 +5,27 @@
 #show: boilerplate
 
 #title[Lineární algebra - přednáška - Dalibor Šmíd]
-= Přednáška 1.
-== Vektory a matice
+= Vektory a matice
 vektor $ar(x) = vec(x_1, x_2, ..., x_n) in RR^n$ je uspořádaná n-tice čísel(zatím)
 
-=== Lineární kombinace
+== Lineární kombinace
 lineární kombinace vektorů $x,y$ s koeficienty $r,s$
 $
   r ar(x) + s ar(y) = r vec(x_1, x_2, ...) + s vec(y_1, y_2, ...)\
 $
 
-=== Opačný vektor
+== Opačný vektor
 $
     ar(x) & = vec(x_1, x_2) \
   - ar(x) & = vec(-x_1, -x_2) \
 $
 
-=== Nulový vektor
+== Nulový vektor
 $
   ar(0) & = vec(0, 0) \
 $
 
-=== Matice obecně
+== Matice obecně
 Tabulka čísel charakterizující *lineární zobrazení*.
 
 např. $F : RR^2 -> RR^2$
@@ -54,8 +53,8 @@ $
 
 - násobení matice a vektoru má definované pořadí prvků v operaci - stejné pravidlo jako při násobení matic obecně
 
-==== Definice lineárního zobrazení
-#definition[
+=== Definice lineárního zobrazení
+#definition(title: "Lineární zobrazení")[
   $
     "nechť" F: RR^n -> RR^m\
     "splňuje" forall ar(x);ar(y) in RR^n "a" forall r;s in RR\
@@ -67,7 +66,7 @@ $
     F(ar(0)) = ar(0)\
   $
 
-  $F$ je lineární zobrazení
+  $F$ je *lineární zobrazení*
 ]
 $
   F(vec(x_1, x_2, ..., x_n)) & = F(x_1 vec(1, 0, 0, ...) + x_2 vec(0, 1, 0, ...) + ... + x_n vec(0, 0, ..., 1)) \
@@ -88,7 +87,7 @@ $
 
 kde $a_n = F(ar(e_n))$
 
-==== Příklady zobrazení která nejsou lineární
+=== Příklady zobrazení která nejsou lineární
 Např. 1
 
 $
@@ -102,30 +101,30 @@ $
 
 
 #pb()
-==== Identitní - jednotková matice
+=== Identitní - jednotková matice
 identitní operand při násobení
 $
   F(ar(x)) & = ar(x) \
    E ar(x) & = ar(x) \
-            E & = mat(1, 0, 0; 0, 1, 0; 0, 0, 1) \
+         E & = mat(1, 0, 0; 0, 1, 0; 0, 0, 1) \
 $
 
-==== Nulová matice
+=== Nulová matice
 $
        F(ar(x)) & = ar(0) \
   bold(O) ar(x) & = ar(0) \
-           bold(O) & = mat(0, 0, 0; 0, 0, 0; 0, 0, 0) \
+        bold(O) & = mat(0, 0, 0; 0, 0, 0; 0, 0, 0) \
 $
 
-=== Operace na maticích
-==== Sčítání a násobení skalárem
+== Operace na maticích
+=== Sčítání a násobení skalárem
 $
   r;s in RR; A;B in RR^(m times n)\
   A + B = "po složkách..."\
   r A = "taky po složkách"
 $
 
-==== Transpozice
+=== Transpozice
 prohození indexů
 $
     A & = mat(a_(11), a_(12); a_(21), a_(22)) \
@@ -138,99 +137,105 @@ $
 $
 
 #pb()
-==== Součin matic
-kompozice zobrazení
+=== Součin matic
+#definition(title: "Maticové násobení")[
+  kompozice zobrazení
 
-$A$ je matice typu $m times n$
-$
-  F_A & : RR^n -> RR^m \
-  F_A & = A ar(x) \
-$
+  $A$ je matice typu $m times n$
+  $
+    F_A & : RR^n -> RR^m \
+    F_A & = A ar(x) \
+  $
 
-$B$ je matice typu $p times m$
-$
-  F_B & : RR^m -> RR^p \
-  F_B & = B ar(x) \
-$
+  $B$ je matice typu $p times m$
+  $
+    F_B & : RR^m -> RR^p \
+    F_B & = B ar(x) \
+  $
 
-pak kompozice
-$
-  (F_B compose F_A) (ar(x)) = F_B (F_A (ar(x)))\
-$
+  pak kompozice
+  $
+    (F_B compose F_A) (ar(x)) = F_B (F_A (ar(x)))\
+  $
 
-snadno se ověří že $F_B compose F_A$ je také lineární zobrazení
+  snadno se ověří že $F_B compose F_A$ je také lineární zobrazení
 
-musí tedy existovat matice typu $p times n$ že $forall ar(x) in RR^n$ platí: $(F_B compose F_A) (ar(x)) = C ar(x)$
+  musí tedy existovat matice typu $p times n$ že $forall ar(x) in RR^n$ platí: $(F_B compose F_A) (ar(x)) = C ar(x)$
 
-zavedu součin jako takovou operaci, že $F_B F_A = C$
+  zavedu součin jako takovou operaci, že $F_B F_A = C$
 
-kde:
+  kde:
 
-$
-   (F_B compose F_A)(ar(e_i)) & = ar(c_i) "     je i-tý sloupec C" \
-  (F_B compose F_A) (ar(e_i)) & = F_B (ar(a_i)) \
-$
+  $
+     (F_B compose F_A)(ar(e_i)) & = ar(c_i) "     je i-tý sloupec C" \
+    (F_B compose F_A) (ar(e_i)) & = F_B (ar(a_i)) \
+  $
 
-a tedy:
+  a tedy:
 
-$
-  B A equiv C = matcol(B ar(a_1), B ar(a_2), ..., B ar(a_n))
-$
+  $
+    B A equiv C = matcol(B ar(a_1), B ar(a_2), ..., B ar(a_n))
+  $
 
-s tím že z definice:
+  s tím že z definice:
 
-$
-  C^i_j = ar(a_i) dot.op ar(b^j)
-$
+  $
+    C^i_j = ar(a_i) dot.op ar(b^j)
+  $
 
-z toho plyne obecný tvar výsledku:
+  z toho plyne obecný tvar výsledku:
 
-$
-  A^(m times n) B^(n times p) = mat(
-    ar(a_1) ar(b^1), ..., ar(a_1) ar(b^p);
-    ..., ..., ...;
-    ar(a_m) ar(b^1), ..., ar(a_m) ar(b^p);
-  ) = C^(m times p)
-$
+  $
+    A^(m times n) B^(n times p) = mat(
+      ar(a_1) ar(b^1), ..., ar(a_1) ar(b^p);
+      ..., ..., ...;
+      ar(a_m) ar(b^1), ..., ar(a_m) ar(b^p);
+    ) = C^(m times p)
+  $
 
-a zjištění že násobení matice a vektoru je jen speciální případ násobení matic, kde vektor je vlastně jen matice typu $n times 1$
+  a zjištění že násobení matice a vektoru je jen speciální případ násobení matic, kde vektor je vlastně jen matice typu $n times 1$
+]
 
 #pb()
-===== Vlastnosti součinu matic jako matematické operace
-====== Nekomutativita
+==== Vlastnosti součinu matic jako matematické operace
+===== Nekomutativita
 $
   A B != B A
 $
-====== Asociativita
+===== Asociativita
 $
   (A B)C = A (B C)
 $
-====== Vlastnosti transpozice
+===== Vlastnosti transpozice
 $
   (A B)^T = B^T A^T
 $
-====== Vlastnost inverzní matice
+===== Vlastnost inverzní matice
 $
   A inv(A) = E
 $
 
 
 #pb()
-= Přednáška 2
-== Nadrovina
+= Nadrovina
 - zobecnění pojmu rovniny/přímky...
 $ {vec(x_1, x_2)| a_1 x_1 + a_2 x_2 = b} $ přímka v $RR^2$
 $ {vec(x_1, x_2, x_3)| a_1 x_1 + a_2 x_2 + a_3 x_3 = b} $ rovina v $RR^3$
-$ {vec(x_1, x_2, ..., x_n)| a_1 x_1 + a_2 x_2 + ... + a_n x_n = b} $ nadrovina v $RR^n$
+#definition(title: [Nadrovina v $RR^n$])[
+  $
+    {vec(x_1, x_2, ..., x_n)| a_1 x_1 + a_2 x_2 + ... + a_n x_n = b}
+  $
+  nadrovina v $RR^n$
+]
 
-== Vlastnosti maticového násobení
+= Vlastnosti maticového násobení
 - nekomutativní, ale asociativní - protože lineární zobrazení jsou asociativní
 
 $
   (A B) C) ar(x) = (F_(A B) compose F_c) ar(x) = (F_A compose F_B compose F_c) ar(x) = (F_A compose F_B (F_C ar(x))) = (F_A compose F_(B C))ar(x) = (A (B C)) ar(x)
 $
 
-=== Vlastnosti transpozice
+== Vlastnosti transpozice
 $
         A B & = C \
     C_(i j) & = sum_(k = 1)^n a_(i k) b_(k j) \
@@ -245,13 +250,12 @@ $
   (A B)^T & = B^T A^T \
 $
 
-tvrzení
-$
+#claim[$
   forall A, B; A in RR^(m times n); B in RR^(n times p): (A B)^T = B^T A^T
-$
+$]
 
 #pb()
-== Inverzní matice
+= Inverzní matice
 - definice
 $A in RR^(n times n) "pak" inv(A) in RR^(n times n): A inv(A) = E and inv(A) A = E$
 
@@ -262,45 +266,38 @@ $
   F_(inv(A) A) & = F_(A^-1) compose F_A => "Id" => F_A^(-1) = F_(inv(A)) \
 $
 
-- jednoznačnost inverzní matice
-
-tvrzení
-$
+#claim(title: "Jednoznačnost inverzní matice")[$
   "pokud" A,B,C in RR^(n times n) "a" B A = E = A C "pak" B = C
-$
+$]
 
-důkaz
-$
+#proof[$
   B = B E = B (A C) = (B A)C = E C = C\
-$
+$]
 
-- inverzní matice součinu
-tvrzení
-
-$
+#claim(title: "Inverzní matice součinu")[$
   A, B in RR^(n times n) "jsou regulární, pak" A B "je také regulární"\
   (A B)^(-1) = inv(B) inv(A)\
-$
+$]
 
-důkaz
-$
+#proof[$
   A B inv(B) inv(A) = A E inv(A) = A inv(A) = E\
   inv(B) inv(A) A B = inv(B) E B = inv(B) B = E\
-$
+$]
 
-- inverzní matice transponované matice
+-
 
-tvrzení
-$
-  A in RR^(n times n) "je regulární, pak" (A^T)^(-1) = (inv(A))^T = A^(-T)
-$
+#claim(title: "Inverzní matice transponované matice")[
+  $
+    A in RR^(n times n) "je regulární, pak" (A^T)^(-1) = (inv(A))^T = A^(-T)
+  $
+]
 
-důkaz
-$
+#proof[$
   (inv(A))^T A^T = (A inv(A))^T = E^T = E\
   A^T (inv(A))^T = (inv(A) A)^T = E^T = E\
-$
+$]
 
+#pb()
 - hledání inverzní matice
 jestliže $A B = E$ tedy $A B^i = e_i$
 
@@ -309,19 +306,30 @@ $
     1, 3, |, 1, 0;
     1, 4, |, 0, 1
   ) ~ mat(
-    1, 0, |, ..., ...;
-    0, 1, |, ..., ...
+    1, 0, |, a_(1 1), a_(1 2);
+    0, 1, |, a_(2 1), a_(2 2)
+  )
+$
+
+pak
+
+$
+  inv(A) = mat(
+    a_(1 1), a_(1 2);
+    a_(2 1), a_(2 2)
   )
 $
 
 #pb()
-== Soustava lineárních rovnic
-=== Elementární řádkové úpravy
-- Prohození dvou řádků
-- Přičtení $r$-násobku řádku do jiného
-- Vynásobení řádku nějakým skalárem $s != 0$
+= Soustava lineárních rovnic
+== Elementární řádkové úpravy
+#definition(title: "Elementární řádková úprava")[
+  - Prohození dvou řádků
+  - Přičtení $r$-násobku řádku do jiného
+  - Vynásobení řádku nějakým skalárem $s != 0$
+]
 
-==== Elementární matice
+=== Elementární matice
 - vznikne z jednotkové matice pomocí jedné EŘÚ
 
 $
@@ -346,7 +354,7 @@ $
 - každá čtvercová regulární matice je součinem elementárních matic(nebudeme dokazovat)
 
 #pb()
-=== Reprezentace SLR
+== Reprezentace SLR
 $
   A ar(x) = ar(b)
 $
@@ -373,7 +381,7 @@ Elementární úpravy jsou vratné, tedy když $ar(x)$ řeší $matcol(B A, B ar
 
 #definition[
 
-  matice $A in RR^(m times n)$ je v odstupňovaném tvaru(row echelon form - REF) pokud:
+  matice $A in RR^(m times n)$ je v odstupňovaném tvaru(*row echelon form* - *REF*) pokud:
 
   - všechny nulové řádky jdou až po nenulových
   - první nenulové prvky(pivoty) nenulových řádků mají rostoucí posloupnost sloupcových indexů
@@ -389,7 +397,7 @@ Elementární úpravy jsou vratné, tedy když $ar(x)$ řeší $matcol(B A, B ar
     )
   $
 
-  $A$ je navíc v redukovaném odstupňovaném tvaru(RREF) pokud ještě platí:
+  $A$ je navíc v *redukovaném odstupňovaném tvaru*(*RREF*) pokud ještě platí:
   - pivoty jsou jednotkové
   - v pivotních sloupcích jsou už dál jen nuly
 
@@ -403,15 +411,17 @@ Elementární úpravy jsou vratné, tedy když $ar(x)$ řeší $matcol(B A, B ar
 ]
 
 #pb()
-=== Gaussova/Gaussova-Jordanova eliminace
-- algoritmus na převedení regulání matice na RREF/REF podle Magdaleny Dobromily Rettigové
+== Gaussova/Gaussova-Jordanova eliminace
+#definition(title: "Gaussova-Jordanova eliminace")[
+  - algoritmus na převedení regulání matice na RREF/REF podle Magdaleny Dobromily Rettigové
 
-- (1) najdi první nenulový sloupec, má index $j$
-- (2) prohoď řádky aby $a_(1 j) != 0$
-- (3) přičti $- a_(i j)/(a 1 j)$-násobek prvního řádku k i-tému řádku $forall i > 1$
-- (4) opakuj předchozí 3 kroky s maticí bez prvního řádku dokud to dává smysl
-- (5) přenásob řádky skaláry $1/a_(i j)i$ tak aby byly pivoty jednotkové
-- (6) přičti násobky řádků k předchozím abychom dostali ve všech pivotních sloupcích kromě pivotů nuly
+  - (1) najdi první nenulový sloupec, má index $j$
+  - (2) prohoď řádky aby $a_(1 j) != 0$
+  - (3) přičti $- a_(i j)/(a 1 j)$-násobek prvního řádku k i-tému řádku $forall i > 1$
+  - (4) opakuj předchozí 3 kroky s maticí bez prvního řádku dokud to dává smysl
+  - (5) přenásob řádky skaláry $1/a_(i j)i$ tak aby byly pivoty jednotkové
+  - (6) přičti násobky řádků k předchozím abychom dostali ve všech pivotních sloupcích kromě pivotů nuly
+]
 
 #claim[
   Gaussova eliminace funguje $space checkmark$ 😊\
@@ -420,8 +430,7 @@ Elementární úpravy jsou vratné, tedy když $ar(x)$ řeší $matcol(B A, B ar
 #proof(title: [indukcí podle počtu nenulových řádků v matici])[]
 
 #pb()
-= Přednáška 3.
-== SLR
+= SLR
 
 $
   A in RR^(m times n), ar(b) in R^m\
@@ -436,12 +445,12 @@ $
   - partikulární řešení mi udává posunutí podprostoru $ker A$ -> tvoří afinní podprostor
 + $ker A$ je uzavřeno na lineární kombinace
   - $A ar(x) = 0 and A ar(y) = 0 => A (r ar(x) + s ar(y)) = ar(0) => r ar(x) + s ar(y) in ker A$
-+ $ker A$ je tedy podprostor
++ $ker A$ je tedy *podprostor*
 + Při řešení SLR pomocí GJE získáváme řešení ve tvaru $ar(x_P) + ker A$
-  - homogenní - $mat(1, 0, 1; 0, 1, 1) vec(x_1, x_2, x_3) = vec(0, 0) => ar(x) in chevron vec(-1, -1, 1) chevron.r = ker A$
-  - nehomogenní - $mat(1, 0, 1; 0, 1, 1) vec(x_1, x_2, x_3) = vec(1, 0) => ar(x) = vec(1, 0, 0) + chevron vec(-1, -1, 1) chevron.r$
+  - homogenní - $mat(1, 0, 1; 0, 1, 1) vec(x_1, x_2, x_3) = vec(0, 0) => ar(x) in span(vec(-1, -1, 1)) = ker A$
+  - nehomogenní - $mat(1, 0, 1; 0, 1, 1) vec(x_1, x_2, x_3) = vec(1, 0) => ar(x) = vec(1, 0, 0) + span(vec(-1, -1, 1))$
 
-+ $ker A$ je podprostor, $ar(x_P) + ker A$ nemusí být podprostor
++ $ker A$ je podprostor, $ar(x_P) + ker A$ nemusí být podprostor - může být tzv. *afinní prostor*
   - resp. $ar(x_P) + ker A$ je podprostor právě v tom případě že $ar(x_P) in ker A$ - což ale nenastane při klasickém řešení SLR...
 
 #cetz.canvas({
@@ -481,7 +490,7 @@ $
 
 
 #pb()
-== Hledání vzoru vektoru $ar(v)$ v zobrazení $F_A$
+= Hledání vzoru vektoru $ar(v)$ v zobrazení $F_A$
 Hledání všech $ar(x)$ pro které $F_A(ar(x)) = ar(v)$ tedy $A ar(x) = ar(v)$
 -> množina všech řešení SLR $A ar(x) = ar(v)$
 
@@ -541,6 +550,7 @@ Tedy lineární zobrazení $F_A$ je:
     - $F_(inv(A)) compose F_A = F_E$
       -> $F_A$ je bijekce
 ]
+#pb()
 - $F_A$ je bijekce a zároveň je lineární => $F_A$ je *izomorfismus*
 #proof(title: [2])[
   - $F_A$ je bijekce => soustava $A ar(x) = ar(b)$ má právě jedno řešení
@@ -551,10 +561,10 @@ Tedy lineární zobrazení $F_A$ je:
 ]
 
 #pb()
-== Vektorový prostor
-=== Algebraická struktura
+= Vektorový prostor
+== Algebraická struktura
 - máme množinu a jednu nebo více operací a "axiomy"
-==== Grupa
+=== Grupa
 - množina s jednou operací
 - $(G, *)$, kde $*: G times G -> *$ je binární operace
 - axiomy pro obecnou grupu
@@ -564,11 +574,11 @@ Tedy lineární zobrazení $F_A$ je:
 - *Abelovská grupa*
   - navíc komutativita $forall a,b in G: a * b = b * a$
 
-=== Definice vektorového prostoru
+== Definice vektorového prostoru
 #definition[
   Vektorový prostor nad $FF$ je množina $V$ se dvěma operacemi
-  + (uzavřené)sčítání $+: V x V -> V$
-  + (uzavřené)skalární násobení $dot.op: FF x V -> V$
+  + (uzavřené)sčítání $+: V + V -> V$
+  + (uzavřené)skalární násobení $dot.op: FF dot.op V -> V$
 
   kde $FF$ je těleso(pro nás tedy v praxi hlavně $RR$ nebo $CC$)
 
@@ -582,7 +592,8 @@ Tedy lineární zobrazení $F_A$ je:
   + inverzní prvek $in V$ k $v in V$ je $-v$ - $v + (-v) = o$
 ]
 
-=== Příklady vektorových prostorů
+#pb()
+== Příklady vektorových prostorů
 + Aritmetický vektorový prostor $RR^n$
   - splňuje axiomy vektorového prostoru - pracujeme po složkách, které jsou $RR$, pro které tyto axiomy také platí
 $
@@ -596,7 +607,7 @@ $
 + $X$ množina $F(X,RR)$ - množina všech reálných funkcí definovaných na množině $X$
   - také pracujeme po složkách...
 
-=== Podprostor vektorového prostoru
+== Podprostor vektorového prostoru
 Podprostor vektorového prostoru $V$ nad $FF$ je $W subset.eq V$ nad $FF$, $WW != emptyset$ značíme $W<= V$\
 jestliže $forall r,s in FF$ a $forall u,v in WW$ je $r u + s v in WW$ - je uzavřená na lineární kombinace
 
@@ -609,8 +620,7 @@ jestliže $forall r,s in FF$ a $forall u,v in WW$ je $r u + s v in WW$ - je uzav
 
 
 #pb()
-= Přednáška 4
-==== Příklad podprostoru
+=== Příklad podprostoru
 
 $
   ker A ; M = {v_1, v_2, ..., v_n}, span(M)
@@ -626,25 +636,26 @@ $
   součet lineárních kombinací můžu zapsat jako lineární kombinaci...
 ]
 
-==== Definice
+=== Definice
 #definition[
   $M subset.eq V$ říkáme že $M$ generuje $V$ jestliže $span(M) = V$
 ]
 
-===== Příklad 1.
+==== Příklad 1.
 ${x, x^3, x^5}$ generuje $P_5^- (x, RR)$ (generuje vektorový prostor všech lichých reálných polynomů stupně nejvýše 5)
 
-===== Příklad 2.
+==== Příklad 2.
 ${vec(1, 0), vec(0, 1), vec(1, 1)}$ generuje $RR^2$
 
 
-#definition[
+#pb()
+#definition(title: "Lineární závislost a nezávislost")[
   Nechť $M!=emptyset subset.eq V$ -> $v_1, ..., v_n in M$
 
-  jejich lineární kombinace $sum_(i=1)^k r_i v_i$ je netriviální, jestliže $exists r_i != 0$
+  jejich lineární kombinace $sum_(i=1)^k r_i v_i$ je *netriviální*, jestliže $exists r_i != 0$
 
-  + $M$ je lineárně závislá, jestliže $exists$ netriviální lineární kombinace prvků $M$, která dává $ar(0) in V$
-  + $M$ je lineárně nezávislá, jestliže $ar(0)$ dostanu jen a pouze triviální lineární kombinací
+  + $M$ je *lineárně závislá*, jestliže $exists$ netriviální lineární kombinace prvků $M$, která dává $ar(0) in V$
+  + $M$ je *lineárně nezávislá*, jestliže $ar(0)$ dostanu jen a pouze triviální lineární kombinací
 ]
 
 #claim[
@@ -659,36 +670,38 @@ ${vec(1, 0), vec(0, 1), vec(1, 1)}$ generuje $RR^2$
     - pak $n = sum_(i=1)^(k-1) r_i v_i + r_k sum_(i=1)^k s_i v_i = sum_(i=1)^(k-1) (r_i + r_k s_i) v_i => span(N) = V$
 ]
 
-=== Definice: Báze
+#pb()
+== Definice: Báze
 #definition[
   $V$ je v.p. nad $FF$, $M subset.eq V$ je bází prostoru $V$ jestliže:
   + $M$ generuje $V$ <=> $span(M) = V$
   + $M$ je lineárně nezávislá
 ]
 
-==== Příklad 1
+=== Příklad 1
 ${ar(e_1), ..., ar(e_n)}$ je báze prostoru $FF^n$ - *kanonická báze*
-==== Příklad 2
+=== Příklad 2
 ${mat(1, 0; 0, 0),mat(0, 1; 0, 0),mat(0, 0; 1, 0),mat(0, 0; 0, 1)}$ je bází prostoru $FF^(2 times 2)$
-==== Příklad 3
+=== Příklad 3
 ${1, x, x^2, x^3, ...}$ je báze $P(x, RR)$ - báze nemá konečný počet prvků, prostor $P(x, RR)$ má nekonečnou dimenzi
 
 #claim[
   $M subset.eq V$ je bází $V$ právě když každý prvek $V$ lze vyjádřit jako LK prvků $in M$ *právě jedním* způsobem.
 ]
 
-#proof[
+#proof(title: "1.")[
   - (1)
   $M$ je bází => $span(M) = V$, pro spor předpokládejme že $exists v in V: v = sum_(i=1)^k r_i v_i = sum_(i=1)^k s_i v_i$ a $exists r_i != s_i$
 
   z toho plyne
 
   $ar(0) = sum_(i=1)^k r_i v_i - sum_(i=1)^k s_i v_i = sum_(i=1)^k (r_i - s_i) v_i$ => $bold(forall i in {1, ..., k}: r_i = s_i)$ *spor*!
-
-  - (2)
+]
+#proof(title: "2.")[
   $span(M) = V$ a $ar(0)$ lze vyjádřit právě jedním způsobem, tedy jediný způsob je triviální LK
 ]
 
+#pb()
 #definition[
   v.p. $V$ nad $FF$ nazýváme *prostor konečné dimenze* jestliže ve $V$ existuje *konečná báze*.
 ]
@@ -719,20 +732,22 @@ ${1, x, x^2, x^3, ...}$ je báze $P(x, RR)$ - báze nemá konečný počet prvk�
 
 
 #pb()
-=== Konvence
+== Konvence
 Odteď $B$ báze v.p. konečné dimenze $V$ je chápána jako posloupnost, t.j. *uspořádaná* (konečná) množina
 
 $
   B & = (v_1, v_2, ..., v_n) \
 $
 
-Dostávám možnost jednoznačné reprezentace vektoru $v in V$ vzhledem k bázi $B$, $exists$ n-tice $(r_1, ..., r_n)$ tak, že $v = sum_(i=1)^k r_i v_i$
+Dostávám možnost jednoznačné reprezentace vektoru $v in V$ vzhledem k bázi $B$
+
+$exists$ n-tice $(r_1, ..., r_n)$ tak, že $v = sum_(i=1)^k r_i v_i$
 
 #important(caption: "Reprezentace vektoru vůči bázi jako aritmetický vektor")[$
   [v]^B := vec(r_1, r_2, ..., r_n) in FF^n\
 $]
 
-==== Příklad 1.
+=== Příklad 1.
 $
   mat(1, 2; 3, 4); sq B & = (mat(1, 0; 0, 0),mat(0, 1; 0, 0),mat(0, 0; 1, 0),mat(0, 0; 0, 1)) \
                         \
@@ -743,7 +758,7 @@ $
 $
 
 #pb()
-=== Lemma - Steinitzovo o výměně
+== Lemma - Steinitzovo o výměně
 #lemma[
   Nechť $V$ je v.p. nad $F$, $G$ jeho $g$-prvková množina generátorů($span(G) = V$)
 
@@ -754,7 +769,7 @@ $
   + množinu $G$ lze *vhodně "přeuspořádat"* na $G' = (u_1, u_2, ..., u_g)$ tak, že $(v_1, v_2, ..., v_n, u_(n+1), ..., u_g)$ generuje $V$
 ]
 
-=== Věta - o počtu prvků báze
+== Věta - o počtu prvků báze
 #theorem[
   Všechny báze v.p. $V$ konečné dimenze mají stejný počet prvků.
 ]
@@ -778,15 +793,14 @@ $
   Navíc, jestli platí $abs(M) = dim V$ pak $M$ je bází $V$
 ]
 
-=== Definice - dimenze
+== Definice - dimenze
 #definition[
   Dimenze v.p. $V$ je buďto počet prvků jeho libovolné báze $B$ nebo $infinity$
 ]
 
 
 #pb()
-= Přednáška 5.
-== Důkaz: Steinitzovo lemma
+= Důkaz: Steinitzovo lemma
 #proof[
   Indukcí:
 
@@ -797,7 +811,7 @@ $
     - indukční krok analogicky... - ve skriptech
 ]
 
-== Důsledek Steinitzova lemmatu
+= Důsledek Steinitzova lemmatu
 #corollary[
   - $dim V = n, M subset.eq V$, pak
   + $M$ lineárně nezávislá => $abs(M) <= n$
@@ -814,7 +828,8 @@ $
   analogicky
 ]
 
-== Další důsledek SL
+#pb()
+= Další důsledek SL
 #corollary[
   $V$ nad $FF$, $dim V = n$; $W <= V$ , $N$ je báze $W$
   - pak $exists M subset.eq V$; $M >= N$ taková, že $M$ je báze $V$
@@ -826,12 +841,16 @@ $
   zvolme $M' = {u_1, ..., u_k}$ báze $V$, aplikujme SL => po vhodném uspořádání $(v_1, ..., v_k, u_(k+1) ', ..., u_n ')$ generuje $V$ => $M$ je báze
 ]
 
+Tedy můžeme doplnit libovolnou nemaximálně lineárně nezávislou
+
+($M$ je LN a $abs(M) < dim V$) podmnožinu na bázi daného vektorového prostoru
+
 #pb()
-== Tvrzení 20 idk
+= Tvrzení 20 idk
 #claim[
   $C = (v_1, ..., v_k)$ je posloupnost vektorů ve $V$
 
-  $D$ je posloupnost která vznikne z $C$ elementární úpravou
+  $D$ je posloupnost která vznikne z $C$ elementární(v tomto případě sloupcovou) úpravou
 
   Pak
   + $span(C) = span(D)$
@@ -839,33 +858,37 @@ $
   + $C$ je báze $V$ <=> $D$ je báze $V$
 ]
 
-#proof[
-  - 1.
-    $
-      C & = (v_1, ..., v_k) \
-      D & = (v_1 + s v_2, v_2, ..., v_k) \
-      v & = r_1 v_1 + r_2 v_2 + ... + r_k v_k = r_1(v_1 + s v_2) + (r_2 - r_1 s) v_2 + ... + r_k v_k \
-        & => span(C) <= span(D) \
-    $
-    - úpravy jsou vratné $=> span(C) >= span(D) => span(C) = span(D)$
+#proof(title: [*1.*])[
+  $
+    C & = (v_1, ..., v_k) \
+    D & = (v_1 + s v_2, v_2, ..., v_k) \
+    v & = r_1 v_1 + r_2 v_2 + ... + r_k v_k = r_1(v_1 + s v_2) + (r_2 - r_1 s) v_2 + ... + r_k v_k \
+      & => span(C) <= span(D) \
+  $
+  - úpravy jsou vratné $=> span(C) >= span(D) => span(C) = span(D)$
+]
 
-  - 2.
-    $
-      ar(0) = sum_(i=1)^k r_i v_i = r_i (v_1 + s v^2) + (r_2 - r_1 s) v_2 + sum_(i=3)^k r_i v_i\
-      => r_3 = ... = r_k = 0; r_1 = 0; r_2 = 0 => C "LN"
-    $
-    - úpravy jsou vratné => $C$ LN => $D$ LN
 
-  - 3.
-    kombinace 1. a 2.
+#proof(title: [*2.*])[
+  $
+        C & = (v_1, ..., v_k) \
+        D & = (v_1 + s v_2, v_2, ..., v_k) \
+    ar(0) & = sum_(i=1)^k r_i v_i = r_1 (v_1 + s v_2) + (r_2 - r_1 s) v_2 + sum_(i=3)^k r_i v_i \
+          & => r_3 = ... = r_k = 0; r_1 = 0; r_2 = 0 => C "LN"
+  $
+  - úpravy jsou vratné => $C$ LN => $D$ LN
+]
+
+#proof(title: [*3*])[
+  kombinace 1. a 2.
 ]
 
 #pb()
-== Hodnost matice
-- $ker A = {ar(x) | A ar(x) = ar(0)} <= FF^n; A in FF^(m times n)$ jádro
-- $"Im" A = span(ar(a_1), ..., ar(a_n)) <= FF^m$ sloupcový prostor
-- $"Im" A^T$ řádkový prostor
-- $ker A^T$ jádro transponované matice
+= Hodnost matice
+- $ker A = {ar(x) | A ar(x) = ar(0)} <= FF^n; A in FF^(m times n)$ *jádro*
+- $"Im" A = span(ar(a_1), ..., ar(a_n)) <= FF^m$ *sloupcový prostor*
+- $"Im" A^T$ *řádkový prostor*
+- $ker A^T$ *jádro transponované matice*
 
 #claim[
   $R in F^(m times m)$ je regulární, pak
@@ -896,15 +919,17 @@ $
   asi zase zřejmé z definice maticového násobení...
 ]
 
-=== Poznámka
+#pb()
+== Poznámka
 $R$ regulární
 
 $sum_(i=1)^n s_i ar(a_i) = ar(0) => sum_(i=1)^n s_i R ar(a_i) = ar(0)$
 
 $A' = matcol(ar(a_1)', ... ar(a_n)') = R A$
 
-=> tedy *EŘÚ zachovávají LN sloupců* a *ESÚ zachovávají LN řádků*
-=> *EŘÚ zachovávají řádkový prostor, ESÚ sloupcový prostor*
+=> *EŘÚ zachovávají LN sloupců(dimenzi sloupcového prostoru a indexy LN sloupců) a řádkový prostor*
+
+=> *ESÚ zachovávají LN řádků(dimenzi řádkového prostoru a indexy LN řádků) a sloupcový prostor*
 
 => maximální LN podmonžina sloupců $A$ odpovídá(<=>) maximální nezávislé podmnožině sloupců $A'$ (stejné indexy)
 - speciálně platí pro $A$ matici a $A'$ její *RREF*
@@ -912,7 +937,7 @@ $A' = matcol(ar(a_1)', ... ar(a_n)') = R A$
 => tedy $dim "Im" A = dim "Im" A'$
 
 #pb()
-=== Věta - Hodnost matice
+== Věta - Hodnost matice
 #theorem[
   Nechť $A in FF^(m times n)$, pak $dim "Im" A = dim "Im" A^T$
 ]
@@ -958,6 +983,7 @@ $A' = matcol(ar(a_1)', ... ar(a_n)') = R A$
 
 a tedy i $rank (A B) <= min(rank A, rank B)$
 
+#pb()
 #theorem[
   Nechť $A in FF^(n times n)$, pak jsou následující podmínky ekvivalentní
   + $A$ je regulární
@@ -977,7 +1003,7 @@ a tedy i $rank (A B) <= min(rank A, rank B)$
   + $exists X in FF^(n times n): X A = E$
 ]
 
-#theorem[
+#theorem(title: "Věta o dimenzích jádra a obrazu")[
   Nechť $A in FF^(n times n)$, pak $dim ker A + dim "Im" A = n$ tedy $nul A + rank A = n$
 ]
 
@@ -985,7 +1011,7 @@ a tedy i $rank (A B) <= min(rank A, rank B)$
   $A ~ A'$, pak
 
   + $rank A$ je počet pivotních sloupců
-  + $nul A$ je počet nepivotních sloupců
+  + $nul A$(*nulita*, starší název defekt) je počet nepivotních sloupců
 
   tedy součet je počet sloupců...
 ]
