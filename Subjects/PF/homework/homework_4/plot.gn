@@ -1,0 +1,21 @@
+# gnuplot: počet prvočísel (primes) a prvočíselných dvojčat (twin prime pairs) menších než N
+xsize=800             # rozlišení obrázku ve směru x
+ysize=800             # rozlišení obrázku ve směru y
+xmax=1e8              # horní limit x-osy (matches nmax = 100_000_000)
+ymax=xmax/15          # horní limit y-osy (p(1e8) = 5,761,455; xmax/15 = 6.67e6)
+set title " p(N): počet prvočísel menších než N \n d(N): počet prvočíselných dvojčat menších než N "
+set xlabel 'N'
+set xtics xmax/5 format "%.0t.10^%1T"
+set mxtics 4          # minor xtics
+set ytics ymax/5 format "%.0t.10^%1T"
+set mytics 4          # minor ytics
+set key left top      # legenda vlevo nahoře
+set size square       # čtvercový formát obrázku
+set terminal pngcairo enhanced size xsize,ysize
+set output 'res.png'
+
+plot [0:xmax][0:ymax] \
+     'res.npy' binary format='%uint32%uint32%uint32' skip=128 every 1000 using 1:2 with lines title 'p(N)', \
+     'res.npy' binary format='%uint32%uint32%uint32' skip=128 every 1000 using 1:3 with lines title 'd(N)'
+
+set output

@@ -47,6 +47,7 @@
 
 // linear algebra
 #let rank = math.op("rank")
+#let diag = math.op("diag")
 #let nul = math.op("nul")
 #let inv(body) = $body^(-1)$
 #let span(..args) = $lr(chevron.l #args.pos().join($,$) chevron.r)$
