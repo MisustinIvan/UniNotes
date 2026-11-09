@@ -1015,3 +1015,272 @@ a tedy i $rank (A B) <= min(rank A, rank B)$
 
   tedy součet je počet sloupců...
 ]
+
+#pb()
+== Věta - Frobeniova
+#theorem(title: "Frobeniova věta")[
+  Nechť $A in FF^(m times n)$ a $ar(b) in FF^m$
+
+  Pak SLR má $A ar(x) = ar(b)$, právě tehdy když $rank(A) = rank(matcol(A, ar(b)))$
+]
+
+#proof()[
+  $"Im" A <= "Im" matcol(A, ar(b))$
+  + $rank(A) = rank(matcol(A, ar(b))) => dim "Im" A = dim "Im" matcol(A, ar(b))$
+  + $rank(A) =$
+  tbd...
+]
+
+
+#pb()
+= Reprezentace vektoru a lineárního zobrazení
+$v in V$, $B$ báze V
+
+$
+    [v]^B & = vec(r_1, r_2, dots.v, r_n) "reprezentace vzhledem k" FF^n \
+        v & = sum_(i=1)^n r_i v_i \
+  "kde" B & = (v_1, dots, v_n)
+$
+
+máme tedy bijekci
+
+$
+  [space]^B dot.op V -> FF^n "je bijektiviní zobrazení"
+$
+
+== Definice lineárního zobrazení
+#definition(title: "Lineární zobrazení")[
+  Nechť $V,W$ jsou v.p. nad $FF$ a $f: V -> W$ jae zobrazení takové, že
+
+  $forall v,u in V$ a $forall r,s in FF$ platí $f(r v + s u) = r f(v) + s f(u)$
+]
+
+== Tvrzení
+#claim(title: "")[
+  Máme $V$ v.p. konečné dimenze nad $FF$, $B$ báze $V$, $u,v in V$, $r,s in FF$, pak
+
+  $[r u + s v]^B = r[u]^B + s[v]^B$
+]
+
+#proof()[
+  $
+    ar(u) & = sum_(i=1)^n r_i ar(v)_i \
+    ar(v) & = sum_(i=1)^n s_i ar(v)_i \
+  $
+  reprezentace vůči bázi je tedy
+  $
+    [r u + s v]^B & = [r sum_(i=1)^n r_i ar(v_i) + s sum_(i=1)^n s_i ar(v_i)]^B = [sum_(i=1)^n (r r_i + s s_i)ar(v)_i]^B \
+    & = vec(r r_1 + s s_1, r r_2 + s s_2, dots.v, r r_n + s s_n) = r vec(r_1, r_2, dots.v, r_n) + s vec(s_1, s_2, dots.v, s_n) = r [u]^B + s [v]^B
+  $
+]
+
+#pb()
+== Izomorfismus vektorového prostoru
+$[space]^B dot.op V -> FF^n$ je bijektivní zobrazení - izomorfismus
+
+=== Příklady
+==== Příklad 1.
+$
+  F_A: FF^n -> FF^m; sq ar(x) |-> A ar(x)\
+$
+
+==== Příklad 2.
+$
+  [space]^B
+$
+==== Příklad 3.
+$
+                    & A in FF^(m times n); sq X in FF^(n times p); A X in FF^(m times p) \
+  f: FF^(m times n) & -> FF^(n times p) \
+                  X & |-> A X \
+$
+
+==== Příklad 4.
+Prostor $P_k (x, RR)$
+$
+  g: P_k (x, RR) & -> P_k (x, RR) \
+               p & |-> dif/(dif x) p \
+$
+
+přiřadí 1. derivaci
+
+#pb()
+== Reprezentace lineárního zobrazení
+#definition(title: "Reprezentace lineárního zobrazení")[
+  Nechť $V,W$ jsou v.p. nad $FF$, $f: V->W$ je lineární zobrazení, $B = (v_1, v_2, dots, v_n)$ je báze $V$ a $C = (w_1, w_2, dots, w_m)$ je báze $W$, pak
+
+  #important[$
+    [f]_B^C = matcol([f(v_1)]^C, [f(v_2)]^C, dots, [f(v_n)]^C) in FF^(m times n)
+  $]
+
+  nazveme *maticí přechodu* $f$ vůči bázím $B$ a $C$
+]
+
+=== Příklady
+==== Příklad 1.
+Pokud $f: FF^n -> FF^m$
+
+$K_n = (ar(e_1), ar(e_2), dots, ar(e_n))$ kanonická báze ve $FF^n$
+$K_m = (ar(e_1), ar(e_2), dots, ar(e_m))$ kanonická báze ve $FF^m$
+
+$
+  [f]_(K_n)^(K_m) \
+                  & = matcol([f(ar(e)_1)]^(K_m), [f(ar(e)_2)]^(K_m), dots, [f(ar(e)_n)]^(K_m)) \
+                  & = matcol([ar(a)_1]^(K_m), [ar(a)_2]^(K_m), dots, [ar(a)_n]^(K_m)) \
+  [ar(a)_i]^(K_m) & = ar(a)_i \
+$
+
+===== Příklad 2.
+
+$
+  g: P_2 (x, RR) & -> P_2 (x, RR) \
+               p & |-> (dif p)/(dif x) \
+$
+
+$
+  B & = (1, x, x^2) "báze" P_2 (x, RR) \
+  C & = (1, x) "báze" P_1 (x, RR) \
+$
+
+$
+  [g]_B^C & = matcol([g(1)]^C, [g(x)]^C, [g(x^2)]^C^2) \
+          & = matcol([0]^C, [1]^C, [2x]^C) \
+          & = mat(
+              0, 1, 0;
+              0, 0, 2
+            )
+$
+
+#pb()
+== Tvrzení
+#claim(title: "")[
+  Nechť $V,W$ jsou v.p. nad $FF$, $f: V->W$ je lineární zobrazení, $B = (v_1, v_2, dots, v_n)$ je báze $V$ a $C = (w_1, w_2, dots, w_m)$ je báze $W$, pak
+
+
+  $
+    [f(v)]^C & = [f]_B^C [v]^B \
+  $
+]
+
+#proof()[
+  $
+           v & = sum_(i=1)^n r_i v_i \
+    [f(v)]^C & = [sum_(i=1)^n r_i f(v_i)]^C \
+             & = sum_(i=1)^n r_i [f(v_i)]^C \
+             & = [f]_B^C vec(r_1, r_2, dots.v, r_n) = [f]_B^C [v]^B \
+  $
+]
+
+=== Příklady
+==== Příklad 1.
+$
+   g(x^2 + 2x + 3) & = 2x + 2 \
+  [x^2 + 2x + 3]^B & = vec(3, 2, 1) \
+        [2x + 2]^C & = vec(2, 2)
+$
+
+zkusíme vynásobit matici
+
+$
+       [g]_B^C sq [v]^B & = [g(v)]^C \
+  mat(
+    0, 1, 0;
+    0, 0, 2
+  ) dot.op vec(3, 2, 1) & = vec(2, 2) space checkmark
+$
+
+#pb()
+== Tvrzení
+#claim()[
+  $f: V -> W$ je izomorfismus, $(v_1, v_2, dots, v_n)$ je posloupnoust prvků $V$.
+
+  Pak:
+  + $(v_1, v_2, dots, v_n)$ LN <=> $(f(v_1), f(v_2), dots, f(v_n))$ LN
+  + $(v_1, v_2, dots, v_n)$ generuje $V$ <=> $(f(v_1), f(v_2), dots, f(v_n))$ generuje $W$
+  + $(v_1, v_2, dots, v_n)$ báze $V$ <=> $(f(v_1), f(v_2), dots, f(v_n))$ báze $W$
+]
+
+#proof(title: "jenom nástin")[
+  $
+    f(sum_(i=1)^n r_i v_i) & = sum_(i=1)^n r_i f(v_i) \
+  $
+
+  pak vycházíme z vlastností lineární nezávislosti a bijekce
+]
+
+#corollary()[
+  $f: V->W$ izomorfismus => $dim V = dim W$
+]
+
+
+#definition()[
+  $V,W$, v.p. nad $FF$, $f: V->W$ lineární zobrazení
+
+  $
+    & ker f: {v in V | f(v) = ar(0)_w} <= V \
+    & "Im" f: {w in W| exists v in V: f(v) = w} <= W \
+  $
+]
+
+#claim()[
+  Lineární zobrazení $f:V -> W$ je izomorfismus(bijektivní a zároveň lineární) právě tehdy když
+
+  $
+    ker f = 0 "a" "Im" f = W
+  $
+]
+
+#proof()[
+  Izomorfismus $equiv$ *prosté* a *na*
+
+  + stačí tohle...
+    $
+      "Im" f = W & => f "je na" \
+       ker f = 0 & => f "je prosté" \
+    $
+  +
+    $
+      f(v_1) = f(v_2) & => f(v_1 - v_2) = 0 \
+            v_1 - v_2 & = 0 "f je prosté" \
+    $
+]
+
+#pb()
+== Tvrzení
+#claim()[
+  $V,W$ jsou v.p. konečné dimenze, $f: V->W$ je lineární zobrazení, $B$ báze $V$, $C$ báze $W$.
+
+  Pak jsou následující výroky ekvivalentní:
+  + $f$ je izomorfismus
+  + $[f]_B^C$ je regulární pro *všechny* dvojice bází
+  + $[f]_B^C$ je regulární pro *nějakou* dvojici bází
+]
+
+#claim()[
+  $f: V->W$ je lineární zobrazení, $B = (v_1, dots, v_n)$ báze $V$, $C = (w_1, dots, w_n)$ báze W
+
+  Pak:
+  $
+     [ker f]^B & = ker [f]_C^B \
+    ["Im" f]^C & = "Im" [f]_B^C \
+  $
+]
+
+#definition(title: "Matice přechodu")[
+  $
+    & "Id": V->V, V "konečné dimenze", B,C "dvě báze" V \
+    & ["Id"]_B^C \
+    & = matcol(["Id" v_1]^C, ["Id" v_2]^C, dots, ["Id" v_n]^C) \
+    & = matcol([v_1]^C, [v_2]^C, dots, [v_n]^C) \
+  $
+
+  kde $["Id"]_B^C$ je matice přechodu od báze $C$ k bázi $B$
+
+  ty indexy jsou přehozený 😠
+]
+
+#corollary()[
+  $
+    [v]^C & = ["Id"]_B^C [v]^B \
+  $
+]

@@ -4,7 +4,7 @@
 
 #show: boilerplate
 
-= Matematické metody fyziky - přednáška - Pavel Krtouš
+= Matematické metody fyziky - přednáška - Pavel Krtouš, Robert Švarc
 == Derivace - opakování
 definice zase...
 $
@@ -1115,11 +1115,236 @@ $
 
 #pb()
 ===== Funkce matic
-Předpokládejme že $A$ je diagnoalizovatelná matice, a $D = diag(lambda_1, lambda_2, ..., lambda_n)$ je matice podobná $A$
+Předpokládejme že $A$ je diagnoalizovatelná matice, a $D = diag(lambda_1, lambda_2, ..., lambda_n)$ je matice podobná $A$ s maticemi přechodu $TT$ a $inv(TT)$
 
 $
   F(AA) & = sum_(j=0)^infinity f_j AA^j \
   F(AA) & = sum_(j=0)^infinity f_j (TT DD TT^(-1))^j \
   F(AA) & = sum_(j=0)^infinity f_j TT DD^j TT^(-1) \
   F(AA) & = TT (sum_j f_j DD^j) TT^(-1) = TT F(DD) TT^(-1) \
+$
+
+prostě si tu matici vyjádřím vzhledem k jiné bázi kde je tato matice diagonální, umocním a vyjádřím zpátky k původní bázi...
+
+====== Příklad
+mějme funkci matic:
+
+$
+  F(AA) & = sum_(j=0)^infinity f_j A^j \
+        & = sum_(j=0)^infinity f_j TT DD^j inv(TT) \
+        & = TT (sum_(j=0)^infinity f_j D^j) inv(TT) \
+        & = TT FF(DD) inv(TT) \
+$
+
+kde
+
+$
+  DD = mat(
+    F(lambda_1), , 0;
+    , dots.down, ;
+    0, , F(lambda_n);
+  )
+$
+
+co bude
+
+$
+  F(AA) bb(a)_1
+$
+
+kde $bb(a)_1$ je vlastní vektor?
+
+$
+  & F(AA) bb(a)_1 \
+  & = TT F(DD) inv(TT) bb(a)_1 \
+  & = TT F(DD) inv(TT) TT e_1 \
+  & = TT F(lambda_1) e_1 \
+  & = F(lambda_1) bb(a)_1 \
+$
+
+#pb()
+==== Přechod k operátorům(symetrickým operátorům)
+- *symetrický operátor* - invariantní vůči transpozici
+$
+  AA = AA^T
+$
+
+pak vlastní vektory $AA$ tvoří ortogonální bázi(docela pochopitelné z geometrické představy o vlastních vektorech)
+
+- *ortogonální báze* - $(a_k, a_l) ~ delta_(k l)$
+  - skalární součin úměrný kroneckerovu delta
+- *ortogonální bázi* vytvoříme přeškálováním...
+
+===== Funkce operátorů(symetrických) 💀
+
+$
+  F(AA) ar(a)_k = F(lambda_k) ar(a)_k
+$
+
+např. diferenciální operátor - dává asi derivace idk
+
+mějme obecný vektor $ar(v)$, chceme
+
+$
+  & F(AA) ar(v) \
+  & = F(AA) sum_k v^k ar(a)_k "kde " ar(a)_k "je vlastní vektor operátoru" \
+  & = sum_k v^k F(lambda_k) ar(a)_k \
+  & = sum_k w^k ar(a)_k = ar(w) \
+$
+
+#pb()
+===== Příklady
+====== Výpočet obecného členu Fibonacciho posloupnosti
+$
+  a_n = a_(n-1) + a_(n-2)
+$
+
+definujeme:
+$
+  f_j = vec(a_(j+1), a_j)
+$
+např.
+$
+  f_0 = vec(1, 0); sq f_1 = vec(1, 1); sq f_2 = vec(2, 1)
+$
+
+chceme nějakou matici $FF$, aby
+
+$
+  f_j & = FF f_(j-1) \
+   FF & = mat(
+          1, 1;
+          1, 0
+        ) \
+  f_j & = FF^2 f_(j-2) \
+$
+
+a tedy obecně
+
+$
+  f_j & = FF^j f_0 \
+$
+
+asi si tedy chceme $FF$ diagonalizovat -> vlastní čísla a vlastní vektory
+
+$FF$ podobné $DD$ kde $DD = mat(
+  lambda_1_+, 0;
+  0, lambda_2_-
+)$
+
+$
+  tr DD = lambda_1_+ + lambda_2_- = tr FF = 1
+$
+a
+$
+  det DD = lambda_1_+ dot.op lambda_2_- = det FF = -1
+$
+
+máme dvě rovnice o dvou neznámých, a tedy
+$
+  lambda_plus.minus = (1 plus.minus sqrt(5))/2
+$
+
+chci vlastní vektory
+$
+  F bb(a)_+ = lambda_+ bb(a)_+\
+  F bb(a)_- = lambda_- bb(a)_-\
+$
+
+$
+  FF & = TT DD inv(TT) \
+  FF & = TT mat(
+         (1 + sqrt(5))/2, 0;
+         0, (1 - sqrt(5))/2
+       ) inv(TT) \
+  FF & = matcol(bb(a)_+, bb(a)_-) mat(
+         (1 + sqrt(5))/2, 0;
+         0, (1 - sqrt(5))/2
+       ) inv(matcol(bb(a)_+, bb(a)_-)) \
+$
+
+tedy obecně
+$
+  FF^j & = TT DD^j inv(TT) \
+  FF^j & = 1/sqrt(5) mat(
+           lambda_+^(j+1) -= lambda_-^(j+1), lambda_+^j - lambda_-^j;
+           lambda_+^j - lambda_-^j, lambda_+^(j+1) - lambda_-^(j+1);
+         )
+$
+
+====== Systém pružin
+Mějme $n$ spojených pružin zavěšených mezi pevnými stěnami.
+$
+  F = -k Delta x\
+$
+
+Zkoumáme vychýlení z rovnovážných poloh
+
+$
+  dtt(x_k) + omega^2(2x_k - x_(k-1) - x_(k+1))\
+$
+
+Přepíšeme do maticové podoby
+
+$
+  vec(dtt(x_1), dtt(x_2), dots.v, dtt(x_n)) + omega^2 mat(
+    2, -1;
+    -1, 2, -1;
+    , -1, 2;
+    , , , , dots.down
+  ) vec(x_1, x_2, dots.v, x_n)
+$
+
+máme tedy něco ve formě - vypadá jako LHO
+
+$
+  dtt(x) + Omega^2 dot.op x\
+$
+
+tedy
+
+$
+  XX(t) = cos(Omega t) XX_0 + inv(Omega) sin(Omega t) dot.op v_0\
+$
+
+podíváme se vlastní čísla a vlastní vektory $Omega$
+
+$
+         Omega m_k & = omega_k m_k \
+      F(Omega) m_k & = F(omega_k) m_k \
+       Omega^2 m_k & = omega_k^2 m_k \
+  cos(Omega t) m_k & = cos(omega_k t) m_k \
+$
+
+kde $omega_k$ je tzv. *vlastní frekvence* a $m_k$ je tzv. *vlastní mód*.
+
+Hodí se vyjádřit vstupní parametry vzhledem k bázi tvořené vlastními módy - dostaneme jen superpozici harmonických osciátorů.
+
+$
+  x_0 & = sum_k x_0^k m_k \
+  v_0 & = sum_k v_0^k m_k \
+$
+
+a tedy
+$
+  XX(t) & = sum_(k) (cos(omega_k t) x_0^k + 1/omega_k sin(omega_k t)v_0^k)m_k
+$
+
+#pb()
+např. pro $n = 2$
+
+$
+                    Omega^2 & = mat(
+                                2, -1;
+                                -1, 2
+                              ) omega^2 \
+      omega_+^2 + omega_-^2 & = 4 omega^2 \
+      omega_+^2 + omega_-^2 & = 3 omega^4 \
+                            & mat(
+                                omega_+^2, 0;
+                                0, omega_-^2
+                              ) \
+                  omega_-^2 & = omega^2 \
+  Omega^2 m_+ = omega_+ m_+ & -> m_+ = 1/sqrt(2) vec(1, -1) \
+                            & -> m_- = 1/sqrt(2) vec(1, 1) \
 $

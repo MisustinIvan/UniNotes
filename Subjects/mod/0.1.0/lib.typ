@@ -4,6 +4,8 @@
 #let boilerplate(body) = {
   set text(font: "Iosevka NF")
   set heading(numbering: "(1.1)")
+  set math.mat(delim: "[")
+  set math.vec(delim: "[")
   body
 }
 
@@ -54,7 +56,7 @@
 
 // Matrix given by columns, separated by vertical lines.
 // Usage: $matcol((1, 2), (3, 4))$
-#let matcol(..cols, delim: "(", stroke: 0.5pt) = {
+#let matcol(..cols, delim: "[", stroke: 0.5pt) = {
   let c = cols.pos()
   math.mat(
     c,
