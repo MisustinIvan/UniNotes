@@ -87,10 +87,10 @@ $P_(ar(u))$ je projekce/průmět argumentu do směru vektoru $ar(u)$
 
 $
   ar(a) dot.op ar(b) & = norm(ar(a)) norm(ar(b)) cos alpha \
-  cos alpha & = (ar(a) dot.op ar(b))/(norm(ar(a)) norm(ar(b))) \
-  norm(ar(c)) & = norm(ar(a)) cos alpha\
-  norm(ar(c)) & = norm(ar(a)) (ar(a) dot.op ar(b))/(norm(ar(a)) norm(ar(b))) = (ar(a) dot.op ar(b))/norm(ar(b))\
-  ar(c) &= (ar(a) dot.op ar(b))/norm(ar(b)) ar(b)/norm(ar(b)) = (ar(a) dot.op ar(b))/norm(ar(b))^2 ar(b)\
+           cos alpha & = (ar(a) dot.op ar(b))/(norm(ar(a)) norm(ar(b))) \
+         norm(ar(c)) & = norm(ar(a)) cos alpha \
+         norm(ar(c)) & = norm(ar(a)) (ar(a) dot.op ar(b))/(norm(ar(a)) norm(ar(b))) = (ar(a) dot.op ar(b))/norm(ar(b)) \
+               ar(c) & = (ar(a) dot.op ar(b))/norm(ar(b)) ar(b)/norm(ar(b)) = (ar(a) dot.op ar(b))/norm(ar(b))^2 ar(b) \
 $
 
 $P_(ar(u))(ar(x)) = 0$ kde $ar(x) perp ar(u)$ je $ar(0)$ protože $ar(u) dot.op ar(x) = 0$
@@ -128,3 +128,102 @@ $
 $
 
 osová/rovinná souměrnost
+
+
+#pb()
+$
+  [v]^B; sq B=((vec(1, 0), vec(0, 1))); sq [v]^B = vec(1, 3)\
+  [v]^B; sq B=((vec(0, 1), vec(1, 0))); sq [v]^B = vec(3, 1)\
+  [v]^B; sq B=((vec(2, 1), vec(3, 1))); sq [v]^B = vec(8, -5)\
+$
+
+$
+  v = x + 3 in P_1(x, RR)\
+  B = (2x + 1, 3x + 1)\
+  [v]^B = vec(8, -5)\
+$
+
+$
+  v = vec(2, 2, 1) in W = {vec(x, y, z)| x - 2y + 2z = 0}\
+  B = (vec(2, 1, 0), vec(-2, 0, 1))\
+$
+
+#pb()
+$
+      v & = mat(
+            1, 2;
+            0, 3
+          ) in U_2 (RR) \
+      B & = (mat(0, 0; 0, 1), mat(1, -1; 0, 2), mat(0, 1; 0, 1)) \
+  [v]^B & = vec(-2, 1, 3)
+$
+
+
+$
+      v & = cos 2x in W = span(1, cos x, cos^2 x) in F(RR, RR) \
+      B & = (1, cos x, cos^2 x) \
+  [v]^B & = vec(-1, 0, 2)
+$
+
+#pb()
+$
+  g: RR^2 -> RR^2\
+  g(vec(x, y)) = vec(x+2y, -y)\
+$
+
+$
+  B = C = K\
+  [f]_B^C = mat(
+    1, 2;
+    0, -1
+  )\
+  \
+  B = (vec(1, 0), vec(0, 1)); sq C = (vec(0, 1), vec(1, 0))\
+  [f]_B^C = mat(
+    0, -1;
+    1, 2
+  )\
+$
+
+$
+  B = (vec(0, 1), vec(1, 0)); sq C = (vec(1, 0), vec(0, 1))\
+  [f]_B^C = mat(
+    2, 1;
+    -1, 0
+  )\
+$
+
+$
+  B = (vec(1, -1), vec(2, -3)); sq C = (vec(1, 0), vec(0, 1))\
+  [f]_B^C = [f]^B = mat(-1, -4; 1, 3)\
+$
+
+$
+  B = (vec(1, -1), vec(2, -3)); sq C = (vec(-1, 1), vec(-4, 3))\
+  [f]_B^C = mat(1, 0; 0, 1)\
+$
+
+#pb()
+$
+  P_ar(u) (ar(x)) = (ar(u) dot.op ar(x))/norm(ar(u))^2 ar(u)\
+  B = (ar(u), ar(v), ar(w)) = (vec(1, 2, 1), vec(-1, 0, 1), vec(1, -1, 1))\
+  [P_ar(u)]_k^k = mat(
+    1/6, 2/6, 1/6;
+    1/3, 2/3, 1/3;
+    1/6, 2/6, 1/6;
+  ) = 1/6 mat(
+    1, 1, 1;
+    2, 4, 2;
+    1, 1, 1;
+  )\
+  [P_u]_B^B = matcol(P_u [ar(u)]^B, P_u [ar(v)]^B, P_u [ar(w)]^B)\
+  [P_u]_B^B = matcol([ar(u)]^B, [0]^B, [0]^B)\
+  [P_u]_B^B = matcol(vec(1, 0, 0), ar(0), ar(0)) = mat(1, 0, 0; 0, 0, 0; 0, 0, 0)\
+$
+
+matice přechodu
+
+$
+  ["Id"]_B^K = ? = matcol([ar(u)]^K, [ar(v)]^v, [ar(w)]^K) = matcol(ar(u), ar(v), ar(w)) = mat(1, -1, 1; 2, 0, -1; 1, 1, 1)\
+  ["Id"]_K^B = inv(["Id"]_B^K) = mat(dots)\
+$
