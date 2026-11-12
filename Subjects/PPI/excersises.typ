@@ -772,17 +772,17 @@ Jak vypadá rozdělení průsečíků s osou $x$?
 })
 
 $
-1 = integral_(-pi/2)^(pi/2) P_theta dif phi = [P_theta]_(-pi/2)^(pi/2) = - pi/2 = pi P_theta
+  1 = integral_(-pi/2)^(pi/2) P_theta dif phi = [P_theta]_(-pi/2)^(pi/2) = - pi/2 = pi P_theta
 $
 
 normovací podmínka $1/pi$
 
 $
-x/h &= tan theta\
-phi &= arctan x/h\
-integral_(-pi/2)^(pi/2) 1/pi dif theta\
-dif theta = 1/(1+(x/h)^2) 1/h dif x\
-1/pi integral_(-infinity)^(infinity) 1/(1+(x/h)^2) 1/h dif x = 1/pi h/(h^2 + x^2)
+                                                                                x/h & = tan theta \
+                                                                                phi & = arctan x/h \
+                                             integral_(-pi/2)^(pi/2) 1/pi dif theta \
+                                                dif theta = 1/(1+(x/h)^2) 1/h dif x \
+  1/pi integral_(-infinity)^(infinity) 1/(1+(x/h)^2) 1/h dif x = 1/pi h/(h^2 + x^2)
 $
 
 $h$ udává šířku distribuce
@@ -791,7 +791,7 @@ nemá definovanou střední hodnotu, disperze je nekonečná
 - liché momenty digergují, sudé jsou nekonečné...
 
 $
-chevron x chevron.r = integral_(-infinity)^infinity x f(x) dx
+  chevron x chevron.r = integral_(-infinity)^infinity x f(x) dx
 $
 
 diverguje!!!
@@ -801,7 +801,7 @@ musím použít medián
 distribuční funkce
 
 $
-F(x) = 1/2 + 1/pi arctan((x-x_0)/w)
+  F(x) = 1/2 + 1/pi arctan((x-x_0)/w)
 $
 
 $1/2$ tam je protože si to posunu ne od $-infinity$ ale od $x_0$, kde bych už měl mít nasčítanou polovinu
@@ -814,12 +814,12 @@ $y = A sin(Omega t + phi_0)$
 jak se chová amplituda?
 
 $
-A = (F_0)/m 1/(sqrt((omega_0^2 - Omega^2) + 4 delta^2 Omega^2))
+  A = (F_0)/m 1/(sqrt((omega_0^2 - Omega^2) + 4 delta^2 Omega^2))
 $
 
 a energie
 $
-E = 1/4 F_0^2/m (Omega^2 + omega^2)/((omega^2 - Omega^2) + 4 delta^2 Omega^2)
+  E = 1/4 F_0^2/m (Omega^2 + omega^2)/((omega^2 - Omega^2) + 4 delta^2 Omega^2)
 $
 
 závislosti připomínají Lorentzovu křivku
@@ -831,29 +831,29 @@ závislosti připomínají Lorentzovu křivku
 
 Breit-Wigner
 $
-f(E_1) = k/((E_1-E_0)^2 + Gamma^2/4)
+  f(E_1) = k/((E_1-E_0)^2 + Gamma^2/4)
 $
 
 #pb()
 === Normální rozdělení - Gaussovo rozdělení
 - hustota pravděpodobnosti
 $
-f(x) = 1/sqrt(2 pi sigma) e^(- (x-mu)^2/(2 sigma^2))
+  f(x) = 1/sqrt(2 pi sigma) e^(- (x-mu)^2/(2 sigma^2))
 $
 
 - střední hodnota
 $
-E = integral_(-infinity)^infinity x f(x) dif x = mu
+  E = integral_(-infinity)^infinity x f(x) dif x = mu
 $
 
 - disperze
 $
-V = integral_(-infinity)^infinity (x-E)^2 f(x) dif x = sigma^2
+  V = integral_(-infinity)^infinity (x-E)^2 f(x) dif x = sigma^2
 $
 
 - distribuční funkce
 $
-F(x) = 1/2 + 1/2 erf((x-mu)/(sigma sqrt(2)))
+  F(x) = 1/2 + 1/2 erf((x-mu)/(sigma sqrt(2)))
 $
 
 Brownův pohyb, difuze, distribuce vlastností v populaci - *mnoho malých aditivních jevů*
@@ -906,9 +906,201 @@ standardní, normované gaussovo rozdělení $mu = 0; space sigma = 1$, jinak m�
 ==== Příklad - difuze
 Fickův zákon
 $
-(partial C)/(partial t) = D Delta x
+  (partial C)/(partial t) = D Delta x
 $
 
 kde $C$ je koncentrace a $Delta$ je Laplaceův operátor $Delta = nabla^2$
 
+#pb()
+=== Více náhodných veličin
+Dvě náhodné veličiny $x,y$ mají rozdělení na intervalech $V_x$ a $V_y$ dané distribučními funkcemi $p(x), q(y)$
 
+Jaká je pravděpodobnost že se $x,y$ nachází v intervalu $(x, x + dif x)$ a $(y, y + dif y)$?
+
+Mějme $rho(x, y)$, pak
+
+střední hodnota
+$
+  mu_x & = span(x) equiv E[x] = integral_V x rho(x, y) dif x dif y \
+  mu_y & = span(y) equiv E[y] = integral_V y rho(x, y) dif x dif y \
+$
+
+obecně
+$
+  mu_(f(x,y)) = span(f(x,y)) equiv E[f(x,y)] = integral_V f(x,y) rho(x, y) dif x dif y\
+$
+
+analogicky další centrální momenty...
+
+jak vypadá $rho(x, y)$?
+
+pokud jsou nezávislé, pak $rho(x, y) = p(x),q(y)$
+
+Obecně, pokud jsou nezávislé, vyjadřuje míru vztahu tzv. *kovariance*.
+
+$
+  cov(x, y) & = span((x-mu_x)(y-mu_y)) = integral_V (x-mu_x)(y-mu_y) rho(x, y) dif x dif y \
+  cov(x, y) & = span(x, y) - span(x) span(y) => cov(x, x) = V(x) = sigma_x^2 \
+$
+
+koeficient korelace
+
+$
+  r(x,y) & = cov(x, y)/(sigma_x sigma_y) \
+  r(x,y) & in (-1,1) \
+$
+
+- pro $r(x,y) approx -1$ antikorelované
+- pro $r(x,y) approx 1$ korelované
+
+#cetz.canvas({
+  import cetz.draw: *
+
+  let rnd(i, s) = {
+    let t = calc.sin(i * 127.1 + s * 311.7) * 43758.5453
+    t - calc.floor(t)
+  }
+
+  let cloud(corr, s) = range(22).map(i => {
+    let u = rnd(i, s)
+    let v = rnd(i, s + 1)
+    let w = rnd(i, s + 2)
+    let x = (u - 0.5) * 1.8
+    let noise = (v + w - 1) * 0.9
+    (x, corr * x + noise * calc.sqrt(1 - corr * corr))
+  })
+
+  let panel(origin, corr, s, label) = group({
+    set-origin(origin)
+    rect((-1.3, -1.3), (1.3, 1.3), stroke: gray.lighten(20%))
+    line((-1.3, 0), (1.3, 0), stroke: (paint: gray.lighten(45%), thickness: 0.5pt))
+    line((0, -1.3), (0, 1.3), stroke: (paint: gray.lighten(45%), thickness: 0.5pt))
+    for p in cloud(corr, s) {
+      circle(p, radius: 0.055, fill: blue.darken(15%), stroke: none)
+    }
+    content((0, -1.62), label, anchor: "north")
+  })
+
+  panel((0, 0), -1, 1, [$r approx -1$])
+  panel((3.6, 0), -0.5, 2, [$r approx -0.5$])
+  panel((7.2, 0), 0, 3, [$r approx 0$])
+  panel((10.0, 0), 0.9, 4, [$r approx 0.9$])
+
+  content((1.42, 0), [$x$], anchor: "west")
+  content((0, 1.42), [$y$], anchor: "south")
+})
+
+#pb()
+korelace neimplikuje příčinnou souvislost!
+
+odhad nejistoty
+
+$
+  sigma_r & = (1-r^2)/sqrt(N-1) \
+$
+
+==== Příklad - lineární závislost
+$
+           y & = a x + b \
+      r(x,y) & = cov(x, y)/(sigma_x sigma_y) = (span(x, y) - span(x) span(y))/(sigma_x sigma_y) \
+     span(x) & = dots \
+     span(y) & = span(a x + b) = integral_(-infinity)^infinity (a x + b) f(x) dif x = a span(x) + b \
+  span(x, y) & = span(a x^2 + b x) = a span(x^2) + b span(x) \
+   sigma_y^2 & = span(y^2) - span(y)^2 = span(a^2 x^2 + 2 a b + b^2) - a^2 span(x)^2 + 2 a b span(x) + b^2 \
+             & = a^2 span(x^2) - a^2 span(x)^2 = a^2 sigma_x^2 \
+$
+tedy dosadíme
+$
+  r(x,y) & = (a span(x^2) + b span(x) - a span(x)^2 - b span(x))/(sigma x sqrt(a^2 sigma_x^2)) \
+         & = (a sigma_x^2)/(sigma_x^2 sqrt(a^2)) = plus.minus 1 \
+$
+
+=== Obecně n náhodných veličin
+mějme $x_1, x_2, dots, x_n$
+
+pro každou veličinu můžeme zapsat
+
+$
+  span(f(x_i)) & = integral_V x_i rho(x_1, x_2, dots, x_n) dif(x_1, x_2, dots, x_n) \
+$
+
+Součet náhodných veličin:
+$
+  s = sum_(i=1)^n x_i\
+$
+
+a jeho střední hodnota
+$
+  span(s) = integral_V s rho(x_1, x_2, dots, x_n) dif(x_1, x_2, dots, x_n)\
+$
+
+#pb()
+=== Aritmetický průměr
+Střední hodnota součtu náhodných veličin
+$
+  span(sum_(i=1)^n x_i) = sum_(i=1)^n span(x_i)
+$
+
+Speciálně pro n-násobek $x$
+
+$
+  span(sum_(i=1)^n x) = n span(x)\
+$
+
+aritmetický průměr
+$
+        avg(x) & = 1/n sum_(i=1)^n x_i \
+  span(avg(x)) & = span(1/n sum_(i=1)^n x_i) = 1/n sum_(i=1)^n span(x_i) = 1/n sum_(i=1)^n span(x) = span(x) \
+$
+
+*Zákon velkých čísel* - střední hodnota se blíží artimetickému průměru
+
+$
+  "Pr"{lim_(n->infinity) avg(x) = span(x)} = 1
+$
+
+slabý tvar - Čebyševova nerovnost
+$
+  lim_(n->infinity) "Pr"{abs(avg(x) - span(x)) >= epsilon} = 0
+$
+
+kde $"Pr"$ značí pravděpodobnost
+
+=== Disperze aritmetického průměru
+Co je disperze $V(avg(x))$?
+
+Disperze součtu náhodných veličin je $V(s) = span(s^2) - span(s)^2$
+
+tedy
+$
+  V(s) = V(sum_(i=1)^n x_i) = sum_(i=1)^n V(x_i) + sum_(i,j = 1; i!=j)^n cov(x_i, x_j)\
+$
+
+Jsou li nezávislé, pak $cov(x_i, x_j) = 0$
+
+Pro aritmetický průměr: $V(avg(x)) = 1/n V(x)$
+
+tedy disperze aritmetického průměru je n-krát menší než disperze průměrované veličiny
+
+a tedy $sigma_avg(x) = sqrt(1/n V(x)) = sqrt(sigma_x^2/n) = sigma_x/sqrt(n)$
+
+#pb()
+=== Centrální limitní věta
+#theorem(title: "Centrální limitní věta")[
+  Pro náhodnou veličinu $x$ popsanou rozdělením pravděpodobnosti $p(x)$ je
+  - střední hodnota $mu = span(x)$
+  - disperze $V(x) = span(x^2) - span(x)^2$
+
+  Aritmetický průměr při n-násobném nezávislém opakování veličiny $x$ je
+  - popsán rozdělením $q(avg(x))$
+  - střední hodnota $mu_n = span(x)$
+  - disperze $V_n = V/n$
+
+  Pak
+
+  #important[$
+    lim_(n->infinity) q((avg(x) - mu)/sqrt(V_n)) = N(0,1)\
+  $]
+
+  tedy s rostoucím $n$ se distribuce aritmetického průměru blíží *normálnímu rozdělení* $N(0,1)$ - tedy na rozdělení $p(x)$ nezáleží!
+]
