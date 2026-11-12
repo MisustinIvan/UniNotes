@@ -2215,10 +2215,468 @@ $
   (partial)/(partial x) (x^2 + y^2 + z^2) = 2x + 0 + 0\
 $
 
+pozor na rozdílné značení:
+- $dif/(dif x)$ je *normální derivace*(derivace funkce jedné proměnné $x$)
+- $partial/(partial x)$ je *parciální derivace* podle proměnné $x$
 
+#pb()
+== Primitivní funkce - neurčitý integrál
+- limity - teoretický koncept
+- derivace - praktický koncept
+ať to znamená co to znamená
+- neurčitý integrál - úloha(asi docela důležitá)
+  - hledáme funkci jestliže máme zadanou její derivaci(opačný proces...)
+  - při počítání určitých integrálů
+  - při řešení diferenciálních rovnic
 
-rozdílné značení
+$
+  y' & = f \
+$
+např.
+$
+  y' & = x^2 \
+   y & = x^3/3 +c \
+$
 
-$dif/(dif x)$ je normální derivace(derivace funkce jedné proměnné $x$)
+nebo
+$
+  x y' + y = x^2\
+  (x y)' = x^2\
+  x y = x^3/3\
+  y = x^2/3 + c\
+$
 
-$partial/(partial x)$ je parciální derivace podle proměnné $x$
+nebo
+$
+      x y' - y & = x^2 \
+  y'/x - y/x^2 & = 1 \
+        (y/x)' & = 1 \
+           y/x & = x \
+             y & = x^2 + c \
+$
+
+obecně
+#important[$
+  y' + a(x) y & = b(x) \
+$]
+
+#pb()
+=== Definice neurčitého integrálu
+#definition(title: "Neurčitý integrál, primitivní funkce")[
+  Nechť $f$ je reálná funkce definovaná na *otevřeném intervalu* $I$.
+
+  Říkáme, že reálná funkce $F$ definovaná na $I$ je *primitivní* funkce k $f$,\ jestliže $F' = f$.
+
+  *Neurčitý integrál* je množina všech primitivních funkcí $F$ k $f$ na $I$.
+]
+==== Poznámky a příklady
+===== Značení
+- Primitivní funkce -> *PF*
+- Neurčitý integrál -> $integral f$ nebo $integral f(x) dif x$
+
+- je li $F$ *PF* k $f$ na $I$, potom:
+  $
+    integral f & = {F + C| C in RR} \
+  $
+===== Rovnost až na konstantu
+Zápis - rovnost až na konstantu $eqc$
+
+$
+                   M & eqc f -> M = {f + c | c in RR} \
+  integral x^2 dif x & eqc x^3/3 \
+$
+
+===== Spojitost a primitivní funkce
+- *PF* je *vždy spojitá* na $I$, protože má na $I$ v každém bodě vlastní derivaci
+- *každá* $f$ spojitá na $I$ má primitivní funkci
+
+===== Výpočet PF/$integral$
+
+====== pasivní mobové 😁
+
+Tabulkové integrály:
+$
+  integral sin x dif x & eqc -cos x \
+    integral x^2 dif x & eqc x^3/3 \
+    integral x^n dif x & eqc x^(n+1)/(n+1) \
+$
+
+integrál součtu
+$
+              integral f + g & eqc integral f + integral g \
+  integral sin x + x^2 dif x & eqc integral sin x dif x + integral x^2 dif x eqc -cos x + x^3/3 \
+$
+
+====== neutrální mobové 😩
+$
+  (f g)' & = f'g + f g' -> integral f'g + f g' = integral f'g + integral f g' => #important([$integral f'g = f g - integral f g'$]) \
+  (f compose g)' & = f'compose g dot.op g' -> #important([$integral f' compose g dot.op g = f compose g$])
+$
+
+např. mám složenou funkci a derivaci vnitřní funkce(řešíme pomocí substituce...)
+$
+  integral (sin (log x))/x dif x = integral 1/x sin(log x) = -cos(log x)
+$
+
+např. *per partes*
+$
+  integral x cos(x) dif x = x sin x - integral sin x dif x eqc x sin x + cos x\
+$
+
+====== hostile mobové 😭
+např.
+
+$
+  integral sqrt(1 + x^2) dif x & = \
+$
+
+vím, že
+$
+  cosh^2 x - sinh^2 x & = 1 \
+             cosh^2 x & = 1 + sinh^2 x \
+            (sinh x)' & = cosh x \
+$
+
+$
+  & = integral sqrt(1 + sinh^2 t) cosh t dif t \
+  & = integral sqrt(cosh^2 t) cosh t dif t \
+  & = integral cosh^2 t dif t \
+  & = integral ((e^t + e^(-t))/2)^2 dif t \
+  & = integral 1/4 e^(2t) + 1 + 1/4 e^(-2t) dif t \
+  & eqc H(t) \
+  & eqc H(argsinh x) \
+$
+
+#pb()
+ještě pomocí per partes
+$
+  & integral sqrt(1 + x^2) dif x \
+  = & integral 1 dot.op sqrt(1 + x^2) dif x \
+  g & = sqrt(1 + x^2) \
+  g' & = x/sqrt(1 + x^2) \
+  f' & = 1 \
+  f & = x \
+  = & x sqrt(1 + x^2) - integral x^2/sqrt(1 + x^2) dif x \
+  = & x sqrt(1 + x^2) - integral (1 + x^2 - 1)/sqrt(1 + x^2) dif x \
+  = & x sqrt(1 + x^2) - integral (1 + x^2)/sqrt(1 + x^2) dif x + integral (1)/sqrt(1 + x^2) dif x \
+  = & x sqrt(1 + x^2) - integral sqrt(1 + x^2) dif x + integral (1)/sqrt(1 + x^2) dif x \
+  integral sqrt(1 + x^2) dif x eqc & x sqrt(1 + x^2) - integral sqrt(1 + x^2) dif x + integral (1)/sqrt(1 + x^2) dif x \
+  2 integral sqrt(1 + x^2) dif x eqc & x sqrt(1 + x^2) + integral (1)/sqrt(1 + x^2) dif x \
+  2 integral sqrt(1 + x^2) dif x eqc & x sqrt(1 + x^2) + argsinh x \
+  integral sqrt(1 + x^2) dif x eqc & x/2 sqrt(1 + x^2) + 1/2 argsinh x space checkmark\
+$
+
+#pb()
+=== Metoda per partes
+#theorem(title: "Per partes pro neurčitý integrál")[
+  Nechť $f,g$ jsou reálné funkce definované na intervalu $I = (a,b)$.
+
+  Nechť navíc existují vlastní derivace $f',g'$ na intervalu $I = (a,b)$
+
+  Potom platí
+
+  #important[$
+    integral f'g & = f g - integral f g' \
+  $]
+
+  má-li integrál napravo smysl.
+]
+
+#proof[
+  Nechť $H eqc integral f g'$, potom
+
+  $
+    (f g - H)' = f'g + f g' - f g' = f'g\
+  $
+]
+
+=== Metoda substituce
+#theorem(title: "O substituci pro neurčitý integrál")[
+  Nechť $f, phi$ jsou reálné funkce, kde $f: (a,b) -> RR$ a $phi: (alpha, beta) -> (a,b)$\ (tedy $f compose phi$ má smysl)
+
+  *1. Věta o substituci*
+
+  Nechť $f'$ existuje na $(a,b)$ a $phi'$ existuje na $(alpha, beta)$
+
+  Potom
+
+  #important[$
+    integral phi' f' compose phi eqc f compose phi\
+  $]
+
+  *2. Věta o substituci*
+
+  Nechť $phi'$ existuje na $(alpha, beta)$ a navíc $phi' > 0$ nebo $phi' < 0$ na $(alpha, beta)$\ (jen roste nebo jen klesá a je nenulová - *existuje inverze*)
+
+  Nechť navíc $phi: (alpha,beta) ->^"na" (a,b)$
+
+  Nechť dále $H$ je PF k $f' compose phi$ na $(alpha, beta)$
+
+  Potom
+
+  #important[$
+    integral f eqc H compose inv(phi)\
+  $]
+]
+
+#pb()
+#proof(title: "1.")[
+  $
+    (f compose phi)' = phi' f' compose phi\
+  $
+]
+
+#proof(title: "2.")[
+  $
+    (H compose inv(phi))' & = (H' compose inv(phi)) dp (inv(phi))' \
+                          & = (phi' dp f compose phi) compose inv(phi) dp 1/(phi' compose inv(phi)) \
+                          & = (phi' compose inv(phi)) dp (f compose phi compose inv(phi)) dp (1/(phi' compose inv(phi))) \
+                          & = (1) dp (f compose phi compose inv(phi)) dp 1 \
+                          & = f compose 1 \
+                          & = f
+  $
+]
+
+#pb()
+==== Příklad 1.
+$
+  integral cos(log(x))/x dif x = integral 1/x cos(log(x)) dif x eqc sin(log(x))\
+$
+nebo
+
+$
+  integral cos(log(x))/x & = \
+                       t & = log(x) \
+                   dif t & = 1/x dif x \
+                   dif x & = x dif t \
+                         & = integral cos(t)/x x dif t \
+                         & = integral cos t dif t \
+                         & = sin t \
+                         & = sin(log x) \
+$
+
+==== Příklad 2.
+$
+  integral sqrt(1 + x^2) dif x & = \
+                             x & = sinh t \
+                         dif x & = cosh x dif t \
+                               & = integral sqrt(1 + sinh^2(t)) cosh t dif t \
+                               & = integral cosh^2 t dif t \
+                               & eqc H(t) \
+                               & = H(argsinh x) \
+$
+
+#pb()
+
+=== Lepení funkcí
+- Primitivní funkce je *vždy spojitá*
+- *Každá spojitá* funkce má primitivní funkci
+
+např.
+
+Primitivní funkce musí existovat vždy, integrand je definován a spojitý na $RR$
+$
+  integral e^abs(x) dif x
+$
+tedy
+$
+  e^abs(x) & = cases(
+               e^x sq & x > 0,
+               e^(-x) sq & x < 0,
+             )
+$
+
+- na $(0, infinity)$
+$
+  integral e^abs(x) dif x & eqc e^x \
+$
+- na $(-infinity, 0)$
+$
+  integral e^abs(x) dif x & = \
+                        t & = -x \
+                    dif t & = - dif x \
+                          & = - integral e^t dif t \
+                          & eqc - e^t \
+                          & = - e^(-x) \
+$
+
+slepíme si tyto dvě funkce
+
+$
+  integral e^abs(x) dif x & = cases(
+                              e^x sq & x >= 0,
+                              -e^(-x) + 2 sq & x < 0
+                            )
+$
+
+zkusíme zderivovat na intervalech
+
+$
+  (cases(
+      e^x sq & x >= 0,
+      -e^(-x) + 2 sq & x < 0
+    ))' & = cases(
+            e^x sq & x >= 0,
+            e^x sq & x < 0
+          ) = e^x \
+$
+
+Nazvěme $G(x)$ PF k $e^abs(x)$ na $RR$
+
+potom $G(x) = e^x + C$ pro $x in (0, infinity)$ pro nějaké $C$
+
+potom $G(x) = -e^(-x) + D$ pro $x in (-infinity, 0)$ pro nějaké $D$
+
+tedy $G = F + E$ na $RR without {0}$ (ale i v $0$) pro nějaké $E$
+
+#pb()
+#claim(title: "Lepení primitivních funkcí")[
+  Nechť $f$ je reálná funkce, $a<b<c$.
+
+  Nechť také $F_1$ je PF k $f$ na $(a,b)$.
+
+  Nechť také $F_2$ je PF k $f$ na $(b,c)$.
+
+  Předpokládejme navíc, že $f$ je spojitá na $(a,c)$,\ tedy má primitivní funkci na $(a,c)$
+
+  Potom existují jednostranné limity $L_1 = lim_(x->b_-) F_1(x)$ a $L_2 = lim_(x->b_+) F_2(x)$
+
+  a platí, že
+
+  $
+    F(x) & = cases(
+             F_1(x) - L_1 sq & x in (a,b),
+             F_2(x) - L_2 sq & x in (b,c),
+             0 sq & x = 0,
+           )
+  $
+
+  #cetz.canvas({
+    import cetz.draw: *
+
+    // Define coordinate bounds and points
+    let a = 1.0
+    let b = 5.0
+    let c = 9.0
+    let L1 = 3.5
+    let L2 = 1.8
+
+    // Draw coordinate axes
+    set-style(stroke: (thickness: 0.8pt, paint: luma(100)))
+    line((0.2, 0), (9.8, 0), mark: (end: "stealth"))
+    line((0.5, -0.5), (0.5, 5.5), mark: (end: "stealth"))
+
+    content((9.9, 0), [$x$], anchor: "west")
+    content((0.5, 5.6), [$y$], anchor: "south")
+
+    // Vertical dashed domain boundary lines
+    set-style(stroke: (dash: "densely-dashed", thickness: 0.6pt, paint: luma(160)))
+    line((a, 0), (a, 4.5))
+    line((b, 0), (b, 4.5))
+    line((c, 0), (c, 4.5))
+
+    // Domain tick labels
+    content((a, -0.35), [$a$])
+    content((b, -0.35), [$b$])
+    content((c, -0.35), [$c$])
+
+    // --- Original unshifted primitives F_1(x) and F_2(x) (dashed / lighter) ---
+    // F1 segment: curve from (a, 1.2) to (b, L1)
+    bezier((a, 1.2), (b, L1), (2.2, 1.5), (3.8, 3.2), stroke: (
+      paint: blue.lighten(50%),
+      thickness: 1.2pt,
+      dash: "dotted",
+    ))
+    // F2 segment: curve from (b, L2) to (c, 4.2)
+    bezier((b, L2), (c, 4.2), (6.2, 1.9), (7.8, 3.0), stroke: (
+      paint: olive.lighten(40%),
+      thickness: 1.2pt,
+      dash: "dotted",
+    ))
+
+    // Limit value markers on the b-line
+    circle((b, L1), radius: 2.2pt, stroke: blue.lighten(30%), fill: white)
+    content((b - 0.15, L1 + 0.3), [$L_1$], anchor: "south-east")
+
+    circle((b, L2), radius: 2.2pt, stroke: olive, fill: white)
+    content((b + 0.15, L2 - 0.3), [$L_2$], anchor: "north-west")
+
+    // Vertical shift translation vectors (arrows showing normalization by -L_1 and -L_2)
+    line((3.2, 2.7), (3.2, 2.7 - L1), mark: (end: "stealth"), stroke: (paint: gray, thickness: 0.7pt))
+    content((3.3, 2.7 - L1 / 2), [$-L_1$], anchor: "west")
+
+    line((7.2, 2.5), (7.2, 2.5 - L2), mark: (end: "stealth"), stroke: (paint: gray, thickness: 0.7pt))
+    content((7.3, 2.5 - L2 / 2), [$-L_2$], anchor: "west")
+
+    // --- Glued Primitive F(x) = continuous curve (solid, bold) ---
+    // Shifted F1: y -> y - L1, terminates at (b, 0)
+    bezier((a, 1.2 - L1), (b, 0), (2.2, 1.5 - L1), (3.8, 3.2 - L1), stroke: (paint: blue, thickness: 2pt))
+    // Shifted F2: y -> y - L2, starts from (b, 0)
+    bezier((b, 0), (c, 4.2 - L2), (6.2, 1.9 - L2), (7.8, 3.0 - L2), stroke: (paint: blue, thickness: 2pt))
+
+    // Open boundary points at x = a and x = c
+    circle((a, 1.2 - L1), radius: 2.5pt, stroke: blue, fill: white)
+    circle((c, 4.2 - L2), radius: 2.5pt, stroke: blue, fill: white)
+
+    // Glued point at x = b (continuous junction F(b) = 0)
+    circle((b, 0), radius: 3pt, stroke: blue, fill: blue)
+    content((b + 0.25, 0.45), [$F(b) = 0$], anchor: "south-west")
+
+    // Curve labels
+    content((2.2, 1.8), [$F_1(x)$], anchor: "south-east")
+    content((8.0, 3.7), [$F_2(x)$], anchor: "south-west")
+    content((4.3, -1.5), [$F(x) = F_1(x) - L_1$], anchor: "north")
+    content((8.8, 1.6), [$F(x) = F_2(x) - L_2$], anchor: "north-west")
+  })
+
+]
+
+#pb()
+=== Metoda parciálních zlomků
+Zajímá nás integrace racionálních funkcí. Chceme je rozložit na něco s čím umíme pracovat.
+
+Jde o funkce následujícího typu - podíl polynomů
+
+$
+  R(x) & = P(x)/Q(x) \
+$
+
+Požadujeme
+- aby $P,Q$ byly nesoudělné (jinak podělím)
+- aby $deg(P) < deg(Q)$ (jinak podělím)
+- umím rozložit $Q$ => $Q(x) = (x-alpha_1)^(n_1) dp (x-alpha_2)^(n_2) dots (x^2 + p_1 x + q_1)^(m_1) dots (x^2 + p_l x + q_l)^(m_l)$
+  - kde komplexní kořeny mají tvar $(x^2 + p_i x + q_i)^(m_i) = (x- beta_i)^(m_i) dp (x- avg(beta_i))^(m_i)$
+  - předpokládám koeficient $1$ u nejvyšší mocniny
+
+Máme následující algoritmus:
+
+$
+  P(x)/(S(x)(x-alpha)^n) - (P(alpha)/S(alpha))/(x-alpha^n) = (P(x) - P(alpha)/S(alpha) S(x) )/(S(x) (x-alpha)^n)\
+$
+
+pak
+$
+  P(x) - P(alpha)/S(alpha) S(x) & = T^~(x) \
+                 T^~(alpha) = 0 \
+$
+tedy
+$
+  T^~ & = (x-alpha)T(x) \
+$
+
+pak
+$
+  (P(x) - P(alpha)/S(alpha) S(x) )/(S(x) (x-alpha)^n) = (T(x) (x- alpha))/(S(x)(x-alpha)^n) = T(x)/(S(x)(x-alpha)^(n-1))
+$
+
+pokračuji dále a dále, odsekávám funkce typu
+
+$
+  C/(x-a)^k\
+$
+
+a tedy
+
+$
+  deg T <= max(deg P, deg S) - 1\
+$
