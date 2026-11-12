@@ -3141,3 +3141,209 @@ a podmínka pro momenty, zvolíme např. bod působiště $ar(F)_(t 2); ar(F)_(R
 $
   ar(F)_g times ar(r)_1 + ar(F)_(R 1) times ar(r)_2 + ar(F)_(t 2) times ar(r)_3 & = ar(0) \
 $
+
+#pb()
+== Otáčení kolem pevné osy
+
+tbd obrázek
+
+$
+  (dif ar(b))/(dif t) & = ar(M)^E \
+$
+
+mějme bod $A$ na ose $o$, $ar(r)_i$ vzdálenost bodů $A$ a $B$ a vzdálenost $ar(r)_i'$ vzdálenost bodu $B$ od osy a úhel $alpha$ který svírá $ar(r)_i$ s osou
+
+$
+  ar(b)_i & = ar(r)_i times m_i ar(v)_i \
+$
+
+$ar(b)_i$ rozložíme do kolmého a rovnoběžného směru s osou
+
+$
+  ar(M)^E & = ar(M)^K + ar(M)^R \
+$
+
+a tedy
+
+$
+  (dif ar(b))/(dif t) = dif/(dif t) sum_(i=1)^n ar(b)_i^K + dif/(dif t) sum_(i=1)^n ar(b)_i^R = ar(M)^K + ar(M)^R\
+$
+
+zkoumáme rovnoběžnou složku
+
+$
+  dif/(dif t) sum ar(b)_i^R & = ar(M)^R \
+$
+
+kde
+
+$
+  abs(ar(b)_i^R) & = abs(ar(b)_i) sin alpha \
+                 & = abs(ar(r)_i times m_i ar(v)_i) sin alpha = abs(ar(r)_i) abs(ar(v)_i) m_i sin alpha \
+        abs(v)_i & = abs(ar(r)_i) abs(ar(omega)) sin alpha \
+  abs(ar(b)_i^R) & = ar(r)_i^2 omega m_i sin^2 alpha \
+  abs(ar(b)_i^R) & = ar(r)_i^2' omega^2 m_i \
+$
+
+tedy
+
+$
+  dif(dif t) sum ar(b)_i^R & = dif/(dif t) sum (m_i r_i^2) ar(omega) \
+                           & = dif/(dif t) sum J_i ar(omega) \
+                           & = dif/(dif t) J ar(omega) = ar(M)^R = ar(M) \
+$
+
+#definition(title: "2. Věta Impulzová")[
+  #important[$
+    dif/(dif t) J ar(omega) = ar(M)^R = ar(M)
+  $]
+
+  $J = "konst"$ - $ar(M) = J ar(epsilon) = J dtt(ar(phi))$
+
+  $J != "konst"$ - $ar(M) = 0$
+]
+
+#pb()
+=== Příklad 1.
+Valení homogenního válce po nakloněné rovině.
+
+tbd image
+
+mějme $alpha$, $M$, $R$, určujeme $ar(a)_s$ zrychlení hmotného středu válce
+$
+  J & = 1/2 M R^2 \
+  G & = g M \
+$
+
+Zapíšeme si obě dvě impulzové věty.
+
+1.
+$
+  M ar(a)_s & = F - F_t \
+  M ar(a)_s & = M g sin alpha - F_t \
+$
+
+kde $F_t$ je síla valivého tření
+
+2.
+$
+        J epsilon & = M \
+  1/2 M R^2 a_s/R & = F_t R \
+$
+
+dosadíme
+
+$
+  1/2 M R a_s & = M R(g sin alpha - a_s) \
+      1/2 a_s & = g sin alpha - a_s \
+      3/2 a_s & = g sin alpha \
+          a_s & = 2/3 g sin alpha \
+$
+
+Nebo jinak přes ZZME
+
+válec ve výšce $h$ - $E_(p 1) = M g h$, $E_(k 1) = 0$
+
+tedy
+
+$
+  E_(p 1) & = E_(k 2) \
+  E_(k 1) & = E_(p 2) \
+    M g h & = E_(p 1) = M g s sin alpha = 1/2 M v_s^2 + 1/2 J omega^2 \
+          & = 1/2 M v_s^2 + 1/2 M R^2 omega^2 = 3/4 M v_s^2 \
+$
+
+dosadíme
+$
+  M g 1/2 a_s t^2 sin alpha & = 3/4 M a_s^2 t^2 \
+                        a_s & = 2/3 g sin alpha \
+$
+
+#pb()
+=== Fyzické a matematické kyvadlo
+
+tbd image
+
+$
+          M & = - m g a sin alpha \
+  J epsilon & = J dtt(alpha) = - m g a sin alpha \
+$
+tedy
+$
+  dtt(alpha) + (m g a)/J sin alpha = 0\
+$
+
+počítáme výchylku do $5 degree$ 🤫, tedy $sin alpha approx alpha$
+
+a tedy dostáváme
+$
+  dtt(alpha) + (m g a)/J alpha = 0\
+$
+
+netlumený lineární harmonický oscilátor, kde
+
+$
+  omega & = sqrt((m g a)/J) \
+      T & = (2 pi)/omega = 2 pi sqrt(J/(m g a)) \
+$
+
+zobecníme na matematické kyvadlo s délkou $l$ na nehmotném závěsu...
+
+a tedy
+$
+  T = 2 pi sqrt(J/(m g a)) = 2 pi sqrt((m l^2)/(m g l)) = 2pi sqrt(l/g)\
+$
+
+redukovaná délka $l_r$...
+
+$
+    T & = 2 pi sqrt(l_r/g) \
+  l_r & = J/(m a) \
+$
+
+#pb()
+== Rotace kolem pevného bodu
+=== Inerciální soustava
+bod $O$ v počátku soustavy, $ar(r) = vec(x, y, z)$
+
+pak píšeme
+$
+  ar(r)_i & = ar(omega) times ar(r)_i \
+        J & = ar(r)_i times m_i ar(v)_i \
+        J & = ar(r)_i times m_i (ar(omega) times ar(r)_i) \
+    ar(B) & = sum_(i=1)^n m_i ar(r)_i times (ar(omega) times ar(r)_i) \
+$
+
+složený vektorový součin
+$
+  ar(a) times (ar(b) times ar(c)) & = (ar(a) dp ar(c)) ar(b) - (ar(a) dp ar(b)) ar(c) \
+$
+
+a tedy
+
+$
+        ar(B) & = sum_(i=1)^n m_i (r_i^2 ar(omega) - (ar(omega) dp ar(r)_i) ar(r)_i) \
+  "kde" ar(B) & parallel.not ar(omega) sq !!! \
+$
+
+využijeme poznatek z LA
+
+$
+      ar(B) & = vec(B_x, B_y, B_z) \
+  ar(omega) & = vec(omega_x, omega_y, omega_z) \
+$
+
+$
+  I = mat(
+    sum_(i=1)^n m_i (y_i^2 + z_i^2), sum_(i=1)^n - m_i x_i y_i, sum_(i=1)^n - m_i x_i z_i;
+    sum_(i=1)^n - m_i x_i y_i, sum_(i=1)^n m_i (x_i^2 + z_i^2), sum_(i=1)^n - m_i y_i z_i
+    ;
+    sum_(i=1)^n - m_i x_i z_i, sum_(i=1)^n - m_i y_i z_i, sum_(i=1)^n m_i (x_i^2 + y_i^2)
+  )
+$
+
+$
+  ar(B) & = I ar(omega) \
+$
+
+kde $ar(B), ar(r)_i, ar(omega)$ jsou funkce času 😭 a $I$ je veličina tenzorové povahy...
