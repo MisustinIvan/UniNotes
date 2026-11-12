@@ -9,6 +9,9 @@
   body
 }
 
+// helpers
+#let eqc = [$=^"\"c\""$]
+
 // spacing
 #let sq = math.space.quad
 #let pb = pagebreak
@@ -18,6 +21,8 @@
 #let rem = math.op("rem")
 #let erf = math.op("erf")
 #let argmax = math.op("argmax")
+#let cov = math.op("cov")
+#let avg(body) = math.overline(body)
 
 // differentials
 #let dx = math.op("dx")
@@ -46,6 +51,7 @@
 #let dt(body) = math.accent(body, math.dot)
 #let dtt(body) = math.accent(body, math.dot.double)
 #let grad = math.op("grad")
+#let dp = math.dot.op
 
 // linear algebra
 #let rank = math.op("rank")
