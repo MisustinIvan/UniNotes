@@ -2680,3 +2680,202 @@ a tedy
 $
   deg T <= max(deg P, deg S) - 1\
 $
+
+#pb()
+Iterativním postupem vyjádříme podíl jako součet parciálních zlomků:
+
+$
+  P(x)/Q(x) = sum_i A_i/(x-x_i)^k
+$
+
+kde $A_i in RR or AA in CC$
+
+pro $A_i in RR$ umíme integrovat
+
+$
+  integral A_i/(x-x_i)^k dif x = cases(
+    A ln(abs(x-x_i)) sq & k=1,
+    A_i (x-x_i)^(-k+1)/(-k + 1) sq & k!=1
+  )
+$
+
+např.
+
+$
+  integral (x^2 + 1)/(x^3 - x) dif x & = dots \
+                 (x^2 + 1)/(x^3 - x) & = A/x + B/(x-1) + C/(x+1) \
+                                     & = (-1)/x + 1/(x-1) + 1/(x+1) \
+  integral (x^2 + 1)/(x^3 - x) dif x & = integral (-1)/x dif x + integral 1/(x-1) dif x + integral 1/(x+1) dif x
+$
+
+pro komplexní kořen $a_i -> avg(a)_i$ je taky kořen se stejnou násobností $n in NN$
+
+$
+  -> A/(x-a)^n + B/(x-avg(a))^n\
+$
+
+vím, že $B = avg(A)$
+
+převedu na společný jmenovatel, dole budu mít kvadratický polynom(pro $n=1$)...
+
+tedy
+$
+  &-> A/(x-a) + avg(A)/(x-avg(a)) = (x(A+avg(A)) - (A avg(a) + avg(A) a))/(x^2 - x(a+avg(a)) + a avg(a)) = (C x + D)/(x^2 + p x + q)\
+$
+
+chceme integrovat pro $k>1$
+
+$
+  (C x + D)/(x^2 + p x + q)^k
+$
+
+pomocí lineární substituce(detaily na cvičení) převedu na tvar:
+
+$
+  (A x + B)/(x^2 + 1)^k
+$
+
+#pb()
+tedy
+$
+  integral (A x + B)/(x^2 + 1)^k dif x & = A/2 integral (2x)/(x^2 + 1)^k dif x + B integral 1/(x^2 + 1)^k dif x \
+                                       & = cases(
+                                           ln(x^2 + 1) sq & k=1,
+                                           (x^2 + 1)^(-k + 1)/(-k + 1) sq & k>1
+                                         ) + B integral 1/(x^2 + 1)^k dif x
+$
+
+pro $k=1$
+
+$
+  B integral 1/(x^2 + 1) dif x eqc B arctan(x)
+$
+
+pro $k=2$ - hnusný trik(počítáme pro $k=1$)
+
+nejprve per partes
+$
+      integral 1/(x^2 + 1) dif x & = dots \
+                                 \
+                  u = 1/(x^2 +1) & ; u' = (-2x)/(x^2 + 1)^2 \
+                          v' = 1 & ; v = x \
+                                 \
+                                 & = x/(x^2 + 1) + integral (2x^2)/(x^2 + 1)^2 dif x \
+                                 & = x/(x^2 + 1) + integral (2x^2 + 2 - 2)/(x^2 + 1)^2 dif x \
+                                 & = x/(x^2 + 1) + integral (2x^2 + 2)/(x^2 + 1)^2 dif x - integral (2)/(x^2 + 1)^2 dif x \
+      integral 1/(x^2 + 1) dif x & = x/(x^2 + 1) + integral (2x^2 + 2)/(x^2 + 1)^2 dif x - integral (2)/(x^2 + 1)^2 dif x \
+  2 integral 1/(x^2 + 1)^2 dif x & = x/(x^2 + 1) + integral (2x^2 + 2)/(x^2 + 1)^2 dif x - integral (1)/(x^2 + 1) dif x \
+  2 integral 1/(x^2 + 1)^2 dif x & = x/(x^2 + 1) + 2 integral (x^2 + 1)/(x^2 + 1)^2 dif x - integral (1)/(x^2 + 1) dif x \
+  2 integral 1/(x^2 + 1)^2 dif x & = x/(x^2 + 1) + 2 integral 1/(x^2 + 1) dif x - integral (1)/(x^2 + 1) dif x \
+  2 integral 1/(x^2 + 1)^2 dif x & = x/(x^2 + 1) + integral 1/(x^2 + 1) dif x \
+  2 integral 1/(x^2 + 1)^2 dif x & = x/(x^2 + 1) + arctan x \
+    integral 1/(x^2 + 1)^2 dif x & eqc 1/2 (x/(x^2 + 1) + arctan x) \
+$
+
+analogicky pro vyšší mocniny, začínám vždy s $k-1$ mocninou
+
+#pb()
+
+==== Převod na parciální zlomky(spousta substitucí)
+např.
+$
+        & integral 1/(x + root(n, x+1)) \
+        \
+      t & = root(n, x+1) \
+      x & = t^n - 1 \
+  dif x & = n t^(n-1) dif t \
+        \
+        & = integral (n t^(n-1))/(t^n -1 + t) dif t \
+$
+
+postupuji dále podle parciálních zlomků...
+
+#pb()
+== Aplikace určitého integrálu - Diferenciální rovnice - ODR
+=== Rovnice se separovanou proměnnou
+rovnice typu:
+$
+  y' & = f(y) dp g(x) \
+$
+např.
+$
+  y' & = y^2 dp x^2 \
+$
+provedeme následující úpravu:
+
+$
+                 (y')/f(y) & = g(x) \
+  integral (y')/f(y) dif x & = integral g(x) dif x \
+$
+
+$G$ PF k $g$
+
+$F$ PF k $1/f$
+
+$
+  (F(y))' = y' 1/f(y)
+$
+
+nechť $t = y$
+
+pak
+
+$
+  F(y) & = G + C \
+     y & = inv(F) compose (G + C) \
+  y(x) & = inv(F)(G(x) + C) \
+$
+
+je řešení
+
+#pb()
+=== Lineární diferenciální rovnice 1. řádu
+rovnice typu:
+$
+  y' + alpha(x) y & = beta(x) \
+$
+
+$A$ PF k $alpha$, přenásobím $e^A(x)$
+
+tedy
+$
+  y' e^A(x) + alpha(x) y e^A(x) & = beta(x) e^A(x) \
+                                & "kde" \
+                     (y e^A(x)) & = y' e^A(x) + alpha(x) y e^A(x) \
+$
+nechť $B$ je PF k $beta(x) e^A(x)$, potom
+
+$
+  y e^A(x) & =B(x) + C \
+         y & =B(x) e^(-A(x)) + C e^(-A(x)) \
+$
+
+==== Slovní úlohy vole
+
+Mějme nádobu s $V_0$ *čisté* vody. Lijeme do ní *blíže neidentifikovanou špinavou žlutou kapalinu* rychlostí $R "l" inv("s")$. V nádobě je díra, kterou obsah vytéká rychlostí $S "l" inv(s)$. *Blíže neidentifikovaná špinavá žlutá kapalina* se *okamžitě* smísí s čistou vodou.
+
+Chcheme spočítat časovou závislost koncentrace *blíže neidentifikované špinavé žluté kapaliny*.
+
+Uvažujme následující diskrétní úlohu, kde za $Delta t$ trošičku upustíme piss bucket a pak trošičku přicmrndmene chcanek.
+
+Upustíme $Delta t dp S$ piss bucketu
+
+Přicmrndneme $Delta t dp R$ chcanek
+
+$K(t)$ = koncentrace chcanek v čase $t$
+$V(t)$ = objem v čase $t$
+$W(t)$ = množství chcanek v čase $t$
+
+
+tedy $K(t) = W(t)/V(t)$
+
+$
+                     W(t + Delta t) & = W(t) - Delta t dp S dp K(t) + Delta t dp R \
+                     W(t + Delta t) & = W(t) + Delta t (- S W(t)/V(t) + R) \
+  (W(t + Delta t) - W(t))/(Delta t) & = R - S W(t)/V(t) \
+                              W'(t) & = R - S W(t)/V(t) \
+                                    \
+                               V(t) & = V_0 + (R-S)t \
+                                    \
+                              W'(t) & = R - S W(t)/(V_0 + (R-S)t) \
+$
