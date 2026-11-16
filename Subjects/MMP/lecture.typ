@@ -3347,3 +3347,93 @@ $
 $
 
 kde $ar(B), ar(r)_i, ar(omega)$ jsou funkce času 😭 a $I$ je veličina tenzorové povahy...
+
+#pb()
+Označíme $I$ $ts(J)$ přenesené do soustavy spojené s tělesem i guess
+
+$
+  ts(J) = mat(
+    J_(x' x'), J_(x' y'), J_(x' z');
+    J_(y' x'), J_(y' y'), J_(y' z');
+    J_(z' x'), J_(z' y'), J_(z' z')
+  )
+$
+
+A označíme dále
+
+$
+      ar(B) & = vec(B_x', B_y', B_z') \
+  ar(omega) & = vec(omega_x', omega_y', omega_z') \
+    ar(M)^E & = vec(M^E_x', M^E_y', M^E_z') \
+$
+
+Přepis 2. impulzové věty
+
+$
+  (dif ar(B))/(dif t) & = ar(M)^E \
+$
+#important(caption: "Eulerova rovnice")[$
+  (dif ar(B))/(dif t) & = (dif' ar(B))/(dif t) + ar(omega) times ar(B) = ar(M)^E \
+$]
+
+po složkách
+$
+  (dif B_x')/(dif t) + omega_y' B_z' - omega_z' B_y' & = M^E_x' \
+  (dif B_y')/(dif t) + omega_z' B_x' - omega_x' B_z' & = M^E_y' \
+  (dif B_z')/(dif t) + omega_x' B_y' - omega_y' B_x' & = M^E_y' \
+$
+
+#pb()
+Struktura toho zasranýho tenzoru
+
+#important[$
+  ts(J) = dmat(
+    sum_(i=1)^n m_i (y_i '^2 + z_i '^2), sum_(i=1)^n - m_i x_i ' y_i ', sum_(i=1)^n - m_i x_i ' z_i ';
+    sum_(i=1)^n - m_i x_i ' y_i ', sum_(i=1)^n m_i (x_i '^2 + z_i '^2), sum_(i=1)^n - m_i y_i ' z_i '
+    ;
+    sum_(i=1)^n - m_i x_i ' z_i ', sum_(i=1)^n - m_i y_i ' z_i ', sum_(i=1)^n m_i (x_i '^2 + y_i '^2)
+  )
+$]
+
+Je to zasraný *symetrický tenzor druhého řádu*...
+
+Charakteristika rozložení hmoty v tělese
+
+Diagonální členy charakterizují rozložení hmoty při jednotlivých osách
+
+Nediagonální členy vyjadřují tzv *Deviační momenty*
+
+=== Transformace tenzoru...
+
+$
+  T_(i j) ' & = sum_(k = 1)^3 sum_(l = 1)^3 a_(i k) a(j l) T_(k l) \
+     ts(T)' & = A ts(T) A^T \
+$
+
+=== Hlavní osy tenzoru
+Jestli existují nějaké osy kdy můžeme nahradit tenzor skalárem
+$
+        ts(J) ar(omega) & = J ar(omega) \
+  (ts(J) - J) ar(omega) & = 0 \
+  dmat(
+    J_(x' x') - J, dots, dots;
+    dots, J_(y' y') - J, dots;
+    dots, dots, J_(z' z') - J;
+  ) ar(omega)           & = 0 \
+$
+
+$
+  det(ts(J) - J) & = 0 \
+$
+
+kubická rovnice pro $J$, bez důkazu má 3 reálné kořeny - vlastní čísla.
+
+Ke každému vlastnímu číslu nalezneme vlastní vektor určující směr osy otáčení.
+
+Tedy
+
+$
+  J_1 != J_2 != J_3 => gamma_1 perp gamma_2 perp gamma_3\
+$
+
+Máme hlavní momenty setrvačnosti a hlavní osy. V homogenním tělese odpovídají osám symetrie
