@@ -1284,3 +1284,224 @@ $
     [v]^C & = ["Id"]_B^C [v]^B \
   $
 ]
+
+#pb()
+#claim(title: "Reprezentace matice složeného zobrazení")[
+  Máme 3 VP konečné dimenze $U ->^h V ->^f W$ a 2 zobrazení,\ $D$ báze $U$, $B$ báze $V$ a $C$ báze $W$.
+
+  Pak platí:
+
+  $
+    [f compose h]_D^C = [f]_B^C [g]_D^B
+  $
+]
+
+#proof()[
+  nechť $u in U$
+
+  $
+        [(f compose h)(u)]^C & = [f(h(u))]^C = [f]_B^C [h(u)]^B = [f]_B^C [h]_D^B [u]^D \
+    => [f]_B^C [h]_D^B [u]^D & = [f compose h]^C_D [u]^D \
+          => [f]_B^C [h]_D^B & = [f compose h]^C_D \
+  $
+
+  mohu postupně za $u$ dosazovat prvky báze $D$, zjistím že se sloupce matic rovnají...
+]
+
+#claim(title: "Transformační formule pro lineární zobrazení")[
+  Nechť $f: V -> W$ a $B,B'$ jsou dvě báze ve $V$ a $C,C'$ jsou dvě báze ve $W$.
+
+  Potom:
+
+  $
+    [f]_B'^C' = ["Id"]_C^C' [f]_B^C ["Id"]_B'^B
+  $
+
+  (prostě to obalím z obou stran věcí co mi přechroustá data z jednoho formátu do druhýho)
+]
+
+#proof()[
+  $
+           f & = "Id"_W compose f compose "Id"_V \
+    [f]_B'C' & = ["Id"_W]^C'_C [f]^C_B ["Id"_V]_B'^B \
+  $
+]
+
+#pb()
+= Lineární zobrazení $equiv$ Homomorfismus (v.p.)
+- $hom(V, W)$ je množina všech *homomorfismů* z $V$ do $W$
+- $V = W$, lineární zobrazení $f: V -> V$ je *endomorfismus*
+  - používáme značení $end(V) := hom(V, V)$
+
+- máme li endomorfismus $f: V->V$, $B,B'$ báze $V$, pak
+$
+  [f]_B'^B & = [id]^B'_B [f]_B^B [id]^B_B' \
+        A' & = [id]^B'_B [f]_B^B [id]^B_B' = inv(R) A R \
+$
+
+- $A'$ a $A$ nazýváme *podobné* - reprezentují stejné lineární zobrazení v různých bázích
+
+#definition(title: "Šmí")[
+  Operátor *šmí* definujeme jako *abstraktní nesmysl*.
+
+  $
+    smi ar(x) = a.n.
+  $
+]
+
+$hom(V, W)$ je *vektorový prostor*
+- s operacemi
+  - sčítání zobrazení
+    - $f,g in hom(V, W) => f + g in hom(V, W)$
+    - $(f+g)(x) = f(x) + g(x)$
+  - násobení zobrazení skalárem
+    - $f in hom(V, W) => r f in hom(V, W)$
+    - $(r f)(x) = r f(x)$
+
+- minule - $V$ nad $FF$, $B$ báze $V$
+  - $[space]^B: -> V -> FF^n$ je *izomorfismus*(bijektivní homomorfismus)
+
+#pb()
+#theorem()[
+  Pokud $dim V = n$ a $dim W = m$, pak $dim hom(V, W) = n m$
+]
+
+#proof()[
+  $B$ je báze $V$, $C$ je báze $W$
+
+  Ukážeme, že $[space]^C_B: hom(V, W) -> FF^(m times n)$ je izomorfismus
+
+  z definice:
+  + $[space]_B^C$ je lineární
+  + $[space]_B^C$ je bijektivní $[f]^C_B = matcol([f(v_1)]^C, dots)$
+
+  tedy
+  $
+    matcol([f(r f + s g)]^C, dots) & = matcol([r f(b_1) + s g(b_1)]^C, dots) \
+                                   & = matcol(r[f(b_1)]^C + s[g(b_1)]^C, dots) \
+                                   & = r matcol([f(b_1)]^C, dots) + s matcol([g(b_1)]^C, dots) \
+                                   & = r[f]_B^C + s [g]_B^C \
+  $
+]
+
+#corollary()[
+  $
+    dim end(V) = n^2
+  $
+]
+
+#pb()
+#theorem()[
+  Dva VP $V,W$ konečné dimenze jsou *izomorfní*\ (existuje mezi nimi izomorfismus $f:V->W$), *právě když* $dim V = dim W$
+]
+
+#proof(title: [$=>$])[
+  dokázáno minule
+]
+
+#proof(title: [$arrow.double.l$])[
+  $B$ je báze $V$, $C$ je báze $W$, $abs(B) = abs(C) = n$
+
+  tedy
+  $
+    g := [space]^B: V->FF^n\
+    h := [space]^C: W->FF^n\
+  $
+
+  $g,h$ jsou izomorfismy, $inv(g), inv(h)$ jsou také izomorfismy
+
+  $
+    inv(g) : FF^n -> V\
+    inv(h) : FF^n -> W\
+  $
+
+  tedy
+
+  $
+    inv(h) compose g : V->W "je také izomorfismus"
+  $
+]
+
+např.
+
+$
+                                   V & = RR^(2 times 2) \
+                                   W & = P_3(x,RR) \
+                                   B & = (mat(
+                                           1, 0;
+                                           0, 0
+                                         ), mat(
+                                           0, 1;
+                                           0, 0
+                                         ),mat(
+                                           0, 0;
+                                           1, 0
+                                         ),mat(
+                                           0, 0;
+                                           0, 1
+                                         )) \
+                                   C & = (1, x, x^2, x^3) \
+  (inv(h) compose g) mat(a, b; c, d) & = a + b x + c x^2 + d x^3 \
+$
+
+jsou izomorfní
+
+#pb()
+#theorem(title: "Zadání homomorfismu hodnotami na bázi")[
+  Nechť $V,W$ VP nad $F$, $B = (v_1,dots, v_n)$ báze $V$,
+  $(w_1, dots, w_n)$ posloupnost vektorů $W$.
+
+  Pak existuje právě jeden $f in hom(V, W)$, pro který
+
+  $
+    f(v_1) = w_1, f(v_2) = w_2 sq dots sq f(v_n) = w_n
+  $
+
+
+]
+
+#proof(title: "Nástin")[
+  $
+    v in V & => exists! vec(r_1, r_2, dots.v, r_n) in FF^n; sq v = sum_(i=1)^n r_i v_i \
+      f(v) & = f(sum_(i=1)^n r_i v_i) := sum_(i=1)^n r_i w_i = sum_(i=1)^n r_i f(v_i)
+  $
+
+  ...
+]
+
+#theorem(title: "O dimenzi jádra a obrazu homomorfismu")[
+  Nechť $V,W$ VP nad $FF$, $dim V = n$, $f in hom(V, W)$
+
+  pak $dim ker f + dim im f = n$
+]
+
+#proof(title: [pro $dim W = m$])[
+  $B$ báze $V$, $C$ báze $W$, $abs(B) = n; sq abs(C) = m$
+
+  věta o hodnosti a nulitě $dim ker[f]_B^C + dim im[f]_B^C =$ počet sloupců $[f]_B^C = abs(B) = n$
+
+  - $[ker f]^B = ker[f]_B^C$
+  - $[im f]^C = im[f]_C^B$
+
+  - $[space]^B: V -> FF^n$ izomorfismus => zachovává dimenzi => $dim[ker f]^B = dim ker f$
+  - $[space]^C: W -> FF^m$ izomorfismus => zachovává dimenzi => $dim[im f]^B = dim im f$
+
+  tedy
+
+  $
+    dim ker f + dim im f = n
+  $
+]
+#pb()
+#claim()[
+  $f in end(V)$, pak
+  + $f$ je *monomorfismus*(prosté LZ) => $f$ je *epimorfismus*(surjektivní LZ)
+  + $f$ je *epimorfismus* => $f$ je *monomorfismus*
+  + $f$ je *epimorfismus* nebo *monoformismus* => $f$ je *izomorfmismus*
+]
+
+#proof(title: "1.")[
+  $f$ mono <=> $ker f = 0$ <=> $dim ker f = 0$
+
+  => $dim im f = n = dim V => im f = V$ => $f$ je epi
+]
