@@ -1,5 +1,6 @@
 #import "@preview/cetz:0.5.2"
 #import "@preview/cetz-plot:0.1.4": plot
+#import "./units.typ": *
 
 #let boilerplate(body) = {
   set text(font: "Iosevka NF")

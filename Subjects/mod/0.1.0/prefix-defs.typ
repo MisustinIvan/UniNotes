@@ -1,0 +1,40 @@
+// Prefix names -> symbols. Imported by units.typ as the `prefixes` module.
+// The "unary" class marks them as prefixes when used in math input.
+#let _p(s) = math.class("unary", s)
+
+// SI prefixes
+#let quecto = _p("q")
+#let ronto = _p("r")
+#let yocto = _p("y")
+#let zepto = _p("z")
+#let atto = _p("a")
+#let femto = _p("f")
+#let pico = _p("p")
+#let nano = _p("n")
+#let micro = _p("μ")
+#let milli = _p("m")
+#let centi = _p("c")
+#let deci = _p("d")
+#let deca = _p("da")
+#let deka = deca
+#let hecto = _p("h")
+#let kilo = _p("k")
+#let mega = _p("M")
+#let giga = _p("G")
+#let tera = _p("T")
+#let peta = _p("P")
+#let exa = _p("E")
+#let zetta = _p("Z")
+#let yotta = _p("Y")
+#let ronna = _p("R")
+#let quetta = _p("Q")
+
+// Binary prefixes
+#let kibi = _p("Ki")
+#let mebi = _p("Mi")
+#let gibi = _p("Gi")
+#let tebi = _p("Ti")
+#let pebi = _p("Pi")
+#let exbi = _p("Ei")
+#let zebi = _p("Zi")
+#let yobi = _p("Yi")
