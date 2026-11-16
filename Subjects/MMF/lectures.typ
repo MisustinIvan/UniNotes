@@ -1348,3 +1348,200 @@ $
   Omega^2 m_+ = omega_+ m_+ & -> m_+ = 1/sqrt(2) vec(1, -1) \
                             & -> m_- = 1/sqrt(2) vec(1, 1) \
 $
+
+#pb()
+==== Rotace
+
+$
+  (ar(a), M ar(b)) & = (M^T ar(a), ar(b)) \
+$
+
+chci operace které zachovávají skalární součin:
+
+$
+  (R ar(a), R ar(b)) & = (ar(a), ar(b)) = (R^T R ar(a), ar(b)) \
+        "tedy: " R^T & = inv(R) \
+     "a " R^T inv(R) & = E \
+$
+
+tedy matice splnňuje následující vztah
+$
+  sum_i R^(T a)_i R^i_b & = delta_b^a \
+$
+
+===== Rotace ve 2 dimenzích
+$
+            ar(b) & = R_alpha ar(a) \
+  R_alpha ar(e)_1 & = cos alpha ar(e)_1 + sin alpha ar(e)_2 \
+  R_alpha ar(e)_2 & = -sin alpha ar(e)_1 + cos alpha ar(e)_2 \
+          R_alpha & = mat(
+                      cos alpha, -sin alpha;
+                      sin alpha, cos alpha
+                    )
+$
+
+aplikována na bázové vektory $e_1 -> e_1'$ a $e_2 -> e_2'$ tvoří otočenou ortonormální bázi
+
+Matice přechodu
+
+$
+                  B & = (ar(e)_1, ar(e)_2) \
+                  B & = (R_alpha ar(e)_1, R_alpha ar(e)_2) \
+  vec(e_1 ', e_2 ') & = mat(
+                        cos alpha, sin alpha;
+                        -sin alpha, cos alpha
+                      ) vec(e_1, e_2)
+$
+
+Vlastnosti rotace
+
+$
+  R_alpha compose R_beta & = R_(alpha + beta) \
+                     R_0 & = E \
+$
+
+otočení o malý úhel $dif alpha, R_(dif alpha)$
+
+$
+  cos dif alpha & = 1 + sigma(dif alpha^2) \
+  sin dif alpha & = dif alpha + sigma(dif alpha^3) \
+                \
+  R_(dif alpha) & = mat(
+                    1, -dif alpha;
+                    dif alpha, 1;
+                  ) + sigma(dif alpha^2) \
+                \
+  R_(dif alpha) & = E_2 + dif alpha mat(
+                    0, -1;
+                    1, 0;
+                  ) + sigma(dif alpha^2) \
+                \
+  R_(dif alpha) & = E_2 + dif alpha cal(E) + dots \
+$
+
+#pb()
+vlastnosti $cal(E)$
+
+mocniny
+$
+  cal(E)^2 & = mat(0, -1; 1, 0) dp mat(0, -1; 1, 0) = mat(-1, 0; 0, -1) = -E_2 \
+  cal(E)^3 & = - cal(E) \
+  cal(E)^4 & = E_2 \
+  cal(E)^5 & = cal(E) \
+$
+
+stejné chování jako komplexní jednotka $i$!!!
+
+no dobře no, jdeme tu matici narvat do $exp$...
+
+$
+  exp(alpha cal(E)) & = E cos alpha + cal(E) sin alpha \
+                    & = R_alpha = mat(
+                        cos alpha, - sin alpha;
+                        sin alpha, cos alpha
+                      ) \
+$
+
+opravdu:
+
+$
+  exp(alpha cal(E)) & = sum_(n=0)^infinity 1/(n!) alpha^n cal(E)^n \
+$
+
+sudé mocniny:
+$
+  exp(alpha cal(E)) & = sum_(k=1)^infinity 1/((2k)!) alpha^(2k) cal(E)^(2k) = cos alpha \
+        cal(E)^(2k) & = (-1)^k E_2 \
+$
+
+liché mocniny:
+$
+  exp(alpha cal(E)) & = sum_(k=0)^infinity 1/((2k+1)!) alpha^k cal(E)^k = sin alpha \
+      cal(E)^(2k+1) & = (-1)^k cal(E) \
+$
+
+Co je $cal(E)$? - otočení o $pi/2$
+
+tedy $R_alpha ar(a) = ar(a) + dif a cal(E) ar(a)$
+
+hesla - Liova grupa, Liova algebra, exponenciální mapa, tečný prostor
+
+
+#pb()
+===== Rotace ve 3D
+
+*antisymetrická matice* - $A^T = - A$
+
+např.
+
+$
+  Omega = mat(
+    0, -omega_3, omega_2;
+    omega_3, 0, -omega_1;
+    -omega_2, omega_1, 0
+  )
+$
+
+nese 3 informace, HMMMM, to taky nese vektor v $RR^3$, tedy přenesu na vektor
+
+$
+  Omega & = cal(E)_omega \
+  omega & = vec(omega_1, omega_2, omega_3) \
+$
+
+$
+         bb(b) & = cal(E)_omega bb(a) = mat(
+                   -omega_3 a_1 + omega_2 a_3;
+                   omega_3 a_1 - omega_1 a_3;
+                   -omega_2 a_1 + omega_1 a_2;
+                 ) \
+  cal(E)_omega & = omega times
+$
+
+jiný zápis
+
+$
+  b^i & = sum_(k l) epsilon^i_(k l) omega^k a^l \
+$
+
+kde $epsilon^i_(k l)$ je tzv. *Levi-Civitův* symbol
+
+$
+  epsilon^i_(k l) = cases(
+    +1 sq & "sudá permutace "(1,2,3),
+    -1 sq & "lichá permutace "(1,2,3),
+    0 sq & "není permutace "(1,2,3),
+  )
+$
+
+př. $b^1$
+
+$
+  b^1 = sum_(k l) epsilon^1_(k l) omega^k a^l = epsilon^1_(2 3) omega^2 a^3 + epsilon^1_(3 2)omega^3 a^2 dots
+$
+
+Parametrizace rotace ve 3D - osa, úhel
+
+$
+  alpha & = dots degree \
+  ar(o) & = dots; abs(ar(o)) = 1 \
+$
+
+vektor se pohybuje na plášti kužele ..., dalo by se říct že při projekci do vhodné roviny se otačí v rovině
+
+$
+  R_(ar(o); alpha) ar(a) & = R_(ar(o); alpha) ar(a_(parallel)) + R_(ar(o); alpha) ar(a_(perp)) = ar(a_(parallel)) + R_(ar(o); alpha) ar(a_(perp))\
+  &= ar(a)_parallel + cos(alpha) ar(a)_perp + sin(alpha) ar(o) times ar(a)_perp
+$
+
+chceme operaci která nám rozloží vektor na kolou a rovnoběžnou složku k ose...
+
+$
+  R_(ar(o); alpha) ar(a) & = [P^parallel_ar(o) + cos(alpha) P^perp_ar(o) + sin(alpha) cal(E)_ar(o)] ar(a) \
+$
+
+rotace ve 3D nejsou komutativní...
+
+#pb()
+
+==== Časový vývoj a změna v čase
