@@ -24,6 +24,11 @@
 #let cov = math.op("cov")
 #let avg(body) = math.overline(body)
 
+#let smi = math.class(
+  "binary",
+  box(baseline: 0.1em, image("smi.svg", height: 1.0em)),
+)
+
 // differentials
 #let dx = math.op("dx")
 #let dy = math.op("dy")
@@ -52,6 +57,7 @@
 #let dtt(body) = math.accent(body, math.dot.double)
 #let grad = math.op("grad")
 #let dp = math.dot.op
+#let ts(body) = math.accent(body, math.arrow.l.r)
 
 // linear algebra
 #let rank = math.op("rank")
@@ -59,6 +65,19 @@
 #let nul = math.op("nul")
 #let inv(body) = $body^(-1)$
 #let span(..args) = $lr(chevron.l #args.pos().join($,$) chevron.r)$
+#let dmat(..args) = {
+  let wrap(cell) = math.display(cell)
+  let pos = args
+    .pos()
+    .map(row => {
+      if type(row) == array { row.map(wrap) } else { wrap(row) }
+    })
+  math.mat(..pos, ..args.named())
+}
+#let hom = math.op("Hom")
+#let end = math.op("End")
+#let id = math.op("Id")
+#let im = math.op("Im")
 
 // Matrix given by columns, separated by vertical lines.
 // Usage: $matcol((1, 2), (3, 4))$
@@ -101,6 +120,9 @@
 }
 
 #let thm-counter = counter("theorem")
+#let cor-counter = counter("corrolary")
+#let lem-counter = counter("lemma")
+#let clm-counter = counter("claim")
 #let def-counter = counter("definition")
 
 #let env-block(
@@ -156,7 +178,7 @@
 #let claim(title: none, body) = env-block(
   title: title,
   prefix: "Tvrzení",
-  cnt: thm-counter,
+  cnt: clm-counter,
   body,
   border-color: rgb("0e7490"),
   bg-color: rgb("ecfeff"),
@@ -165,7 +187,7 @@
 #let lemma(title: none, body) = env-block(
   title: title,
   prefix: "Lemma",
-  cnt: thm-counter,
+  cnt: lem-counter,
   body,
   border-color: rgb("6d28d9"),
   bg-color: rgb("f5f3ff"),
@@ -174,7 +196,7 @@
 #let corollary(title: none, body) = env-block(
   title: title,
   prefix: "Důsledek",
-  cnt: thm-counter,
+  cnt: cor-counter,
   body,
   border-color: rgb("4d7c0f"),
   bg-color: rgb("f7fee7"),
