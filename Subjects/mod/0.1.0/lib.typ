@@ -80,6 +80,10 @@
 #let id = math.op("Id")
 #let im = math.op("Im")
 
+// sql for squiggly line(tilde) accent.\
+// shorthand for math.accent(body, "\~")
+#let sql(body) = math.accent(body, "~")
+
 // Matrix given by columns, separated by vertical lines.
 // Usage: $matcol((1, 2), (3, 4))$
 #let matcol(..cols, delim: "[", stroke: 0.5pt) = {
