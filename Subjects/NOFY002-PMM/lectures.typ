@@ -1545,3 +1545,145 @@ rotace ve 3D nejsou komutativní...
 #pb()
 
 ==== Časový vývoj a změna v čase
+===== Pro jednu soustavu
+- křivka v $RR -> EE^3 <=> X(t)$
+- tečný vektor křivky
+  $
+    ar(v) = (dif X)/(dif t) = lim_(epsilon -> 0) (X(t+epsilon) - X(t))/epsilon
+  $
+  - klid $equiv$ identifikace bodů v různých časech
+- vztažná soustava
+  $
+    S: & attach(0, tl: S) dots "počátek" \
+       & attach(ar(e), tl: S)_(1,2,3) dots "osy - ortonormální" \
+  $
+- klid vzhledem k soustavě
+  $
+                (attach(dif, tl: S))/(dif t) attach(0, tl: S) & = 0 \
+    (attach(dif, tl: S))/(dif t) attach(ar(e), tl: S)_(1,2,3) & = 0 \
+  $
+
+===== Pro dvě soustavy
+- máme dvě soustavy $I$ a $N$
+  $
+                attach(O, tl: I) & = O \
+    attach(ar(e), tl: I)_(1,2,3) & = attach(ar(e), tl: I)_(1,2,3) \
+                attach(O, tl: N) & = P \
+    attach(ar(e), tl: N)_(1,2,3) & = ar(f)_(1,2,3)
+  $
+- jaký je vztah $I$ a $N$?
+- rotace
+  $
+    ar(f)_i = sum_j ar(e)_j R_i^j
+  $
+  - ortonormalita
+    $
+      delta_(i,j) = (ar(f)_i, ar(f)_j) = sum_k R_i^k R_j^l (ar(e)_k, ar(e)_j) = sum_k R_i^k R_j^k = R R^T = bb(1) = E
+    $
+  - posun
+    $
+      P = O + ar(R) = O + sum_i X^i ar(e)_i
+    $
+
+#pb()
+===== Transformace souřadnic
+- vektor $ar(a)$ můžeme zapsat:
+$
+  ar(a) & = sum_i ar(e)_i attach(a, tl: I)^i = sum_j ar(f)_j attach(a, tl: N)^j = sum_(j,i) ar(e)_i R_j^i attach(a, tl: N)^j\
+  attach(a, tl: I)^i & = R_j^i attach(a, tl: N)^j \
+$
+
+- transformace bodu
+$
+  X & = O + attach(ar(r), tl: I) = P + attach(ar(r), tl: N) \
+  & "kde" \
+  attach(ar(r), tl: I) & = ar(R) + attach(ar(r), tl: N) \
+  & "tedy" \
+  & = O + sum_i ar(e)_i attach(x, tl: I)^j = O + sum_i ar(e)_i X^i + sum_(i,j) ar(e)_i R_j^i attach(x, tl: N)^j
+  \
+  &"tedy posun a otočení"\
+  attach(x, tl: I)^i &= X^i + sum_(i,j) R^i_j attach(x, tl: N)^j\
+$
+
+===== Otáčení $N$ vůči $I$
+máme vektor $ar(c)$ který je konstantní v $N$, chci popsat změnu v soustavě $I$
+
+$
+                             ar(c) & = sum_j attach(c, tl: N)^j ar(f)_j \
+  attach(dif, tl: N)/(dif t) ar(c) & = 0 \
+                          -> ar(c) & "se mění v I díky rotaci N kolem I" \
+  attach(dif, tl: I)/(dif t) ar(c) & = attach(dif, tl: I)/(dif t) (sum_(k,j) ar(e)_k R^k_j attach(c, tl: N)^j) \
+                                   & = sum_(k,j) ar(e)_k dt(R^k_j) attach(c, tl: N)^j \
+                                   & = sum_(i,j,k) ar(f)_i inv(R)^i_k dt(R^k_j) attach(c, tl: N)^j \
+                                   & = sum_(i,j,k) ar(f)_i Omega_j^i attach(c, tl: N)^j \
+$
+
+$
+    bb(Omega) & = inv(RR) dp dt(RR) \
+  bb(Omega)^T & = (inv(RR) dp dt(RR))^T = dt(RR)^T dp inv(RR)^T = - RR^T dp dt(RR) = - bb(Omega) \
+$
+
+$bb(Omega)$ je *antisymetrická*
+
+$
+  bb(Omega) & = cal(E)_omega = dmat(
+                0, -omega^3, omega^2;
+                omega^3, 0, -omega^1;
+                -omega^2, omega^1, 0
+              ) \
+            & -> ar(omega) = sum_i ar(f)_i omega^i \
+$
+#pb()
+$
+  attach(dif, tl: I)/(dif t) ar(c) = sum_(i,j) ar(f)_i (cal(ar(omega)))_j^i attach(c, tl: N)^j = ar(omega) times ar(c)
+$
+
+$
+  ar(c)(t + dif t) & = ar(c)(t) + (attach(dif, tl: I) ar(c))/(dif t) dif t = ar(c)(t) + ar(omega) times ar(c) dif t \
+$
+
+===== Vzájemně pohybující se soustavy
+$N$ vůči $I$
+- $P = P(t)$
+- $X^i = X^i (t)$
+- $ar(f)_i = ar(f)_i (t)$
+- $R^i_j = R^i_j (t)$
+
+====== Rychlost posunutí $N$ vůči $I$
+
+$
+  ar(V) & = attach(dif, tl: I)/(dif t) P = attach(dif, tl: I)/(dif t) (O + sum_i X^i ar(e)_i) = sum_i dt(X)^i ar(e)_i \
+$
+
+
+$
+  attach(ar(v), tl: I) &= (attach(dif, tl: I) X)/(dif t)= (attach(dif, tl: I) attach(ar(r), tl: I))/(dif t) = sum_i attach(dt(x), tl: I)^i ar(e)_i\
+  attach(ar(v), tl: N) &= (attach(dif, tl: N) X)/(dif t)= (attach(dif, tl: N) attach(ar(r), tl: N))/(dif t) = sum_i attach(dt(x), tl: N)^i ar(f)_i\
+$
+
+====== Derivace obecného vektoru v $N$ vůči $I$
+
+$
+  (attach(dif, tl: I) ar(b))/(dif t) & = (attach(dif, tl: I))/(dif t) (sum_i ar(f)_i attach(b, tl: N)^i) = sum_i ar(f)_i attach(dt(b), tl: N)^i + sum_i (attach(dif, tl: I) ar(f)_i)/(dif t) attach(b, tl: N)^i = (attach(dif, tl: N) ar(b))/(dif t) + ar(omega) times ar(b)\
+$
+
+*vývoj bodu*
+
+$
+  (attach(dif, tl: I) X)/(dif t) =attach(dif, tl: I)/(dif t) (P + attach(ar(r), tl: N)) = ar(V) + attach(ar(v), tl: N) + ar(omega) times attach(ar(r), tl: N)
+$
+
+*zrychlení*
+$
+  attach(ar(a), tl: I) &= (attach(dif, tl: I) attach(ar(v), tl: I))/(dif t) = (attach(dif, tl: I) ar(V))/(dif t) + (attach(d, tl: I) attach(ar(v), tl: N))/(dif t) + attach(dif, tl: I)/(dif t) (ar(omega) times attach(ar(r), tl: N))\
+  &= ar(A) + attach(ar(a), tl: N) + 2 ar(omega) times attach(ar(v), tl: N) + ar(alpha) times attach(ar(r), tl: N) + ar(omega) times (ar(omega) times attach(ar(r), tl: N))\
+$
+
+Popis v inerciální soustavě
+$
+  m attach(ar(a), tl: N) = ar(F)^"pravé"
+$
+Popis v neinerciální soustavě
+$
+  m attach(ar(a), tl: N) = ar(F)^"pravé" - m(ar(A) + attach(ar(a), tl: N) + 2 ar(omega) times attach(ar(v), tl: N) + ar(alpha) times attach(ar(r), tl: N) + ar(omega) times (ar(omega) times attach(ar(r), tl: N)))
+$
