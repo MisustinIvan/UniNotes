@@ -18,48 +18,44 @@ class NewtonFractal:
     def compute(self, lower, upper, res, max_iter):
         plane = np.linspace(lower.real, upper.real, res)[None, :] + 1j * np.linspace(lower.imag, upper.imag, res)[:, None]
 
-        for _ in range(max_iter):
-            plane -= self.poly(plane)/self.dpoly(plane)
+        # iterations at which a given point has converged, max_iter means non-convergence
+        iterations = np.full(plane.shape, max_iter, dtype=np.int32)
+        # mask to update the plane
+        active = np.ones(plane.shape, dtype=bool)
 
-        # for each point compute distance to every root - shape expands to (res, res, len(roots))
-        distances = np.abs(plane[..., None] - self.roots)
-        # argmin by last(deepest) axis - returns the indices of the minimal distance n-tuples that correspond to the closest root
-        # shape goes back to (res, res)
-        root_indices = np.argmin(distances, axis=-1)
-        # find those distances(by deepest axis again)
-        # shape goes back to (res, res)
-        min_distances = np.min(distances, axis=-1)
+        for i in range(max_iter):
+            # update only non-converged points
+            z = plane[active]
+            plane[active] = z - self.poly(z)/self.dpoly(z)
 
-        # filter out all converged points
-        converged = min_distances <= self.epsilon
+            # filter out newly converged points
+            dist = np.min(np.abs(plane[active][:, None] - self.roots), axis=-1)
+            newly_converged = np.zeros(plane.shape, dtype=bool)
+            newly_converged[active] = dist <= self.epsilon
 
-        return np.where(converged, root_indices, -1)
+            # update iterations plane
+            iterations[newly_converged] = i
+            # update active mask
+            active &= ~newly_converged
 
-    def plot(self, lower: complex, upper:complex, res = 800, max_iter = 20):
-        rng = np.random.default_rng()
-        n = len(self.roots)
+            # exit early if all points converged
+            if not active.any():
+                break
 
-        # generate random colors for the rooots
-        colors = rng.integers(0, 256, size=(n,3), dtype=np.uint8)
-        # last color is black for -1 indexing
-        colors = np.vstack([colors, [0,0,0]])
+        return iterations
 
-        indices = self.compute(lower, upper, res, max_iter)
-        img = colors[indices]
+    def plot(self, lower: complex, upper: complex, res=800, max_iter=50):
+        iterations = self.compute(lower, upper, res, max_iter)
 
         plt.imshow(
-            img,
+            iterations,
             origin="lower",
             extent=(lower.real, upper.real, lower.imag, upper.imag),
+            cmap="inferno",
         )
+        plt.colorbar(label="Convergence iteration count")
 
-        plt.scatter(
-            self.roots.real,
-            self.roots.imag,
-            c="white",
-            edgecolors="black",
-        )
-
+        plt.scatter(self.roots.real, self.roots.imag, c="white", edgecolors="black")
         plt.xlabel("Re(z)")
         plt.ylabel("Im(z)")
         plt.savefig("out.png", dpi=300)
@@ -67,9 +63,9 @@ class NewtonFractal:
 
 
 def main():
-    nf = NewtonFractal(-1, 1 + 1j, 1 - 1j, 0.5 + 0.33j)
+    nf = NewtonFractal(*[np.e**(2/3 * np.pi * 1j * i) for i in [0,1,2]])
 
-    nf.plot(-2 -2j, 2 + 2j, res=1600)
+    nf.plot(-10 -10j, 10 + 10j, res=2000, max_iter=100)
 
 if __name__ == "__main__":
     main()
