@@ -12,6 +12,7 @@
 
 // helpers
 #let eqc = [$=^"\"c\""$]
+#let pm = math.plus.minus
 
 // spacing
 #let sq = math.space.quad
@@ -29,11 +30,6 @@
   "binary",
   box(baseline: 0.1em, image("smi.svg", height: 1.0em)),
 )
-
-// differentials
-#let dx = math.op("dx")
-#let dy = math.op("dy")
-#let du = math.op("du")
 
 // trig functions
 #let tg = math.op("tg")
@@ -83,6 +79,7 @@
 // sql for squiggly line(tilde) accent.\
 // shorthand for math.accent(body, "\~")
 #let sql(body) = math.accent(body, "~")
+#let star(body) = [$body^*$]
 
 // Matrix given by columns, separated by vertical lines.
 // Usage: $matcol((1, 2), (3, 4))$

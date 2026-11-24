@@ -1223,7 +1223,7 @@ Nechť $lim_(x->a) f(x) = L$, potom platí:
   + $lim_(x->a) g(x) = K$
 
   Potom platí:
-  + $lim_(x->a) f(x) plus.minus g(x) = L plus.minus K = lim_(x->a) f(x) plus.minus lim_(x->a) g(x)$
+  + $lim_(x->a) f(x) pm g(x) = L pm K = lim_(x->a) f(x) pm lim_(x->a) g(x)$
   + $lim_(x->a) f(x) g(x) = L dot.op K$
   + pokud $K != 0$, pak $lim_(x->a) f(x)/g(x) = L/K$
 ]
@@ -3160,3 +3160,260 @@ podobně pro $D$
 
   z toho $2pi$ periodicita $sin x$ a $cos x$
 ]
+
+#pb()
+== Limity - *✨PLNÁ VERZE✨*
+#definition(title: [Rozšířená reálná osa a okolí $pm infinity$])[
+  Množinu $avg(RR) = RR union {-infinity, +infinity}$ nazveme *rozšířenou reálnou osou*.
+
+  #cetz.canvas({
+    import cetz.draw: *
+
+    let l-end = (-4.2, 0)
+    let r-end = (4.2, 0)
+
+    // the real line itself
+    line((-3, 0), (3, 0), stroke: 1.2pt)
+
+    // tick marks
+    for x in (-2, -1, 0, 1, 2) {
+      line((x, -0.12), (x, 0.12), stroke: 0.6pt)
+    }
+
+    // dashed extensions towards the two infinities
+    line((-3, 0), l-end, mark: (end: ">"), stroke: (dash: "dashed"))
+    line((3, 0), r-end, mark: (end: ">"), stroke: (dash: "dashed"))
+
+    // the two added points
+    circle(l-end, radius: 0.09, fill: black, stroke: none)
+    circle(r-end, radius: 0.09, fill: black, stroke: none)
+
+    // labels
+    content((rel: (0, -0.3), to: l-end), [$-infinity$], anchor: "north")
+    content((rel: (0, -0.3), to: r-end), [$+infinity$], anchor: "north")
+    content((0, -0.45), [$avg(RR)$], anchor: "north")
+  })
+
+  Chceme rozšířit relace $<$ a operace $+, dp$ v $RR$ na $avg(RR)$
+
+  Rozšíříme následovně(platí komutativita pro $+$ a $dp$ a tranzitivita pro $<$):
+  + $forall x in RR: - infinity < x < +infinity$
+  + $+infinity + (+infinity) = + infinity$
+  + $-infinity + (-infinity) = - infinity$
+  + $+ infinity dp (+infinity) = + infinity$
+  + $+ infinity dp (-infinity) = - infinity$
+  + $(- infinity) dp (-infinity) = + infinity$
+  + $forall x in RR: +infinity + x = +infinity$
+  + $forall x in RR: -infinity + x = -infinity$
+  + $forall x in RR^+ : x dp (+infinity) = +infinity$
+  + $forall x in RR^+ : x dp (-infinity) = -infinity$
+  + $forall x in RR^- : x dp (+infinity) = -infinity$
+  + $forall x in RR^- : x dp (-infinity) = +infinity$
+  + $0 dp (pm infinity) = 0$
+  + $display(x/(pm infinity)) = 0$
+
+  Výrazy typu:
+  + $(-infinity) + (+infinity)$
+  + $(-infinity) dp (+infinity)$
+  nejsou dobře definovány.
+
+  Stejně tak nemáme k těmto objektům inverzní prvky pro operace $+$ a $dp$
+
+  Dále definujeme okolí a prstencové okolí objektů $pm infinity$ pro $epsilon > 0$
+  + $U(+infinity, epsilon) = (1/epsilon, +infinity) = P(+infinity, epsilon)$
+  + $U(-infinity, epsilon) = (-infinity, -1/epsilon) = P(-infinity, epsilon)$
+  tyto intervaly jsou otevřené, jelikož pracujeme výhradně s reálnými funkcemi.
+]
+
+#pb()
+#definition(title: [Limita funkce - *✨PLNÁ VERZE✨*])[
+  Nechť $f$ je reálná funkce, $a,L in avg(R)$.
+
+  Říkáme, že $f$ má v bodě $a$ limitu $L$(značíme zase $display(lim_(x->a)f(x) = L)$), jestliže platí:
+
+  $
+    forall epsilon > 0 sq exists delta > 0 sq forall x in P(a, delta): f(x) in U(L, epsilon)
+  $
+
+  Tato definice je identická jako předchozí definice. Tato definice bude stejná i pro metrické prostory atd.
+
+  Pokud navíc $a in RR$, potom říkám že $f$ má v bodě $a$ limitu $L$ zleva, resp. zprava, pokud platí:
+
+  $
+    forall epsilon > 0 sq exists delta > 0 sq forall x in (a-delta, a): f(x) in U(L, epsilon)
+  $
+  resp.
+  $
+    forall epsilon > 0 sq exists delta > 0 sq forall x in (a, a+delta): f(x) in U(L, epsilon)
+  $
+
+  Opět používáme značení $display(lim_(x->a pm) f(x) = L)$.
+]
+
+=== Poznámky a příklady
+==== Neurčité výrazy
+Výrazy typu
++ $0 dp (pm infinity)$
++ $+infinity + (-infinity)$
+zůstavají nedefinované(tzv. *neurčité výrazy*).
+==== Alternativní formulace
+$
+  lim_(x->a) f(x) = +infinity <=> forall C in RR sq exists delta > 0 sq forall x in P(a, delta): f(x) > C
+$
+a
+$
+  lim_(x->a) f(x) = -infinity <=> forall C in RR sq exists delta > 0 sq forall x in P(a, delta): f(x) < C
+$
+
+Opět můžu přidat multiplikativní konstantu.
+
+$
+  lim_(x->a) = L <=> exists K > 0 sq forall epsilon > 0 sq exists delta > 0 sq forall x in P(a, delta): f(x) in U(L, K dp epsilon)\
+$
+
+#pb()
+==== Např.
+$
+  A > 0; sq lim_(x->+infinity) A x + B & = +infinity \
+$
+
+pro $epsilon > 0$
+$
+  A x + B & > C \
+        x & > (C-B)/A \
+$
+
+stačí zvolit $delta$ aby $display(1/delta > (C-B)/A)$
+
+==== Např.
+$
+  lim_(x->+infinity) e^x
+$
+
+Odhadneme zespoda:
+
+#cetz.canvas({
+  import cetz.draw: *
+
+  line((-2.6, 0), (2.4, 0), mark: (end: ">"))
+  line((0, -1.5), (0, 5.9), mark: (end: ">"))
+  content((2.4, 0), [$x$], anchor: "north-west", padding: 0.12)
+  content((0, 5.9), [$y$], anchor: "south-east", padding: 0.12)
+
+  line((1, -0.08), (1, 0.08))
+  content((1, -0.12), [$1$], anchor: "north", padding: 0.08)
+  line((-0.08, 1), (0.08, 1))
+  content((-0.12, 1), [$1$], anchor: "east", padding: 0.08)
+
+  let pts = range(0, 42).map(i => {
+    let x = -2.4 + 4.1 * i / 41
+    (x, calc.exp(x))
+  })
+  line(..pts, stroke: blue.darken(20%))
+
+  line((-2.4, -1.4), (1.7, 2.7), stroke: red.darken(20%))
+
+  circle((0, 1), radius: 0.05, fill: black)
+
+  content((1.15, 3.9), [$e^x$], anchor: "south", padding: 0.1)
+  content((1.15, 1.75), [$x+1$], anchor: "north", padding: 0.1)
+})
+
+$
+  forall x in RR: e^x >= x+1
+$
+
+víme, že $lim_(x->+infinity) x + 1 = +infinity$, a jelikož je $e^x$ touto funkcí zespoda omezena, je $lim_(x->+infinity) e^x = +infinity$
+
+==== Např.
+$
+  lim_(x->+infinity) e^x/x^7 & = +infinity \
+  lim_(x->+infinity) x^7/e^x & = 0 \
+$
+
+zatím neumíme spočítat, nemáme aparát(l'Hopital)
+
+#pb()
+==== Jednoznačnost limity a limita složené funkce fungují beze změny
+
+např.
+
+$
+  lim_(x->a) e^f(x) =^? e^(lim_(x->a) f(x))
+$
+
+Vždy můžeme použít podmínku $P$, jelikož $exp$ nikdy nenabývá hodnoty $pm infinity$
+
+==== Výpočet nevlastních limit
+chceme počítat limitu typu:
+
+$
+  lim_(x->0pm) 1/x = pm infinity
+$
+
+Používáme následující značení
+
+$
+  lim_(x->a) f(x) &= L^+ <&=> forall epsilon > 0 sq exists delta > 0 sq forall x in P(a, delta): f(x) in U^+(L, epsilon)\
+  lim_(x->a) f(x) &= L^+ <&=> forall epsilon > 0 sq exists delta > 0 sq forall x in P(a, delta): f(x) in chevron L, L+epsilon)\
+  \
+  lim_(x->a) f(x) &= L^- <&=> forall epsilon > 0 sq exists delta > 0 sq forall x in P(a, delta): f(x) in U^-(L, epsilon)\
+  lim_(x->a) f(x) &= L^- <&=> forall epsilon > 0 sq exists delta > 0 sq forall x in P(a, delta): f(x) in (L+epsilon, L chevron.r\
+$
+
+tedy
+
+$
+  lim_(x->0pm) x = 0^pm\
+$
+
+a
+$
+  lim_(x->0pm) 1/x = pm infinity\
+$
+
+==== Platí
+$
+  lim_(x->pm infinity) f(x) & = L <           & => lim_(x->pm 0) f(1/x) & = L \
+            lim_(x->a) f(x) & = pm infinity < &    => lim_(x->a) 1/f(x) & = 0^pm \
+$
+
+==== Všimněme si
+#claim[
+$
+  x in P(+infinity, epsilon) <=> x > 1/epsilon <=> 0 < 1/x < epsilon <=> 1/x in (0,epsilon)
+$
+]
+
+#proof[
+  $
+    lim_(x->a) f(x) = + infinity &<=> forall epsilon > 0 sq exists delta > 0 sq forall x in P(a, delta): f(x) in U(+infinity, epsilon)\
+&<=> forall epsilon > 0 sq exists delta > 0 sq forall x in P(a, delta): 1/f(x) in (0, epsilon)\
+&<=> lim_(x->a) 1/f(x) = 0^+\
+
+  $
+]
+
+#pb()
+== Věta o aritmetice limit - *✨PLNÁ VERZE✨*
+Nechť $f,g$ jsou reálné funkce, $a in avg(RR)$ a nechť existují limity:
+
+$
+L = lim_(x->a) f(x); sq K = lim_(x->a) g(x); sq (K,L in avg(RR))
+$
+
+potom
+$
+lim_(x->a) (f(x) + g(x)) &= L + K = lim_(x->a) f(x) + lim_(x->a) g(x)\
+lim_(x->a) (f(x) dp g(x)) &= L dp K = lim_(x->a) f(x) dp lim_(x->a) g(x)\
+lim_(x->a) (f(x)/g(x)) &= L/K = (lim_(x->a) f(x))/(lim_(x->a) g(x))\
+$
+
+za předpokladu, že výrazy na pravé straně *mají smysl* (v $avg(RR)$).
+
+== Věta o jednom strážníkovi 😭
+Pokud $lim_(x->a) f(x) = +infinity$ a existuje $xi > 0$ tak, že $g(x) >= f(x)$ na $P(a, xi)$, potom
+
+$
+lim_(x->a) g(x) = +infinity
+$
