@@ -1,6 +1,7 @@
 #import "@preview/cetz:0.5.2"
 #import "@preview/cetz-plot:0.1.4": plot
 #import "@local/mod:0.1.0": *
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 
 #show: boilerplate
 
@@ -1504,4 +1505,325 @@ jsou izomorfní
   $f$ mono <=> $ker f = 0$ <=> $dim ker f = 0$
 
   => $dim im f = n = dim V => im f = V$ => $f$ je epi
+]
+
+#pb()
+= Determinant $equiv$ _orientovaný_ objem
+Chceme multilinearitu, totální antisymetrii
+
+#definition(title: "Determinant")[
+  $A in FF^(n times n)$
+
+  $
+    det A & = sum_(pi in S_n) sgn(pi) a_(1 pi(1)) a_(2 pi(2)) dots a_(n pi(n))
+  $
+
+  kde $S_n$ je množina všech permutací(bijektivních zobrazení) na množině ${1 dots n}$
+]
+
+#definition(title: "Permutace")[
+  Permutace je bijektivní zobrazení, dají se skládat
+
+  Jeden způsob zápisu je tzv. *dvouřádkový*
+
+  $
+    pi equiv mat(
+      1, 2, dots, n;
+      pi(1), pi(2), dots, pi(n)
+    )
+  $
+
+  např.:
+
+  $
+    pi = mat(
+      1, 2, 3;
+      2, 1, 3
+    ) sq rho = mat(
+      1, 2, 3;
+      1, 3, 2
+    )
+  $
+
+  $
+    pi compose rho = mat(
+      1, 2, 3;
+      pi(rho(1)), pi(rho(2)), pi(rho(3))
+    ) = mat(
+      1, 2, 3;
+      2, 3, 1
+    )
+  $
+
+  skládání *není komutativní* operace:
+
+  $
+    rho compose pi = mat(
+      1, 2, 3;
+      rho(pi(1)), rho(pi(2)), rho(pi(3))
+    ) = mat(
+      1, 2, 3;
+      3, 1, 2
+    )
+  $
+
+  další způsob zápisu je tzv. *cyklový zápis*(nebo *redukovaný cyklový zápis*), kdy permutaci rozložíme na *nezávislé cykly*
+
+  $
+    mat(
+      1, 2, 3, 4;
+      2, 3, 1, 4
+    ) = (1,2,3) (4) in S_4
+  $
+
+  $
+    mat(
+      1, 2, 3, 4, 5, 6, 7, 8;
+      8, 3, 5, 6, 2, 4, 7, 1
+    ) = (1,8) (2,3,5) (4,6) (7) = (1,8) (2,3,5) (4,6) in S_8
+  $
+
+  kde cykly délky 2 nazýváme *transpozice* a cykly délky 1 nazýváme *identita*
+
+  a množina $S_n$ s operací skládání $compose$ tvoří *asociativní grupu*
+
+  kde inverzní permutace je inverzní zobrazení
+
+  např.
+  $
+    pi = mat(
+      1, 2, 3;
+      2, 3, 1
+    ) sq inv(pi) = mat(
+      1, 2, 4;
+      3, 1, 2
+    )
+  $
+]
+
+#pb()
+#theorem(title: "Rozložení cyklu na transpozice")[
+  Každý cyklus lze rozložit na transpozice
+
+  $
+    (1,3,7,4) = (1,4) compose (1,7) compose (1,3) = (1,3) compose (3,7) compose (7,4)
+  $
+
+  tedy
+
+  $
+    (i_1, i_2, dots, i_k) & = (i_1, i_k) compose (i_1, i_(k-1)) compose dots compose (i_1, i_2) \
+                          & = (i_1, i_2) compose (i_2, i_3) compose dots compose (i_(k-1), i_k)
+  $
+]
+
+#definition(title: "Znaménko permutace")[
+  Nechť $pi in S_n, pi = pi_1 compose dots compose pi_k$ kde $pi_1, dots, pi_k$ jsou transpozice,
+
+  pak definujeme $sgn(pi) = (-1)^k$
+  - kde $sgn(pi) = 1 equiv$ permutace je *sudá*
+  - kde $sgn(pi) = -1 equiv$ permutace je *lichá*
+
+  potřebujeme ale dobře definovat $k$
+]
+
+#lemma(title: "Korektnost znaménka permutace")[
+  $pi in S_n$
+
+  - $pi compose (i,j)$ má $q$ cyklů sudé délky v rozkladu na nezávislé cykly
+  - $pi$ má $p$ cyklů sudé délky v rozkladu na nezávislé cykly
+
+  pak $abs(p-q) = 1$
+]
+
+#proof[
+  $
+    pi & = pi_1 compose dots compose pi_k \
+    pi & = pi_1 ' compose dots compose pi_l ' \
+  $
+
+  kde $pi_1, dots, pi_k, pi_1 ', dots, pi_l '$ jsou transpozice
+
+  parita $pi$ je dána z rozkladu na nezávislé cykly, tedy jsou dány parity $k$ i $l$
+
+  při složení s transpozicí buď přidám jeden nezávislý cyklus sudé délky, nebo spojím/rozdělím existující cyklus, tedy počet cyklů sudé délky se změní vždy o $plus.minus 1$
+]
+
+#corollary[
+  $sgn(pi) = (-1)^p$ kde $p$ je počet cyklů sudé délky v rozkladu $pi$ na nezávislé cykly
+]
+
+#pb()
+#claim[
+  + $sgn (pi compose rho) = sgn(pi) dp sgn(rho)$
+  + $sgn (pi) = sgn(inv(pi))$
+]
+
+#proof(title: "1.")[
+  $
+    pi = pi_1 compose dots compose pi_k; sq rho = rho_1 compose dots compose rho_l\
+  $
+
+  $
+    pi compose rho = pi_1 compose dots compose pi_k compose rho_1 compose dots compose rho_l => sgn(pi compose rho) = (-1)^(k+l) = (-1)^k (-1)^l = sgn(pi) sgn(rho)
+  $
+]
+
+#proof(title: "2.")[
+  $
+    inv(pi) = pi_k compose dots compose pi_1 => sgn(inv(pi)) = (-1)^k = sgn(pi)\
+  $
+]
+
+#corollary[
+  $sgn: S_n -> ZZ_2 = {-1,1}$ je *grupový homomorfismus*
+]
+
+== Příklad - výpočet determinantu matice $2 times 2$
+
+$
+  det(
+    a_11, a_12;
+    a_21, a_22
+  ) = sgn(id) a_11 a_22 + sgn
+  mat(
+    1, 2;
+    2, 1
+  )
+  a_12 a_21 = a_11 a_22 - a_12 a_21
+$
+
+== Příklad - výpočet determinantu matice $3 times 3$
+
+$
+  & det(
+      a_11, a_12, a_13;
+      a_21, a_22, a_23;
+      a_31, a_32, a_33
+    ) \
+  & = sgn(id)
+    a_11 a_22 a_33
+    + sgn mat(
+      1, 2, 3;
+      2, 1, 3
+    )
+    a_12 a_21 a_33 + sgn mat(
+      1, 2, 3;
+      1, 3, 2
+    ) \
+  & a_11 a_23, a_32 + sgn mat(
+      1, 2, 3;
+      3, 2, 1
+    ) a_13 a_22 a_31 + sgn mat(
+      1, 2, 3;
+      2, 3, 1
+    ) a_12 a_23 a_31 + sgn mat(
+      1, 2, 3;
+      3, 1, 2
+    ) a_13 a_21 a_32 \
+  & = 1 a_11 a_22 a_33 - 1 a_12 a_21 a_33 - 1 a_11 a_23, a_32 - 1 a_13 a_22 a_31 + 1 a_12 a_23 a_31 + 1 a_13 a_21 a_32 \
+$
+
+== Sarrusovo pravidlo
+
+#diagram(
+  spacing: (2.2em, 1.8em),
+  node-inset: 2pt,
+
+  // Matrix elements a_(i,j) + 2 repeated columns
+  ..for r in range(3) {
+    for c in range(5) {
+      let col = calc.rem(c, 3) + 1
+      let style = if c >= 3 { gray } else { black }
+      (node((c, r), text(fill: style, $a_(#(r + 1), #col)$), fill: white),)
+    }
+  },
+
+  // Determinant bars around the first 3 columns
+  edge((-0.55, -0.4), (-0.55, 2.4), stroke: 0.7pt),
+  edge((2.55, -0.4), (2.55, 2.4), stroke: 0.7pt),
+
+  // Positive diagonals (down-right)
+  ..for k in range(3) {
+    (
+      edge((k - 0.3, -0.3), (k + 2.35, 2.35), "->", stroke: blue + 0.8pt, layer: -1),
+      node((k + 2.5, 2.5), text(fill: blue, $+$)),
+    )
+  },
+
+  // Negative diagonals (up-right)
+  ..for k in range(3) {
+    (
+      edge((k - 0.3, 2.3), (k + 2.35, -0.35), "->", stroke: (paint: red, thickness: 0.8pt, dash: "dashed"), layer: -1),
+      node((k + 2.5, -0.5), text(fill: red, $-$)),
+    )
+  },
+)
+
+nepraktické pro velké matice
+
+#pb()
+
+== Vlastnosti determinantu
+#theorem[
+  Nechť $A in FF^(n times n)$, pak $det A = det A^T$
+]
+
+#proof[
+  $
+      det A & = sum_(pi in S_n) sgn(pi) a_(1, pi(1)) dots a_(n, pi(n)) \
+    det A^T & = sum_(rho in S_n) sgn(rho) a_(rho(1), 1) dots a_(rho(n), n) \
+  $
+  nechť $pi = inv(rho)$, pak
+
+  $
+    a_(1, inv(rho)(1)) dots a_(n, inv(rho)(n)) = a_(rho(1), 1) dots a_(rho(n), n)\
+  $
+
+  a $sgn(rho) = sgn(pi) = sgn(inv(rho))$
+
+  máme tedy jen jiné pořadí stejných sčítanců
+]
+
+#corollary[
+  Každé tvrzení o řádcích a determinantu platí i pro sloupce a determinant
+]
+
+#claim(title: "Multilinearita")[
+  Nechť $ar(a)_1 dots ar(a)_n$ a $ar(a)_i ' in FF^n sq; i in {1, dots, n}$
+
+  *1.*
+  $
+    det matcol(ar(a)_1, dots, r ar(a)_i + r' ar(a)_i ', dots, ar(a)_n) = r det matcol(ar(a)_1, dots, ar(a)_i, dots, ar(a)_n) + r' det matcol(ar(a)_1, dots, ar(a)_i ', dots, ar(a)_n)
+  $
+
+  *2.*
+  $
+    det matcol(ar(a)_rho(1), dots, ar(a)_rho(n)) = sgn(rho) det matcol(ar(a)_1, dots, ar(a)_n)
+  $
+]
+
+#proof[
+  $
+    det matcol(ar(a)_1, dots, r ar(a)_i + r' ar(a)_i ', dots, ar(a)_n) &= sum_(pi in S_n) sgn(pi) a_(pi(1),1) a_(pi(2),2) dots (r a_(pi(i), i) + r' a_(pi(i), i) ') dots a_(pi(n),n)\
+    & r sum_(pi in S_n) sgn(pi) a_(pi(1),1) a_(pi(2),2) dots a_(pi(i), i) dots a_(pi(n),n)\
+    + &r' sum_(pi in S_n) sgn(pi) a_(pi(1),1) a_(pi(2),2) dots a_(pi(i), i) ' dots a_(pi(n),n)
+  $
+]
+
+#pb()
+#corollary(title: "ESÚ/EŘÚ mají na determinant efekt:")[
+  + Přičtení sloupce/řádku do sloupce/řádku determinant nemění
+  + Prohození sloupce/řádku obrací znaménko
+  + Násobení sloupce/řádku násobí determinant
+]
+
+#claim(title: "Determinant a regularita")[
+  Matice je regulární právě tehdy když je determinant nenulový
+]
+
+#proof[
+  Pomocí EŘÚ se dostanu do RREF, to mi determinant nemůže vynulovat. Pak je determinant součinem prvků na diagonále krát nějaká konstanta.
+
+  Jestliže je matice regulární, jsou prvky na diagonále nenulové.
 ]
